@@ -485,52 +485,107 @@ export default function Home() {
 
             {/* Brands Section */}
             <Reveal>
-              <div className="bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-2xl p-8 mb-16">
-                <h4 className="text-2xl font-bold text-white text-center mb-8">
-                  NUESTRAS MARCAS DE PANELES SOLARES E INVERSORES
+              <div className="bg-gradient-to-r from-black/80 to-black/60 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm shadow-2xl mb-16">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-accent-gold font-bold tracking-widest text-sm">01. ENERGÍA SOLAR</span>
+                </div>
+
+                <h4 className="text-3xl md:text-4xl font-bold text-white mb-12 max-w-2xl">
+                  NUESTRAS MARCAS DE <span className="text-accent-gold">PANELES SOLARES</span> E INVERSORES
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative">
+
+                  {/* Center Divider for large screens */}
+                  <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent -translate-x-1/2"></div>
+
+                  {/* Left Column: Solar Panels */}
                   <div>
-                    <h5 className="text-sm text-accent-gold font-mono uppercase mb-4">
-                      Paneles Solares de 580W a 660W
+                    <h5 className="text-sm text-gray-400 font-bold tracking-widest uppercase mb-8 border-b border-white/10 pb-4">
+                      PANELES SOLARES DE 580 W A 660W
                     </h5>
-                    <p className="text-gray-400 mb-4">Tier 1 por Bloomberg NEF.</p>
-                    <div className="flex flex-wrap gap-4">
-                      {['JA Solar', 'Longi Solar', 'Canadian Solar'].map(
-                        (brand, i) => (
-                          <div
-                            key={i}
-                            className="px-4 py-2 bg-white/5 border border-white/10 rounded text-sm text-gray-300"
-                          >
-                            {brand}
+
+                    {/* Solar Logos Grid */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                      {[
+                        { name: 'Longi', url: 'https://logo.clearbit.com/longi.com' },
+                        { name: 'Trina Solar', url: 'https://logo.clearbit.com/trinasolar.com' },
+                        { name: 'Jinko Solar', url: 'https://logo.clearbit.com/jinkosolar.com' },
+                        { name: 'JA Solar', url: 'https://logo.clearbit.com/jasolar.com' },
+                        { name: 'Canadian Solar', url: 'https://logo.clearbit.com/canadiansolar.com' },
+                        { name: 'First Solar', url: 'https://logo.clearbit.com/firstsolar.com' },
+                      ].map((brand, i) => (
+                        <div
+                          key={i}
+                          className="group bg-white rounded-xl p-4 flex items-center justify-center h-20 transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                        >
+                          <img
+                            src={brand.url}
+                            alt={brand.name}
+                            className="max-h-full max-w-full object-contain opacity-90 group-hover:opacity-100 transition-opacity filter contrast-125"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = "https://via.placeholder.com/150x50?text=" + brand.name
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right Column: Inverters */}
+                  <div>
+                    <h5 className="text-sm text-gray-400 font-bold tracking-widest uppercase mb-8 border-b border-white/10 pb-4">
+                      INVERSORES
+                    </h5>
+
+                    {/* Inverter List */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                      {[
+                        {
+                          name: 'Fronius',
+                          url: 'https://logo.clearbit.com/fronius.com',
+                          origin: 'MADE IN AUSTRIA',
+                          flag: '🇦🇹'
+                        },
+                        {
+                          name: 'Huawei',
+                          url: 'https://logo.clearbit.com/huawei.com',
+                          origin: 'MADE IN CHINA',
+                          flag: '🇨🇳'
+                        },
+                        {
+                          name: 'SMA',
+                          url: 'https://logo.clearbit.com/sma.de',
+                          origin: 'MADE IN GERMANY',
+                          flag: '🇩🇪'
+                        },
+                      ].map((inv, i) => (
+                        <div key={i} className="flex flex-col items-center text-center group">
+                          <div className="bg-white rounded-xl p-4 w-full h-24 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                            <img
+                              src={inv.url}
+                              alt={inv.name}
+                              className="max-h-12 max-w-full object-contain"
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = "https://via.placeholder.com/150x50?text=" + inv.name
+                              }}
+                            />
                           </div>
-                        )
-                      )}
+
+                          {/* Flag and Text */}
+                          <div className="space-y-1">
+                            <div className="text-2xl">{inv.flag}</div>
+                            <div className="text-[10px] font-bold text-gray-500 tracking-widest uppercase">
+                              {inv.origin}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                  <div>
-                    <h5 className="text-sm text-accent-gold font-mono uppercase mb-4">
-                      Inversores
-                    </h5>
-                    <div className="space-y-3">
-                      <div className="bg-white/5 border border-white/10 rounded p-3">
-                        <div className="text-xs text-gray-500 mb-1">
-                          MADE IN AUSTRIA
-                        </div>
-                        <div className="text-sm text-white font-bold">
-                          Fronius Primo · Fronius Symo
-                        </div>
-                      </div>
-                      <div className="bg-white/5 border border-white/10 rounded p-3">
-                        <div className="text-xs text-gray-500 mb-1">
-                          MADE IN GERMANY
-                        </div>
-                        <div className="text-sm text-white font-bold">
-                          SMA CORE1
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </Reveal>
