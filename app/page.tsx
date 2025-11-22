@@ -20,6 +20,16 @@ import {
   Mail,
 } from 'lucide-react'
 
+// Navigation configuration - matches page section order
+const NAV_ITEMS = [
+  { label: 'Inicio', href: '#inicio' },
+  { label: 'Soluciones', href: '#soluciones' },
+  { label: 'Tecnología', href: '#tecnologia' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Ingeniería', href: '#ingenieria' },
+  { label: 'Contacto', href: '#contacto' },
+] as const
+
 // Logo Component
 const FademexLogo = ({ className = 'h-8' }: { className?: string }) => (
   <svg
@@ -51,7 +61,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -96,24 +106,18 @@ export default function Home() {
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <a href="#" className="relative z-50">
+          <a href="#inicio" className="relative z-50" aria-label="FADEMEX - Inicio">
             <FademexLogo className="h-8" />
           </a>
 
           <nav className="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/10">
-            {[
-              'Tecnología',
-              'Soluciones',
-              'Ingeniería',
-              'Proyectos',
-              'Contacto',
-            ].map((item) => (
+            {NAV_ITEMS.slice(1).map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.href}
+                href={item.href}
                 className="px-6 py-2 rounded-full text-xs font-medium uppercase tracking-wide text-gray-400 hover:bg-white/10 hover:text-accent-gold transition-all duration-300"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>
@@ -122,6 +126,8 @@ export default function Home() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 text-white"
+              aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X /> : <Menu />}
             </button>
@@ -132,27 +138,21 @@ export default function Home() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center space-y-8">
-          {[
-            'Tecnología',
-            'Soluciones',
-            'Ingeniería',
-            'Proyectos',
-            'Contacto',
-          ].map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.href}
+              href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-3xl font-light text-white hover:text-accent-gold"
+              className="text-3xl font-light text-white hover:text-accent-gold transition-colors"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </div>
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section id="inicio" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
@@ -254,7 +254,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-gray-500">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce text-gray-500">
           <span className="text-[10px] uppercase tracking-widest mb-2">
             Explora
           </span>
@@ -392,8 +392,8 @@ export default function Home() {
 
       {/* Technical Specifications */}
       <section
-        id="tecnología"
-        className="py-24 bg-black/30 border-y border-white/5"
+        id="tecnologia"
+        className="py-32 bg-black/30 border-y border-white/5"
       >
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16">
@@ -518,12 +518,8 @@ export default function Home() {
             <Reveal delay={100}>
               <div className="flex gap-6 text-xs font-mono text-gray-400 border border-white/10 px-4 py-2 rounded-lg bg-black/40">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-gray-500 rounded-full"></div>{' '}
-                  OFFLINE
-                </div>
-                <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-accent-gold rounded-full animate-pulse"></div>{' '}
-                  ONLINE
+                  ACTIVOS
                 </div>
               </div>
             </Reveal>
@@ -538,7 +534,7 @@ export default function Home() {
       </section>
 
       {/* Process Timeline */}
-      <section id="ingeniería" className="py-24 relative">
+      <section id="ingenieria" className="py-32 relative">
         <div className="container mx-auto px-6">
           <Reveal>
             <h2 className="text-center text-3xl font-bold text-white mb-20">
@@ -645,7 +641,7 @@ export default function Home() {
               <ul className="space-y-3 text-sm text-gray-500">
                 <li>
                   <a
-                    href="#"
+                    href="#soluciones"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Solar Industrial
@@ -653,7 +649,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#soluciones"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Almacenamiento (BESS)
@@ -661,7 +657,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#soluciones"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Microgrids
@@ -669,7 +665,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#tecnologia"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Consultoría Código de Red
@@ -683,7 +679,7 @@ export default function Home() {
               <ul className="space-y-3 text-sm text-gray-500">
                 <li>
                   <a
-                    href="#"
+                    href="#inicio"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Nosotros
@@ -691,7 +687,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#proyectos"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Casos de Éxito
@@ -699,7 +695,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#contacto"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Carreras
@@ -707,7 +703,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#proyectos"
                     className="hover:text-accent-gold transition-colors"
                   >
                     Noticias
@@ -737,13 +733,13 @@ export default function Home() {
               © 2025 FADEMEX Energy Systems. Todos los derechos reservados.
             </p>
             <div className="flex gap-6 text-xs text-gray-600">
-              <a href="#" className="hover:text-gray-400">
+              <a href="#inicio" className="hover:text-gray-400 transition-colors">
                 Privacidad
               </a>
-              <a href="#" className="hover:text-gray-400">
+              <a href="#inicio" className="hover:text-gray-400 transition-colors">
                 Términos
               </a>
-              <a href="#" className="hover:text-gray-400">
+              <a href="#inicio" className="hover:text-gray-400 transition-colors">
                 Sitemap
               </a>
             </div>

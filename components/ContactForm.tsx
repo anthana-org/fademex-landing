@@ -117,7 +117,7 @@ export default function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <label className="text-xs font-mono text-gray-500 uppercase ml-1">Detalles del Proyecto (Opcional)</label>
+        <label className="text-xs font-mono text-gray-500 uppercase ml-1">Detalles del Proyecto</label>
         <textarea
           rows={4}
           name="mensaje"
@@ -128,7 +128,6 @@ export default function ContactForm() {
           placeholder="Consumo actual, ubicación, objetivos..."
         />
       </div>
-
       {status === 'success' && (
         <div className="bg-accent-gold/20 border border-accent-gold/50 rounded-lg p-4 text-accent-gold text-center flex items-center justify-center gap-2">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
