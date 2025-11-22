@@ -35,6 +35,28 @@ body {
   }
 }
 
+/* Reduced bounce animation for mobile devices */
+@keyframes bounce-mobile {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Enhanced bounce for larger screens */
+@media (min-width: 1024px) {
+  @keyframes bounce-mobile {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+}
+
 .animate-scan {
   animation: scan 4s linear infinite;
 }

@@ -221,23 +221,23 @@ export default function Home() {
 
                   {/* Floating Cards */}
                   <div
-                    className="absolute top-1/4 right-0 bg-gray-900/90 backdrop-blur border border-white/10 p-4 rounded-xl shadow-2xl"
+                    className="absolute top-4 right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-gray-900/90 backdrop-blur border border-white/10 p-3 md:p-4 rounded-xl shadow-2xl"
                     style={{
-                      animation: 'bounce 4s ease-in-out infinite',
+                      animation: 'bounce-mobile 4s ease-in-out infinite',
                     }}
                   >
                     <div className="text-xs text-gray-500 uppercase mb-1">
                       Potencia Actual
                     </div>
-                    <div className="text-2xl text-white font-mono font-bold">
+                    <div className="text-xl md:text-2xl text-white font-mono font-bold">
                       8.4 MW
                     </div>
                   </div>
 
                   <div
-                    className="absolute bottom-1/4 left-10 bg-gray-900/90 backdrop-blur border border-white/10 p-4 rounded-xl shadow-2xl"
+                    className="absolute bottom-4 left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-gray-900/90 backdrop-blur border border-white/10 p-3 md:p-4 rounded-xl shadow-2xl"
                     style={{
-                      animation: 'bounce 5s ease-in-out infinite',
+                      animation: 'bounce-mobile 5s ease-in-out infinite',
                     }}
                   >
                     <div className="text-xs text-gray-500 uppercase mb-1">
