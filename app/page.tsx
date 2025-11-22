@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import ContactForm from '@/components/ContactForm'
 import { Reveal } from '@/lib/hooks'
 import {
   Check,
@@ -71,13 +72,13 @@ export default function Home() {
 
               <Reveal delay={300}>
                 <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/contacto"
+                  <a
+                    href="#contacto"
                     className="px-8 py-4 bg-accent-gold hover:bg-yellow-300 text-black font-bold rounded-lg transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(255,215,0,0.3)]"
                   >
                     Inicia Proyecto{' '}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  </a>
                   <Link
                     href="/soluciones"
                     className="px-8 py-4 border border-white/20 hover:bg-white/5 text-white font-medium rounded-lg transition-all"
@@ -193,8 +194,93 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Main Services Grid - Gateway to all pages */}
+      {/* Competitive Advantages */}
       <section className="py-32 relative">
+        <div className="container mx-auto px-6">
+          <div className="mb-20 max-w-2xl">
+            <Reveal>
+              <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3">
+                Ventajas Competitivas
+              </h2>
+              <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Ingeniería de Precisión.
+                <br />
+                Resultados Garantizados.
+              </h3>
+              <p className="text-gray-400 text-lg">
+                No solo instalamos paneles; desplegamos infraestructura
+                energética crítica diseñada para durar décadas bajo condiciones
+                extremas.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: '30 Años de Garantía',
+                subtitle: 'Generation Performance',
+                desc: 'Aseguramos contractualmente que tu sistema producirá energía por encima del 85% incluso después de tres décadas de operación continua.',
+                icon: <Shield />,
+                metric: '30yr',
+              },
+              {
+                title: 'Financiamiento 0%',
+                subtitle: 'Direct Capital Access',
+                desc: 'Elimina la barrera de entrada. Modelos de financiamiento directo que permiten que el ahorro energético pague la infraestructura.',
+                icon: <BarChart3 />,
+                metric: '0% APR',
+              },
+              {
+                title: 'Mantenimiento Integral',
+                subtitle: 'Full Service O&M',
+                desc: 'Dos años de operación y mantenimiento (O&M) incluidos. Limpieza, termografía de drones y ajuste de torque sin costo adicional.',
+                icon: <Settings />,
+                metric: '24mo',
+              },
+              {
+                title: 'Plug & Play',
+                subtitle: 'Seamless Integration',
+                desc: 'Interconexión sin fricción con la red de CFE. Nos encargamos de toda la gestoría, trámites y certificación UVIE.',
+                icon: <Activity />,
+                metric: '100%',
+              },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 100}>
+                <div className="group relative p-8 h-full rounded-2xl border border-white/10 bg-[#0A0A0A] hover:bg-white/5 transition-all duration-500 overflow-hidden">
+                  {/* Decorative Corner */}
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-accent-gold/10 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-accent-gold/20"></div>
+
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center text-accent-gold border border-white/5 group-hover:scale-110 transition-transform">
+                      {item.icon}
+                    </div>
+                    <span className="font-mono text-2xl font-bold text-gray-600 group-hover:text-white transition-colors">
+                      {item.metric}
+                    </span>
+                  </div>
+
+                  <h4 className="text-xl font-bold text-white mb-1">
+                    {item.title}
+                  </h4>
+                  <span className="text-xs font-mono text-accent-gold/70 uppercase tracking-wide mb-4 block">
+                    {item.subtitle}
+                  </span>
+                  <p className="text-gray-400 leading-relaxed text-sm">
+                    {item.desc}
+                  </p>
+
+                  {/* Scanning line effect on hover */}
+                  <div className="absolute bottom-0 left-0 h-[1px] bg-accent-gold w-0 group-hover:w-full transition-all duration-700"></div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main Services Grid - Gateway to all pages */}
+      <section className="py-32 relative border-t border-white/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <Reveal>
@@ -330,39 +416,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick CTA */}
-      <section className="py-32 relative">
+      {/* Contact Section */}
+      <section
+        id="contacto"
+        className="py-32 border-t border-white/5 bg-gradient-to-b from-[#050505] to-[#0a0a0a]"
+      >
         <div className="container mx-auto px-6">
-          <Reveal>
-            <div className="max-w-4xl mx-auto bg-black/50 backdrop-blur-xl border border-white/10 rounded-3xl p-12 md:p-16 relative overflow-hidden shadow-2xl text-center">
-              {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+          <div className="max-w-4xl mx-auto bg-black/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
+            {/* Background Glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-accent-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-              <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  ¿Listo para transformar tu infraestructura energética?
+            <div className="text-center mb-12 relative z-10">
+              <Reveal>
+                <h2 className="text-4xl font-bold text-white mb-4">
+                  Comienza la Transición
                 </h2>
-                <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-                  Agenda una sesión técnica con nuestros ingenieros senior y obtén
-                  una propuesta personalizada en menos de 48 horas.
+                <p className="text-gray-400">
+                  Agenda una sesión técnica con nuestros ingenieros senior.
                 </p>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <Link
-                    href="/contacto"
-                    className="px-8 py-4 bg-accent-gold hover:bg-yellow-300 text-black font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(255,215,0,0.3)]"
-                  >
-                    Iniciar Proyecto
-                  </Link>
-                  <Link
-                    href="/servicios"
-                    className="px-8 py-4 border border-white/20 hover:bg-white/5 text-white font-medium rounded-lg transition-all"
-                  >
-                    Ver Catálogo de Servicios
-                  </Link>
-                </div>
-              </div>
+              </Reveal>
             </div>
-          </Reveal>
+
+            <ContactForm />
+          </div>
         </div>
       </section>
 
