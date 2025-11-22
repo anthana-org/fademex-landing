@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
+import DotMatrixMap from '@/components/DotMatrixMap'
 import { Reveal } from '@/lib/hooks'
 import {
   Check,
@@ -110,7 +111,7 @@ export default function Home() {
 
                   {/* Floating Cards */}
                   <div
-                    className="absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-gray-900/90 backdrop-blur border border-white/10 p-2 sm:p-3 md:p-4 rounded-lg md:rounded-xl shadow-2xl z-20 max-w-[120px] sm:max-w-[140px] md:max-w-none"
+                    className="hidden sm:block absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-gray-900/90 backdrop-blur border border-white/10 p-2 sm:p-3 md:p-4 rounded-lg md:rounded-xl shadow-2xl z-20 max-w-[120px] sm:max-w-[140px] md:max-w-none"
                     style={{
                       animation: 'bounce-mobile 4s ease-in-out infinite',
                     }}
@@ -413,6 +414,32 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Map Section */}
+      <section className="py-32 relative">
+        <div className="container mx-auto px-6">
+          <div className="mb-20 max-w-2xl mx-auto text-center">
+            <Reveal>
+              <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3">
+                Presencia Nacional
+              </h2>
+              <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Proyectos en Toda la República
+              </h3>
+              <p className="text-gray-400 text-lg">
+                Más de 450 MW instalados en proyectos industriales y comerciales
+                a lo largo de México.
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200}>
+            <div className="w-full h-[500px] md:h-[600px]">
+              <DotMatrixMap />
+            </div>
+          </Reveal>
         </div>
       </section>
 
