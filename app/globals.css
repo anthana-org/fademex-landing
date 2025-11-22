@@ -8,6 +8,44 @@ body {
   overflow-x: hidden;
 }
 
+/* Custom Animations */
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes translateX {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+/* Background Grid Pattern */
+.bg-grid-pattern {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 /* The "Liquid Glass" Utility Class */
 .glass-panel {
   background: rgba(255, 255, 255, 0.03);
@@ -37,15 +75,6 @@ body {
 
 .gold-glow {
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-}
-
-/* Map grayscale but with dark mode feel */
-.leaflet-container {
-  background: #1a1a1a !important;
-}
-
-.leaflet-tile {
-  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
 /* Smooth selection */
