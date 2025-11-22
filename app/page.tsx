@@ -71,7 +71,7 @@ export default function Home() {
               </Reveal>
 
               <Reveal delay={300}>
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 relative z-30">
                   <a
                     href="#contacto"
                     className="px-8 py-4 bg-accent-gold hover:bg-yellow-300 text-black font-bold rounded-lg transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(255,215,0,0.3)]"
