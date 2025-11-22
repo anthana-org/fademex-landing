@@ -18,12 +18,17 @@ import {
   MapPin,
   Phone,
   Mail,
+  Sun,
+  Battery,
+  Lightbulb,
+  Wrench,
 } from 'lucide-react'
 
 // Navigation configuration - matches page section order
 const NAV_ITEMS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Soluciones', href: '#soluciones' },
+  { label: 'Servicios', href: '#servicios' },
   { label: 'Tecnología', href: '#tecnologia' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Ingeniería', href: '#ingenieria' },
@@ -387,6 +392,281 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Services Catalog */}
+      <section id="servicios" className="py-32 relative bg-gradient-to-b from-[#050505] to-black/50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20 max-w-3xl mx-auto">
+            <Reveal>
+              <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3">
+                Catálogo de Servicios
+              </h2>
+              <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Soluciones Energéticas 360°
+              </h3>
+              <p className="text-gray-400 text-lg">
+                Energía que transforma. Consultoría y soluciones integrales para
+                optimizar el consumo eléctrico y fomentar el uso de energías limpias.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Solar Energy */}
+            <Reveal delay={0}>
+              <div className="group relative p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-[#0A0A0A] to-black hover:border-accent-gold/30 transition-all duration-500 overflow-hidden h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center border border-yellow-500/20 group-hover:scale-110 transition-transform">
+                      <Sun className="w-8 h-8 text-yellow-400" />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-accent-gold/10 text-accent-gold text-xs font-mono border border-accent-gold/30">
+                      01
+                    </span>
+                  </div>
+
+                  <h4 className="text-2xl font-bold text-white mb-3">
+                    Energía Solar
+                  </h4>
+                  <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                    Consultoría energética 360° y venta e instalación de paneles solares
+                    de alto rendimiento. Análisis profundo del consumo para diseñar
+                    soluciones que maximizan el ahorro y optimizan la eficiencia.
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Consultoría Energética
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Instalación de Paneles Solares (580W - 660W)
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Monitoreo y Sistemas Inteligentes
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Financiamiento y Gestión Energética
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      JA SOLAR
+                    </span>
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      FRONIUS
+                    </span>
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      SMA
+                    </span>
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      TIER 1
+                    </span>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-yellow-500 to-orange-500 w-0 group-hover:w-full transition-all duration-700"></div>
+              </div>
+            </Reveal>
+
+            {/* Battery Storage */}
+            <Reveal delay={100}>
+              <div className="group relative p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-[#0A0A0A] to-black hover:border-accent-gold/30 transition-all duration-500 overflow-hidden h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all"></div>
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center border border-blue-500/20 group-hover:scale-110 transition-transform">
+                      <Battery className="w-8 h-8 text-blue-400" />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-accent-gold/10 text-accent-gold text-xs font-mono border border-accent-gold/30">
+                      02
+                    </span>
+                  </div>
+
+                  <h4 className="text-2xl font-bold text-white mb-3">
+                    Baterías
+                  </h4>
+                  <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                    Sistemas de almacenamiento de energía para reducir picos de demanda,
+                    garantizar continuidad operativa y proteger ante variaciones de voltaje.
+                    Almacenamiento inteligente y limpio para energías renovables.
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Peak Shaving - Time Shifting
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Continuidad Operativa
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Autonomía y Protección ante Variaciones
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Baterías Comerciales e Industriales
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      FORTRESS POWER
+                    </span>
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      eSpire 280 kWh
+                    </span>
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      DISTRIBUIDOR OFICIAL
+                    </span>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 to-cyan-500 w-0 group-hover:w-full transition-all duration-700"></div>
+              </div>
+            </Reveal>
+
+            {/* Lighting Technology */}
+            <Reveal delay={200}>
+              <div className="group relative p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-[#0A0A0A] to-black hover:border-accent-gold/30 transition-all duration-500 overflow-hidden h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl group-hover:bg-purple-500/10 transition-all"></div>
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center border border-purple-500/20 group-hover:scale-110 transition-transform">
+                      <Lightbulb className="w-8 h-8 text-purple-400" />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-accent-gold/10 text-accent-gold text-xs font-mono border border-accent-gold/30">
+                      03
+                    </span>
+                  </div>
+
+                  <h4 className="text-2xl font-bold text-white mb-3">
+                    Tecnología Lumínica
+                  </h4>
+                  <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                    Soluciones profesionales en iluminación industrial y comercial.
+                    Instalaciones electromecánicas, estudios de iluminación y plataformas
+                    para controlar, automatizar y monitorear equipos inteligentes.
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Iluminación Comercial e Industrial
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Estudios de Iluminación
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Consultoría Energética
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Sistemas Inteligentes de Control
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      GARANTÍA 5 AÑOS
+                    </span>
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      GARANTÍA EXTENDIDA 10 AÑOS
+                    </span>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-purple-500 to-pink-500 w-0 group-hover:w-full transition-all duration-700"></div>
+              </div>
+            </Reveal>
+
+            {/* Special Projects */}
+            <Reveal delay={300}>
+              <div className="group relative p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-[#0A0A0A] to-black hover:border-accent-gold/30 transition-all duration-500 overflow-hidden h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-3xl group-hover:bg-green-500/10 transition-all"></div>
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center border border-green-500/20 group-hover:scale-110 transition-transform">
+                      <Wrench className="w-8 h-8 text-green-400" />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-accent-gold/10 text-accent-gold text-xs font-mono border border-accent-gold/30">
+                      04
+                    </span>
+                  </div>
+
+                  <h4 className="text-2xl font-bold text-white mb-3">
+                    Proyectos Especiales
+                  </h4>
+                  <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                    Servicios complementarios de ingeniería eléctrica para asegurar que
+                    desde la planeación hasta la instalación, todo se haga con la mejor
+                    calidad y un solo proveedor confiable.
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Subestaciones y Transformadores
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Ingenierías Eléctricas
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Sistemas de Pararrayos
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <div className="w-1 h-1 bg-accent-gold rounded-full"></div>
+                      Protección de Personal y Activos
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      DISEÑO INTEGRAL
+                    </span>
+                    <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">
+                      INSTALACIÓN CERTIFICADA
+                    </span>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-green-500 to-emerald-500 w-0 group-hover:w-full transition-all duration-700"></div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Bottom CTA */}
+          <Reveal delay={400}>
+            <div className="text-center mt-16">
+              <p className="text-gray-500 text-sm uppercase tracking-widest mb-6 font-mono">
+                Energía • Confianza • Futuro
+              </p>
+              <a
+                href="#contacto"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-accent-gold hover:bg-yellow-300 text-black font-bold rounded-lg transition-all group shadow-[0_0_20px_rgba(255,215,0,0.3)]"
+              >
+                Solicita Cotización
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
