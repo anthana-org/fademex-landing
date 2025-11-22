@@ -221,30 +221,30 @@ export default function Home() {
 
                   {/* Floating Cards */}
                   <div
-                    className="absolute top-4 right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-gray-900/90 backdrop-blur border border-white/10 p-3 md:p-4 rounded-xl shadow-2xl"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-gray-900/90 backdrop-blur border border-white/10 p-2 sm:p-3 md:p-4 rounded-lg md:rounded-xl shadow-2xl z-20 max-w-[120px] sm:max-w-[140px] md:max-w-none"
                     style={{
                       animation: 'bounce-mobile 4s ease-in-out infinite',
                     }}
                   >
-                    <div className="text-xs text-gray-500 uppercase mb-1">
+                    <div className="text-[10px] sm:text-xs text-gray-500 uppercase mb-0.5 sm:mb-1">
                       Potencia Actual
                     </div>
-                    <div className="text-xl md:text-2xl text-white font-mono font-bold">
+                    <div className="text-base sm:text-xl md:text-2xl text-white font-mono font-bold">
                       8.4 MW
                     </div>
                   </div>
 
                   <div
-                    className="absolute bottom-4 left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-gray-900/90 backdrop-blur border border-white/10 p-3 md:p-4 rounded-xl shadow-2xl"
+                    className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-gray-900/90 backdrop-blur border border-white/10 p-2 sm:p-3 md:p-4 rounded-lg md:rounded-xl shadow-2xl z-20 max-w-[120px] sm:max-w-[140px] md:max-w-none"
                     style={{
                       animation: 'bounce-mobile 5s ease-in-out infinite',
                     }}
                   >
-                    <div className="text-xs text-gray-500 uppercase mb-1">
+                    <div className="text-[10px] sm:text-xs text-gray-500 uppercase mb-0.5 sm:mb-1">
                       Estado de Red
                     </div>
-                    <div className="flex items-center text-accent-gold text-sm font-bold">
-                      <Check className="w-4 h-4 mr-1" /> ESTABLE
+                    <div className="flex items-center text-accent-gold text-xs sm:text-sm font-bold">
+                      <Check className="w-3 h-3 sm:w-4 sm:h-4 mr-1" /> ESTABLE
                     </div>
                   </div>
                 </div>
