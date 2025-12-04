@@ -9,13 +9,24 @@ export async function updateSession(request: NextRequest) {
 
   // Use new publishable key format, fallback to legacy anon key
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 
-  if (!supabaseKey) {
-    throw new Error('Missing Supabase key. Set NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY (or legacy NEXT_PUBLIC_SUPABASE_ANON_KEY)')
+  // If Supabase is not configured, skip auth checks but still protect admin routes
+  if (!supabaseKey || !supabaseUrl) {
+    console.warn('Supabase not configured. Admin routes will be inaccessible.')
+
+    // Redirect admin/login routes to home if Supabase not configured
+    if (request.nextUrl.pathname.startsWith('/admin') || request.nextUrl.pathname.startsWith('/login')) {
+      const redirectUrl = request.nextUrl.clone()
+      redirectUrl.pathname = '/'
+      return NextResponse.redirect(redirectUrl)
+    }
+
+    return supabaseResponse
   }
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    supabaseUrl,
     supabaseKey,
     {
       cookies: {
