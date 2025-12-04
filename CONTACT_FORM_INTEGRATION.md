@@ -1,91 +1,70 @@
 # Contact Form Integration with Supabase Leads
 
-This document shows how to integrate your existing contact form to automatically save submissions to the Supabase `leads` table.
+✅ **IMPLEMENTED** - The contact form now automatically saves all submissions to Supabase.
 
-## Option 1: Update the API Route (Recommended)
+## Current Implementation
 
-Update your existing `/app/api/contact/route.ts` to also save to Supabase:
+The contact form at `/app/api/contact/route.ts` has been updated to:
+
+1. **Save to Supabase FIRST** (Priority 1 - preserves lead data even if email fails)
+2. **Send emails** (Priority 2 - notification, but not critical)
+3. **Return success** if either operation succeeds
+
+### Key Features
+
+✅ **Resilient**: Lead data is saved even if email service is down
+✅ **Dual notification**: Sends confirmation to user + notification to admin
+✅ **Graceful degradation**: Works even if Supabase isn't configured
+✅ **Error tracking**: Logs failures without breaking the user experience
+
+### Implementation Details
 
 ```typescript
-import { Resend } from 'resend'
-import { NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+// PRIORITY 1: Save to Supabase FIRST
+let leadSaved = false
+try {
+  const supabase = await createClient()
+  const { error } = await supabase.from('leads').insert([{
+    full_name: nombre,
+    email: email,
+    phone: telefono,
+    company_name: empresa,
+    admin_notes: `Mensaje: ${mensaje}`,
+    status: 'New',
+    contacted: false,
+  }])
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-export async function POST(request: Request) {
-  try {
-    const { name, email, phone, company, message } = await request.json()
-
-    // Validate required fields
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      )
-    }
-
-    // 1. Save to Supabase leads table
-    const supabase = await createClient()
-    const { error: leadError } = await supabase
-      .from('leads')
-      .insert([
-        {
-          full_name: name,
-          email: email,
-          phone: phone || null,
-          company_name: company || null,
-          status: 'New',
-          contacted: false,
-        },
-      ])
-
-    if (leadError) {
-      console.error('Error saving lead to Supabase:', leadError)
-      // Continue with email sending even if lead save fails
-    }
-
-    // 2. Send confirmation email to user (existing functionality)
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM!,
-      to: email,
-      subject: 'Thank you for contacting FADEMEX',
-      html: `
-        <h1>Thank you for your interest, ${name}!</h1>
-        <p>We've received your message and will get back to you soon.</p>
-        <p>Your message:</p>
-        <blockquote>${message}</blockquote>
-      `,
-    })
-
-    // 3. Send notification to admin (existing functionality)
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM!,
-      to: process.env.ADMIN_EMAIL!,
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-        <p><strong>Message:</strong></p>
-        <blockquote>${message}</blockquote>
-      `,
-    })
-
-    return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error('Error processing contact form:', error)
-    return NextResponse.json(
-      { error: 'Failed to process your request' },
-      { status: 500 }
-    )
-  }
+  if (!error) leadSaved = true
+} catch (error) {
+  console.error('Supabase error:', error)
+  // Continue anyway - try to send emails
 }
+
+// PRIORITY 2: Send emails
+let emailsSent = false
+try {
+  await sendUserConfirmation(body)
+  await sendAdminNotification(body)
+  emailsSent = true
+} catch (error) {
+  console.error('Email error:', error)
+  // Don't fail - data is already saved
+}
+
+// Success if EITHER operation succeeded
+return leadSaved || emailsSent ? success : error
 ```
 
-## Option 2: Use Server Action
+### Benefits
+
+1. **No data loss**: Even if Resend is down, leads are captured in Supabase
+2. **Admin visibility**: All leads appear in admin dashboard immediately
+3. **Backup notification**: If emails fail, admin can still check dashboard
+4. **User experience**: User always gets a success message if data was saved
+
+## Alternative Implementations
+
+### Option 1: Direct Server Action (Not recommended - use API route)
 
 Alternatively, update your `ContactForm.tsx` to use a Server Action:
 
@@ -141,7 +120,7 @@ export default function ContactForm() {
 }
 ```
 
-## Option 3: Add Public Registration Endpoint
+### Option 2: Separate Public Registration Endpoint (Advanced)
 
 Create a new public API endpoint specifically for lead registration:
 
@@ -223,18 +202,15 @@ const response = await fetch('/api/leads', {
 })
 ```
 
-## Best Practice: Both Email and Database
+## ✅ Current Implementation Benefits
 
-The recommended approach is to do BOTH:
+The implemented approach (Supabase first, then emails) gives you:
 
-1. **Save to Supabase** for CRM tracking and management
-2. **Send email notifications** for immediate awareness
-
-This gives you:
-- ✅ Centralized lead database
-- ✅ Immediate email notifications
-- ✅ Long-term tracking and analytics
-- ✅ Backup if one system fails
+1. **Data Preservation**: Lead data saved even if email fails
+2. **Centralized CRM**: All leads in Supabase database
+3. **Immediate Notifications**: Email sent when service is available
+4. **Long-term Tracking**: Analytics and management via admin dashboard
+5. **Resilience**: System works even if one service fails
 
 ## Testing the Integration
 
