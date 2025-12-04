@@ -30,12 +30,6 @@ export default async function AdminLayout({
               >
                 Dashboard
               </Link>
-              <Link
-                href="/admin/leads"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Leads
-              </Link>
             </nav>
           </div>
 
