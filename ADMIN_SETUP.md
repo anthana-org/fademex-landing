@@ -24,7 +24,7 @@ npm install @supabase/ssr @supabase/supabase-js date-fns
 2. Click "New Project"
 3. Fill in your project details:
    - **Name**: FADEMEX CRM
-   - **Database Password**: Save this securely!
+   - **Database Password**: Z-EiKi4Z%?#6Pp&!
    - **Region**: Choose the closest to your users
 4. Wait for the project to be created (takes ~2 minutes)
 
@@ -48,28 +48,14 @@ npm install @supabase/ssr @supabase/supabase-js date-fns
 ### 4. Configure Environment Variables
 
 1. In your Supabase dashboard, go to **Settings** → **API**
-2. Copy your **Project URL** and your API key:
-   - **NEW KEYS** (Recommended): Look for `sb_publishable_...` (publishable key)
-   - **LEGACY KEYS** (Still supported): Use `anon` key if new keys not available
-3. **IMPORTANT**: Use the **publishable/anon** key, NOT the secret/service_role key
-   - These keys are secure when used with RLS policies (which we have)
-   - See `SUPABASE_KEYS_GUIDE.md` for detailed explanation
-4. Create a `.env.local` file in your project root (if it doesn't exist)
-5. Add these variables:
+2. Copy your **Project URL** and **anon/public key**
+3. Create a `.env.local` file in your project root (if it doesn't exist)
+4. Add these variables:
 
 ```bash
 # Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-
-# NEW key format (Recommended if available - starts with sb_publishable_)
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_xxxxx...
-
-# OR Legacy key format (Use if new keys not available yet)
-# NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-
-# Optional: Secret/Admin key (only if you need to bypass RLS for admin operations)
-# SUPABASE_SECRET_KEY=sb_secret_xxxxx...  # New format
-# SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...    # Legacy format
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 
 # Site Configuration
 NEXT_PUBLIC_SITE_URL=http://localhost:3000  # Change to your production URL when deploying
@@ -79,12 +65,6 @@ RESEND_API_KEY=your-resend-api-key
 EMAIL_FROM=noreply@fademex.com
 ADMIN_EMAIL=admin@fademex.com
 ```
-
-**Key Usage Clarification**:
-- ✅ **PUBLISHABLE KEY** (new): Use this! Safe to expose, respects RLS policies
-- ✅ **ANON KEY** (legacy): Also works! Will be supported until late 2026
-- ⚠️ **SECRET KEY** (new) / **SERVICE ROLE KEY** (legacy): Optional, for server operations bypassing RLS
-- 📖 See `SUPABASE_KEYS_GUIDE.md` for complete details on the new key system
 
 ### 5. Set Up Authentication
 
