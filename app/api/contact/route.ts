@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server'
-import { sendUserConfirmation, sendAdminNotification } from '@/lib/email'
+import { Resend } from 'resend'
+import { getUserConfirmationHtml, getAdminNotificationHtml } from '@/lib/email'
 import { createClient } from '@/lib/supabase/server'
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 interface ContactRequest {
   nombre: string
@@ -65,19 +68,37 @@ export async function POST(request: Request) {
 
     // PRIORITY 2: Send emails (non-critical - if this fails, data is still saved)
     let emailsSent = false
-    try {
-      // Send confirmation to user
-      await sendUserConfirmation(body)
 
-      // Send notification to admin
-      await sendAdminNotification(body)
+    // Send user confirmation
+    const { data: userData, error: userError } = await resend.emails.send({
+      from: process.env.EMAIL_FROM || 'Acme <onboarding@resend.dev>',
+      to: [email],
+      subject: '¡Solicitud Recibida! - FADEMEX Energía Solar',
+      html: getUserConfirmationHtml(body),
+    })
 
-      emailsSent = true
-      console.log('Emails sent successfully')
-    } catch (emailError) {
-      console.error('Email sending error:', emailError)
-      // Don't fail the request - the lead data is already saved
+    if (userError) {
+      console.error('[Resend] User confirmation error:', userError)
+    } else {
+      console.log('[Resend] User confirmation sent:', userData)
     }
+
+    // Send admin notification
+    const { data: adminData, error: adminError } = await resend.emails.send({
+      from: process.env.EMAIL_FROM || 'Acme <onboarding@resend.dev>',
+      to: [process.env.ADMIN_EMAIL || 'admin@fademex.com'],
+      subject: `Nueva Solicitud: ${empresa} - ${nombre}`,
+      html: getAdminNotificationHtml(body),
+    })
+
+    if (adminError) {
+      console.error('[Resend] Admin notification error:', adminError)
+    } else {
+      console.log('[Resend] Admin notification sent:', adminData)
+    }
+
+    // Mark as sent if both succeeded
+    emailsSent = !userError && !adminError
 
     // Return success if either operation succeeded
     if (leadSaved || emailsSent) {
