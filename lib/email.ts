@@ -1,8 +1,4 @@
-import { Resend } from 'resend'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-interface ContactData {
+export interface ContactData {
   nombre: string
   empresa: string
   telefono: string
@@ -11,7 +7,7 @@ interface ContactData {
 }
 
 // Email template for user confirmation
-function getUserConfirmationHtml(data: ContactData): string {
+export function getUserConfirmationHtml(data: ContactData): string {
   return `
     <!DOCTYPE html>
     <html>
@@ -94,7 +90,7 @@ function getUserConfirmationHtml(data: ContactData): string {
 }
 
 // Email template for admin notification
-function getAdminNotificationHtml(data: ContactData): string {
+export function getAdminNotificationHtml(data: ContactData): string {
   return `
     <!DOCTYPE html>
     <html>
@@ -188,55 +184,4 @@ function getAdminNotificationHtml(data: ContactData): string {
     </body>
     </html>
   `
-}
-
-export async function sendUserConfirmation(data: ContactData) {
-  const fromEmail = process.env.EMAIL_FROM || 'FADEMEX <noreply@fademex.com>'
-
-  console.log('[Email] Sending user confirmation:', {
-    from: fromEmail,
-    to: [data.email],
-    subject: '¡Solicitud Recibida! - FADEMEX Energía Solar',
-  })
-
-  const { data: result, error } = await resend.emails.send({
-    from: fromEmail,
-    to: [data.email], // Array format as per Resend docs
-    subject: '¡Solicitud Recibida! - FADEMEX Energía Solar',
-    html: getUserConfirmationHtml(data),
-  })
-
-  if (error) {
-    console.error('[Email] User confirmation failed:', error)
-    throw new Error(`Failed to send user confirmation: ${error.message}`)
-  }
-
-  console.log('[Email] User confirmation sent successfully:', result)
-  return result
-}
-
-export async function sendAdminNotification(data: ContactData) {
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@fademex.com'
-  const fromEmail = process.env.EMAIL_FROM || 'FADEMEX <noreply@fademex.com>'
-
-  console.log('[Email] Sending admin notification:', {
-    from: fromEmail,
-    to: [adminEmail],
-    subject: `Nueva Solicitud: ${data.empresa} - ${data.nombre}`,
-  })
-
-  const { data: result, error } = await resend.emails.send({
-    from: fromEmail,
-    to: [adminEmail], // Array format as per Resend docs
-    subject: `Nueva Solicitud: ${data.empresa} - ${data.nombre}`,
-    html: getAdminNotificationHtml(data),
-  })
-
-  if (error) {
-    console.error('[Email] Admin notification failed:', error)
-    throw new Error(`Failed to send admin notification: ${error.message}`)
-  }
-
-  console.log('[Email] Admin notification sent successfully:', result)
-  return result
 }
