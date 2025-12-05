@@ -98,19 +98,23 @@ The email functions now log detailed information:
 
 ### 7. Verify Resend API Key
 
-**Test your API key**:
+**Test your API key** with Resend's test emails:
 
 ```bash
 curl -X POST https://api.resend.com/emails \
   -H "Authorization: Bearer re_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{
-    "from": "onboarding@resend.dev",
-    "to": "your-email@example.com",
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
     "subject": "Test Email",
-    "html": "<p>Testing Resend API</p>"
+    "html": "<strong>It works!</strong>"
   }'
 ```
+
+**Note**:
+- Use `delivered@resend.dev` for testing - it's a special Resend email that always works
+- The `to` field should be an array `["email@example.com"]`
 
 **Expected response**:
 ```json
@@ -150,14 +154,23 @@ Check your deployment logs after submitting a form.
 
 ## Quick Fixes
 
-### Fix 1: Use Resend Test Email (Temporary)
+### Fix 1: Test with Resend Test Emails
 
+**Step 1**: Use Resend's test sender
 ```bash
 # .env.local
-EMAIL_FROM="onboarding@resend.dev"
+EMAIL_FROM="Acme <onboarding@resend.dev>"
 ```
 
-This will work immediately without domain verification.
+**Step 2**: Test with Resend's test recipient
+```bash
+# Temporarily hardcode in lib/email.ts for testing
+to: ['delivered@resend.dev']
+```
+
+These special emails always work without domain verification.
+
+**Once working**, switch back to your verified domain and real recipient emails.
 
 ### Fix 2: Verify Domain is Correct
 

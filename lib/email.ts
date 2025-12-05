@@ -195,13 +195,13 @@ export async function sendUserConfirmation(data: ContactData) {
 
   console.log('[Email] Sending user confirmation:', {
     from: fromEmail,
-    to: data.email,
+    to: [data.email],
     subject: '¡Solicitud Recibida! - FADEMEX Energía Solar',
   })
 
   const { data: result, error } = await resend.emails.send({
     from: fromEmail,
-    to: data.email,
+    to: [data.email], // Array format as per Resend docs
     subject: '¡Solicitud Recibida! - FADEMEX Energía Solar',
     html: getUserConfirmationHtml(data),
   })
@@ -221,13 +221,13 @@ export async function sendAdminNotification(data: ContactData) {
 
   console.log('[Email] Sending admin notification:', {
     from: fromEmail,
-    to: adminEmail,
+    to: [adminEmail],
     subject: `Nueva Solicitud: ${data.empresa} - ${data.nombre}`,
   })
 
   const { data: result, error } = await resend.emails.send({
     from: fromEmail,
-    to: adminEmail,
+    to: [adminEmail], // Array format as per Resend docs
     subject: `Nueva Solicitud: ${data.empresa} - ${data.nombre}`,
     html: getAdminNotificationHtml(data),
   })
