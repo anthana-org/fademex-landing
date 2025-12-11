@@ -176,7 +176,7 @@ export default function Home() {
                 key={i}
                 className="flex items-center gap-2 text-sm font-semibold text-ink"
               >
-                <Zap className="w-3 h-3 text-highlight" /> {tag}
+                <Zap className="w-3 h-3 text-ink" /> {tag}
               </div>
             ))}
             {[
@@ -191,7 +191,7 @@ export default function Home() {
                 key={`dup-${i}`}
                 className="flex items-center gap-2 text-sm font-semibold text-ink"
               >
-                <Zap className="w-3 h-3 text-highlight" /> {tag}
+                <Zap className="w-3 h-3 text-ink" /> {tag}
               </div>
             ))}
           </div>
@@ -203,7 +203,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="mb-20 max-w-2xl">
             <Reveal>
-              <h2 className="text-sm text-highlight font-semibold uppercase tracking-[0.2em] mb-3">
+              <h2 className="text-sm text-ink font-semibold uppercase tracking-[0.2em] mb-3">
                 Ventajas Competitivas
               </h2>
               <h3 className="text-4xl md:text-5xl font-extrabold text-ink mb-6">
@@ -256,7 +256,7 @@ export default function Home() {
                   <div className="absolute top-0 right-0 w-16 h-16 bg-accent-gold/20 rounded-bl-xl -mr-8 -mt-8 transition-all group-hover:bg-highlight/25"></div>
 
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-12 h-12 rounded-md bg-ink/5 flex items-center justify-center text-highlight border border-ink/10 group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 rounded-md bg-ink/5 flex items-center justify-center text-ink border border-ink/10 group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
                     <span className="text-2xl font-extrabold text-ink/40 group-hover:text-ink transition-colors">
@@ -267,7 +267,7 @@ export default function Home() {
                   <h4 className="text-xl font-extrabold text-ink mb-1">
                     {item.title}
                   </h4>
-                  <span className="text-xs font-semibold text-highlight uppercase tracking-[0.2em] mb-4 block">
+                  <span className="text-xs font-semibold text-ink uppercase tracking-[0.2em] mb-4 block">
                     {item.subtitle}
                   </span>
                   <p className="text-ink/70 leading-relaxed text-sm">
@@ -288,7 +288,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <Reveal>
-              <h2 className="text-sm text-highlight font-semibold uppercase tracking-[0.2em] mb-3">
+              <h2 className="text-sm text-ink font-semibold uppercase tracking-[0.2em] mb-3">
                 Nuestras Soluciones
               </h2>
               <h3 className="text-4xl md:text-5xl font-extrabold text-ink mb-6">
@@ -359,21 +359,21 @@ export default function Home() {
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
 
                     <div className="relative z-10">
-                      <div className="w-12 h-12 rounded-md bg-ink/5 flex items-center justify-center text-highlight border border-ink/10 group-hover:scale-110 transition-transform mb-6">
+                      <div className="w-12 h-12 rounded-md bg-ink/5 flex items-center justify-center text-ink border border-ink/10 group-hover:scale-110 transition-transform mb-6">
                         {item.icon}
                       </div>
 
                       <h4 className="text-2xl font-extrabold text-ink mb-1">
                         {item.title}
                       </h4>
-                      <span className="text-xs font-semibold text-highlight uppercase tracking-[0.2em] mb-4 block">
+                      <span className="text-xs font-semibold text-ink uppercase tracking-[0.2em] mb-4 block">
                         {item.subtitle}
                       </span>
                       <p className="text-ink/70 leading-relaxed text-sm mb-6">
                         {item.desc}
                       </p>
 
-                      <div className="flex items-center text-highlight text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                      <div className="flex items-center text-ink text-sm font-semibold group-hover:translate-x-2 transition-transform">
                         Explorar <ArrowRight className="w-4 h-4 ml-2" />
                       </div>
                     </div>
@@ -425,7 +425,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="mb-20 max-w-2xl mx-auto text-center">
             <Reveal>
-              <h2 className="text-sm text-highlight font-semibold uppercase tracking-[0.2em] mb-3">
+              <h2 className="text-sm text-ink font-semibold uppercase tracking-[0.2em] mb-3">
                 Presencia Nacional
               </h2>
               <h3 className="text-4xl md:text-5xl font-extrabold text-ink mb-6">
