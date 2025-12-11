@@ -1,51 +1,30 @@
 import { MapPin, Phone, Mail } from 'lucide-react'
 import Link from 'next/link'
 
-// Logo Component
-const FademexLogo = ({ className = 'h-8' }: { className?: string }) => (
-  <svg
-    viewBox="0 0 300 80"
-    className={className}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M60 25 L30 50 L0 50 L30 25 Z" fill="#FFD700" />
-    <path d="M75 10 L45 35 L15 35 L45 10 Z" fill="#FFC700" />
-    <path d="M45 35 L60 25 L90 25 L75 35 Z" fill="#FFB600" />
-    <text
-      x="100"
-      y="52"
-      fontFamily="Inter, sans-serif"
-      fontWeight="700"
-      fontSize="38"
-      fill="#FFFFFF"
-      letterSpacing="2"
-    >
-      FADEMEX
-    </text>
-  </svg>
-)
-
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black pt-20 pb-10">
+    <footer className="border-t border-ink/8 bg-canvas pt-20 pb-10 text-ink">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <FademexLogo className="h-6 mb-6" />
-            <p className="text-gray-500 text-sm leading-relaxed">
+            <img
+              src="/logos/FADEMEX LOGOTIPOS -01.svg"
+              alt="FADEMEX"
+              className="h-8 w-auto mb-6"
+            />
+            <p className="text-ink-light text-sm leading-relaxed">
               Soluciones de ingeniería energética para el sector industrial y
               comercial de México.
             </p>
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-6">Soluciones</h4>
-            <ul className="space-y-3 text-sm text-gray-500">
+            <h4 className="text-ink font-extrabold mb-6">Soluciones</h4>
+            <ul className="space-y-3 text-sm text-ink-light">
               <li>
                 <Link
                   href="/soluciones"
-                  className="hover:text-accent-gold transition-colors"
+                  className="hover:text-accent-gold-dark transition-colors"
                 >
                   Solar Industrial
                 </Link>
@@ -78,8 +57,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-6">Compañía</h4>
-            <ul className="space-y-3 text-sm text-gray-500">
+            <h4 className="text-ink font-extrabold mb-6">Compañía</h4>
+            <ul className="space-y-3 text-sm text-ink-light">
               <li>
                 <Link
                   href="/"
@@ -116,33 +95,35 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-6">Contacto</h4>
-            <ul className="space-y-3 text-sm text-gray-500">
+            <h4 className="text-ink font-extrabold mb-6">Contacto</h4>
+            <ul className="space-y-3 text-sm text-ink-light">
               <li className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" /> Querétaro, México
+                <MapPin className="w-4 h-4 text-accent-gold" /> Querétaro,
+                México
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4" /> +52 (442) 123-4567
+                <Phone className="w-4 h-4 text-accent-gold" /> +52 (442)
+                123-4567
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4" /> info@fademex.com
+                <Mail className="w-4 h-4 text-accent-gold" /> info@fademex.com
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-600">
+        <div className="border-t border-ink/8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-ink-light">
             © 2025 FADEMEX Energy Systems. Todos los derechos reservados.
           </p>
-          <div className="flex gap-6 text-xs text-gray-600">
-            <Link href="/" className="hover:text-gray-400 transition-colors">
+          <div className="flex gap-6 text-xs text-ink-light">
+            <Link href="/" className="hover:text-ink transition-colors">
               Privacidad
             </Link>
-            <Link href="/" className="hover:text-gray-400 transition-colors">
+            <Link href="/" className="hover:text-ink transition-colors">
               Términos
             </Link>
-            <Link href="/" className="hover:text-gray-400 transition-colors">
+            <Link href="/" className="hover:text-ink transition-colors">
               Sitemap
             </Link>
           </div>

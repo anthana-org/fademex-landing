@@ -28,19 +28,19 @@ export default function DotMatrixMap() {
   ]
 
   return (
-    <div className="relative w-full h-full bg-[#080808] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
+    <div className="relative w-full h-full bg-canvas rounded-xl overflow-hidden border border-ink/15 shadow-2xl group">
       {/* Grid Background */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+            'linear-gradient(rgba(45,47,48,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(45,47,48,0.07) 1px, transparent 1px)',
           backgroundSize: '20px 20px',
         }}
       ></div>
 
       {/* Scanning Line */}
-      <div className="absolute inset-0 w-full h-1 bg-accent-gold/30 shadow-[0_0_20px_rgba(255,215,0,0.4)] animate-scan pointer-events-none z-0 blur-[1px]"></div>
+      <div className="absolute inset-0 w-full h-1 bg-highlight/40 shadow-[0_0_20px_rgba(243,224,104,0.45)] animate-scan pointer-events-none z-0 blur-[1px]"></div>
 
       {/* Map Container */}
       <div className="absolute inset-0 flex items-center justify-center">
@@ -49,7 +49,7 @@ export default function DotMatrixMap() {
           {points.map((p, i) => (
             <div
               key={i}
-              className="absolute w-1.5 h-1.5 bg-gray-800 rounded-full transition-colors duration-500 hover:bg-accent-gold/50"
+              className="absolute w-1.5 h-1.5 bg-ink/20 rounded-sm transition-colors duration-500 hover:bg-accent-gold/60"
               style={{ left: `${p[0]}%`, top: `${p[1]}%` }}
             />
           ))}
@@ -61,27 +61,27 @@ export default function DotMatrixMap() {
               stroke="url(#lineGrad)"
               strokeWidth="0.5"
               strokeDasharray="4 2"
-              className="opacity-30"
+              className="opacity-50"
             />
             <path
               d="M 60% 40% L 90% 36%"
               stroke="url(#lineGrad)"
               strokeWidth="0.5"
               strokeDasharray="4 2"
-              className="opacity-30"
+              className="opacity-50"
             />
             <path
               d="M 60% 40% L 45% 34%"
               stroke="url(#lineGrad)"
               strokeWidth="0.5"
               strokeDasharray="4 2"
-              className="opacity-30"
+              className="opacity-50"
             />
             <defs>
               <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="rgba(255,215,0,0)" />
-                <stop offset="50%" stopColor="rgba(255,215,0,0.5)" />
-                <stop offset="100%" stopColor="rgba(255,215,0,0)" />
+                <stop offset="0%" stopColor="rgba(225,235,163,0)" />
+                <stop offset="50%" stopColor="rgba(225,235,163,0.6)" />
+                <stop offset="100%" stopColor="rgba(225,235,163,0)" />
               </linearGradient>
             </defs>
           </svg>
@@ -94,20 +94,20 @@ export default function DotMatrixMap() {
               style={{ left: `${proj.x}%`, top: `${proj.y}%` }}
             >
               {/* Pulse Rings */}
-              <div className="absolute -inset-4 bg-accent-gold/10 rounded-full animate-ping"></div>
-              <div className="absolute -inset-2 bg-accent-gold/20 rounded-full animate-pulse"></div>
+              <div className="absolute -inset-4 bg-highlight/15 rounded-full animate-ping"></div>
+              <div className="absolute -inset-2 bg-accent-gold/25 rounded-full animate-pulse"></div>
 
               {/* Core Pin */}
-              <div className="relative w-3 h-3 bg-accent-gold rounded-full border border-black shadow-[0_0_10px_rgba(255,215,0,1)] group-hover/pin:scale-125 transition-transform duration-300"></div>
+              <div className="relative w-3 h-3 bg-highlight rounded-sm border border-ink shadow-[0_0_10px_rgba(243,224,104,0.8)] group-hover/pin:scale-125 transition-transform duration-300"></div>
 
               {/* Tech Tooltip */}
               <div className="absolute left-6 top-1/2 -translate-y-1/2 w-max opacity-0 group-hover/pin:opacity-100 transition-all duration-300 translate-x-2 group-hover/pin:translate-x-0 z-20">
-                <div className="bg-black/90 backdrop-blur-md border border-accent-gold/30 p-3 rounded-r-lg rounded-tl-lg shadow-2xl">
-                  <div className="text-xs font-mono text-accent-gold mb-1 uppercase tracking-wider">
+                <div className="bg-ink/95 backdrop-blur-md border border-accent-gold/40 p-3 rounded-r-md rounded-tl-md shadow-2xl">
+                  <div className="text-xs font-semibold text-accent-gold mb-1 uppercase tracking-[0.2em] text-canvas">
                     {proj.city}
                   </div>
-                  <div className="text-[10px] text-gray-400 flex items-center gap-1">
-                    <div className="w-1 h-1 bg-accent-gold rounded-full animate-pulse"></div>
+                  <div className="text-[10px] text-canvas/80 flex items-center gap-1">
+                    <div className="w-1 h-1 bg-highlight rounded-sm animate-pulse"></div>
                     {proj.type}
                   </div>
                 </div>
@@ -118,20 +118,20 @@ export default function DotMatrixMap() {
       </div>
 
       {/* Overlay Stats */}
-      <div className="absolute bottom-6 left-6 bg-black/80 backdrop-blur border border-white/10 px-4 py-2 rounded-lg">
+      <div className="absolute bottom-6 left-6 bg-ink/90 backdrop-blur border border-canvas/10 px-4 py-2 rounded-md">
         <div className="flex items-center gap-3">
           <div className="flex flex-col">
-            <span className="text-[10px] text-gray-500 uppercase tracking-wider">
+            <span className="text-[10px] text-canvas/80 uppercase tracking-[0.2em]">
               Proyectos Activos
             </span>
-            <span className="text-xl font-mono text-white font-bold">250+</span>
+            <span className="text-xl font-extrabold text-canvas">250+</span>
           </div>
-          <div className="h-8 w-px bg-white/10"></div>
+          <div className="h-8 w-px bg-canvas/15"></div>
           <div className="flex flex-col">
-            <span className="text-[10px] text-gray-500 uppercase tracking-wider">
+            <span className="text-[10px] text-canvas/80 uppercase tracking-[0.2em]">
               Potencia Total
             </span>
-            <span className="text-xl font-mono text-accent-gold font-bold">
+            <span className="text-xl font-extrabold text-accent-gold">
               450<span className="text-sm">MW</span>
             </span>
           </div>

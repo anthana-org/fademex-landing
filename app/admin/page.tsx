@@ -11,16 +11,16 @@ export default async function AdminDashboard() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-white mb-2">Dashboard</h1>
-        <p className="text-gray-400">Manage your client leads and registrations</p>
+        <h1 className="text-4xl font-bold text-ink mb-2">Dashboard</h1>
+        <p className="text-ink/70">Manage your client leads and registrations</p>
       </div>
 
       <StatsCards stats={stats} />
 
-      <div className="glass-panel p-6">
+      <div className="glass-panel p-6 bg-white/80">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-white mb-1">All Leads</h2>
-          <p className="text-sm text-gray-400">View and manage client registrations</p>
+          <h2 className="text-2xl font-bold text-ink mb-1">All Leads</h2>
+          <p className="text-sm text-ink/70">View and manage client registrations</p>
         </div>
         <LeadsTable initialLeads={leads} />
       </div>
