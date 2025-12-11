@@ -108,7 +108,7 @@ export default function SolucionesPage() {
                   <div className="absolute top-0 right-0 w-16 h-16 bg-accent-gold/10 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-accent-gold/20"></div>
 
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-ink/5 flex items-center justify-center text-accent-gold border border-ink/10 group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 rounded-lg bg-ink/5 flex items-center justify-center text-accent-gold border border-ink/10 group-hover:scale-110 transition-transform drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">
                       {item.icon}
                     </div>
                     <span className="font-mono text-2xl font-bold text-ink/60 group-hover:text-ink transition-colors">
