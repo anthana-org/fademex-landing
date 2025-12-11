@@ -3,20 +3,27 @@ import Link from 'next/link'
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-canvas text-ink relative overflow-hidden flex items-center justify-center p-6">
+      {/* Background */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-grid-pattern opacity-40"></div>
+        <div className="absolute top-0 left-0 w-[480px] h-[480px] bg-highlight/20 rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-accent-gold/30 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3"></div>
+      </div>
+
+      <div className="w-full max-w-md relative z-10">
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
-            <h1 className="text-4xl font-bold text-ink mb-2">
+            <h1 className="text-4xl font-extrabold text-ink mb-2 tracking-tight">
               FADEMEX
             </h1>
           </Link>
-          <p className="text-ink/70">Admin Portal</p>
+          <p className="text-ink/60 text-sm uppercase tracking-[0.2em]">Admin Portal</p>
         </div>
 
         {/* Login Form */}
-        <div className="glass-panel p-8">
+        <div className="glass-panel p-8 bg-white/80">
           <h2 className="text-2xl font-bold text-ink mb-6">Sign In</h2>
           <LoginForm />
         </div>
@@ -25,17 +32,11 @@ export default function LoginPage() {
         <div className="text-center mt-6">
           <Link
             href="/"
-            className="text-sm text-ink/70 hover:text-ink transition-colors"
+            className="text-sm text-ink/60 hover:text-ink transition-colors"
           >
             ← Back to website
           </Link>
         </div>
-      </div>
-
-      {/* Background Effect */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-gold/10 rounded-full filter blur-[100px] animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-accent-cyan/10 rounded-full filter blur-[100px] animate-blob animation-delay-2000"></div>
       </div>
     </div>
   )

@@ -23,7 +23,7 @@ export default function ServiciosPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10 text-center">
           <Reveal>
-            <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3">
+            <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">
               Catálogo de Soluciones Energéticas 2025
             </h2>
             <h1 className="text-5xl md:text-6xl font-bold text-ink mb-6">
@@ -103,7 +103,7 @@ export default function ServiciosPage() {
                 <Reveal key={i} delay={i * 100}>
                   <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all group">
                     <div className="w-12 h-12 bg-accent-gold/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent-gold/20 transition-colors">
-                      <Zap className="w-6 h-6 text-accent-gold" />
+                      <Zap className="w-6 h-6 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                     </div>
                     <h5 className="text-sm font-bold text-ink uppercase tracking-wide">
                       {service}
@@ -117,7 +117,7 @@ export default function ServiciosPage() {
             <Reveal>
               <div className="bg-gradient-to-r from-accent-gold/10 via-white/70 to-white/80 border border-ink/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm shadow-2xl mb-16">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-accent-gold font-bold tracking-widest text-sm">01. ENERGÍA SOLAR</span>
+                  <span className="text-accent-gold font-bold tracking-widest text-sm drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">01. ENERGÍA SOLAR</span>
                 </div>
 
                 <h4 className="text-3xl md:text-4xl font-bold text-ink mb-12 max-w-2xl">
@@ -438,7 +438,7 @@ export default function ServiciosPage() {
                             5 AÑOS
                           </div>
                         </div>
-                        <Shield className="w-8 h-8 text-accent-gold" />
+                        <Shield className="w-8 h-8 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                       </div>
                     </div>
                     <div className="bg-ink/5 border border-ink/10 rounded-xl p-4">
@@ -451,7 +451,7 @@ export default function ServiciosPage() {
                             10 AÑOS
                           </div>
                         </div>
-                        <Shield className="w-8 h-8 text-accent-gold" />
+                        <Shield className="w-8 h-8 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                       </div>
                     </div>
                   </div>

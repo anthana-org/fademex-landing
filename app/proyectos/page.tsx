@@ -25,7 +25,7 @@ export default function ProyectosPage() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Reveal>
-              <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase">
+              <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">
                 <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
                 Cobertura Nacional
               </div>
@@ -58,7 +58,7 @@ export default function ProyectosPage() {
             <Reveal>
               <div className="text-center p-8 bg-ink/5 border border-ink/10 rounded-2xl hover:border-accent-gold/30 transition-all">
                 <div className="w-12 h-12 bg-accent-gold/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-6 h-6 text-accent-gold" />
+                  <Zap className="w-6 h-6 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                 </div>
                 <div className="text-4xl font-bold text-ink mb-2">450+ MW</div>
                 <div className="text-sm text-ink/70">Capacidad Instalada</div>
@@ -68,7 +68,7 @@ export default function ProyectosPage() {
             <Reveal delay={100}>
               <div className="text-center p-8 bg-ink/5 border border-ink/10 rounded-2xl hover:border-accent-gold/30 transition-all">
                 <div className="w-12 h-12 bg-accent-gold/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <BarChart3 className="w-6 h-6 text-accent-gold" />
+                  <BarChart3 className="w-6 h-6 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                 </div>
                 <div className="text-4xl font-bold text-ink mb-2">150+</div>
                 <div className="text-sm text-ink/70">Proyectos Completados</div>
@@ -78,7 +78,7 @@ export default function ProyectosPage() {
             <Reveal delay={200}>
               <div className="text-center p-8 bg-ink/5 border border-ink/10 rounded-2xl hover:border-accent-gold/30 transition-all">
                 <div className="w-12 h-12 bg-accent-gold/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-accent-gold" />
+                  <MapPin className="w-6 h-6 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                 </div>
                 <div className="text-4xl font-bold text-ink mb-2">20+</div>
                 <div className="text-sm text-ink/70">Estados Cubiertos</div>

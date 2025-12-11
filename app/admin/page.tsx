@@ -17,7 +17,7 @@ export default async function AdminDashboard() {
 
       <StatsCards stats={stats} />
 
-      <div className="glass-panel p-6">
+      <div className="glass-panel p-6 bg-white/80">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-ink mb-1">All Leads</h2>
           <p className="text-sm text-ink/70">View and manage client registrations</p>

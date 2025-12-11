@@ -44,17 +44,17 @@ export function StatsCards({ stats }: StatsCardsProps) {
         return (
           <div
             key={card.title}
-            className="glass-panel p-6 hover:scale-[1.02] transition-transform"
+            className="glass-panel p-6 bg-white/80 hover:scale-[1.02] transition-transform"
           >
             <div className="flex items-center justify-between mb-4">
               <div className={`p-3 rounded-xl ${card.bgColor}`}>
                 <Icon className={`w-6 h-6 ${card.color}`} />
               </div>
             </div>
-            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-wide mb-1">
+            <h3 className="text-sm font-mono text-ink/60 uppercase tracking-wide mb-1">
               {card.title}
             </h3>
-            <p className="text-3xl font-bold text-white">{card.value}</p>
+            <p className="text-3xl font-bold text-ink">{card.value}</p>
           </div>
         )
       })}

@@ -44,7 +44,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="inicio"
-        className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10"
+        className="relative min-h-screen flex items-center pt-24 pb-32 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
 
@@ -56,7 +56,7 @@ export default function Home() {
                   <img
                     src="/logos/FADEMEX LOGOTIPOS -03.svg"
                     alt="FADEMEX"
-                    className="h-16 sm:h-20 md:h-24 w-auto"
+                    className="h-24 sm:h-28 md:h-32 w-auto"
                   />
                 </div>
               </Reveal>
