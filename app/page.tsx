@@ -82,10 +82,12 @@ export default function Home() {
               </Reveal>
 
               <Reveal delay={200}>
-                <p className="text-lg md:text-xl text-ink-light mb-10 max-w-lg font-normal leading-relaxed">
-                  <span className="inline-block w-1 h-12 bg-accent-gold mr-4 rounded-full align-middle"></span>
-                  Sistemas solares de grado industrial, almacenamiento inteligente y
-                  gestión basada en datos.
+                <p className="flex items-start gap-4 text-lg md:text-xl text-ink/70 mb-10 max-w-xl font-normal leading-relaxed">
+                  <span className="mt-0.5 w-1.5 h-12 bg-accent-gold rounded-full flex-shrink-0 shadow-[0_2px_6px_rgba(45,47,48,0.25)]"></span>
+                  <span>
+                    Sistemas solares de grado industrial, almacenamiento inteligente y
+                    gestión basada en datos.
+                  </span>
                 </p>
               </Reveal>
 
