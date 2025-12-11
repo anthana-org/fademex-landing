@@ -8,16 +8,16 @@ export default function LoginPage() {
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
-            <h1 className="text-4xl font-bold text-white mb-2">
+            <h1 className="text-4xl font-bold text-ink mb-2">
               FADEMEX
             </h1>
           </Link>
-          <p className="text-gray-400">Admin Portal</p>
+          <p className="text-ink/70">Admin Portal</p>
         </div>
 
         {/* Login Form */}
         <div className="glass-panel p-8">
-          <h2 className="text-2xl font-bold text-white mb-6">Sign In</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Sign In</h2>
           <LoginForm />
         </div>
 
@@ -25,7 +25,7 @@ export default function LoginPage() {
         <div className="text-center mt-6">
           <Link
             href="/"
-            className="text-sm text-gray-400 hover:text-white transition-colors"
+            className="text-sm text-ink/70 hover:text-ink transition-colors"
           >
             ← Back to website
           </Link>

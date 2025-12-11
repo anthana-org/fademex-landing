@@ -80,8 +80,7 @@ export default function Home() {
 
               <Reveal delay={200}>
                 <p className="text-xl text-ink/70 mb-10 max-w-lg font-normal leading-relaxed border-l-4 border-accent-gold/80 pl-6">
-                  Diseñamos la infraestructura energética del futuro. Sistemas
-                  solares de grado industrial, almacenamiento inteligente y
+                  Sistemas solares de grado industrial, almacenamiento inteligente y
                   gestión basada en datos.
                 </p>
               </Reveal>
