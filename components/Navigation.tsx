@@ -39,7 +39,7 @@ export default function Navigation() {
             <img
               src="/logos/FADEMEX LOGOTIPOS -03.svg"
               alt="FADEMEX"
-              className="h-64 w-auto"
+              className="h-32 w-auto"
             />
           </Link>
 
