@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
             <img
-              src="/logos/FADEMEX%20LOGOTIPOS%20-01.svg"
+              src="/logos/FADEMEX LOGOTIPOS -01.svg"
               alt="FADEMEX"
               className="h-8 w-auto mb-6"
             />
