@@ -58,9 +58,6 @@ export default function Home() {
                     alt="FADEMEX"
                     className="h-10 w-auto"
                   />
-                  <span className="text-sm font-semibold text-ink/70 tracking-[0.12em] uppercase">
-                    Energía que transforma
-                  </span>
                 </div>
               </Reveal>
 
@@ -76,7 +73,7 @@ export default function Home() {
                   Energía{' '}
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-ink via-accent-gold to-highlight">
-                    Inteligente.
+                    Que Transforma.
                   </span>
                 </h1>
               </Reveal>
