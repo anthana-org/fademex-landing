@@ -44,9 +44,12 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="inicio"
-        className="relative min-h-screen flex items-center pt-24 pb-32 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10"
+        className="relative min-h-screen flex items-center pt-24 pb-32 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
+        {/* Enhanced Background Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/10 via-canvas to-canvas"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-highlight/15 via-transparent to-accent-gold/10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/30 to-transparent"></div>
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -62,24 +65,25 @@ export default function Home() {
               </Reveal>
 
               <Reveal>
-                <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase">
-                  <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-accent-gold mr-2.5 animate-pulse"></span>
                   Sistema Operacional
                 </div>
               </Reveal>
 
               <Reveal delay={100}>
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-ink mb-8 leading-[0.9]">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-ink mb-8 leading-[1]">
                   Energía{' '}
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-ink via-accent-gold to-highlight">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold-dark via-accent-gold to-highlight">
                     Que Transforma.
                   </span>
                 </h1>
               </Reveal>
 
               <Reveal delay={200}>
-                <p className="text-xl text-ink/70 mb-10 max-w-lg font-normal leading-relaxed border-l-4 border-accent-gold/80 pl-6">
+                <p className="text-lg md:text-xl text-ink-light mb-10 max-w-lg font-normal leading-relaxed">
+                  <span className="inline-block w-1 h-12 bg-accent-gold mr-4 rounded-full align-middle"></span>
                   Sistemas solares de grado industrial, almacenamiento inteligente y
                   gestión basada en datos.
                 </p>
@@ -89,14 +93,14 @@ export default function Home() {
                 <div className="flex flex-wrap gap-4 relative z-30">
                   <a
                     href="#contacto"
-                    className="px-8 py-4 bg-accent-gold hover:bg-highlight text-ink font-extrabold rounded-md transition-all flex items-center gap-2 group shadow-[0_20px_40px_rgba(225,235,163,0.35)]"
+                    className="px-8 py-4 bg-accent-gold hover:bg-accent-gold-dark text-ink font-bold rounded-xl transition-all flex items-center gap-2 group shadow-button hover:shadow-button-hover"
                   >
                     Inicia Proyecto{' '}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                   <Link
                     href="/soluciones"
-                    className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-semibold rounded-md transition-all"
+                    className="px-8 py-4 bg-canvas-alt border border-ink/10 hover:border-ink/20 hover:bg-canvas text-ink font-semibold rounded-xl transition-all shadow-card hover:shadow-card-hover"
                   >
                     Ver Soluciones
                   </Link>
@@ -112,7 +116,7 @@ export default function Home() {
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className={`absolute border border-dashed border-ink/15 rounded-full`}
+                      className={`absolute border border-dashed border-ink/10 rounded-full`}
                       style={{
                         inset: `${i * 10}%`,
                         animation: `spin ${30 + i * 10}s linear infinite`,
@@ -121,34 +125,34 @@ export default function Home() {
                   ))}
 
                   {/* Central Core */}
-                  <div className="absolute inset-0 m-auto w-64 h-64 bg-gradient-to-br from-accent-gold/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute inset-0 m-auto w-64 h-64 bg-gradient-to-br from-accent-gold/40 to-highlight/20 rounded-full blur-3xl animate-pulse"></div>
 
-                  {/* Floating Cards */}
+                  {/* Floating Cards - Enhanced */}
                   <div
-                    className="hidden sm:block absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-canvas backdrop-blur border border-ink/10 p-2 sm:p-3 md:p-4 rounded-md md:rounded-lg shadow-xl z-20 max-w-[120px] sm:max-w-[140px] md:max-w-none"
+                    className="hidden sm:block absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-canvas-alt/90 backdrop-blur-lg border border-ink/8 p-3 sm:p-4 md:p-5 rounded-2xl shadow-card-lg z-20 max-w-[130px] sm:max-w-[150px] md:max-w-none"
                     style={{
                       animation: 'bounce-mobile 4s ease-in-out infinite',
                     }}
                   >
-                    <div className="text-[10px] sm:text-xs text-ink/60 uppercase mb-0.5 sm:mb-1 tracking-widest">
+                    <div className="text-[10px] sm:text-xs text-ink-light uppercase mb-1 sm:mb-1.5 tracking-wider font-medium">
                       Potencia Actual
                     </div>
-                    <div className="text-base sm:text-xl md:text-2xl text-ink font-bold">
-                      8.4 MW
+                    <div className="text-lg sm:text-2xl md:text-3xl text-ink font-bold">
+                      8.4 <span className="text-accent-gold text-sm font-semibold">MW</span>
                     </div>
                   </div>
 
                   <div
-                    className="hidden sm:block absolute bottom-4 left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-canvas backdrop-blur border border-ink/10 p-3 md:p-4 rounded-md md:rounded-lg shadow-xl z-20 max-w-[140px] md:max-w-none"
+                    className="hidden sm:block absolute bottom-4 left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-canvas-alt/90 backdrop-blur-lg border border-ink/8 p-3 md:p-5 rounded-2xl shadow-card-lg z-20 max-w-[150px] md:max-w-none"
                     style={{
                       animation: 'bounce-mobile 5s ease-in-out infinite',
                     }}
                   >
-                    <div className="text-xs text-ink/60 uppercase mb-1 tracking-widest">
+                    <div className="text-xs text-ink-light uppercase mb-1.5 tracking-wider font-medium">
                       Estado de Red
                     </div>
-                    <div className="flex items-center text-accent-gold text-sm font-bold">
-                      <Check className="w-4 h-4 mr-1" /> ESTABLE
+                    <div className="flex items-center text-accent-gold-dark text-sm font-bold">
+                      <Check className="w-4 h-4 mr-1.5" /> ESTABLE
                     </div>
                   </div>
                 </div>
@@ -158,8 +162,8 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce text-ink/60">
-          <span className="text-[10px] uppercase tracking-widest mb-2">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce text-ink-light">
+          <span className="text-[10px] uppercase tracking-widest mb-2 font-medium">
             Explora
           </span>
           <ChevronDown className="w-4 h-4" />
@@ -167,10 +171,10 @@ export default function Home() {
       </section>
 
       {/* Ticker/Stats Strip */}
-      <div className="border-y border-ink/10 bg-ink/5 backdrop-blur-sm overflow-hidden">
-        <div className="container mx-auto flex whitespace-nowrap py-4 overflow-hidden">
+      <div className="border-y border-ink/8 bg-canvas-alt/50 backdrop-blur-sm overflow-hidden">
+        <div className="container mx-auto flex whitespace-nowrap py-5 overflow-hidden">
           <div
-            className="flex gap-16 items-center opacity-70 hover:opacity-100 transition-opacity"
+            className="flex gap-16 items-center"
             style={{
               animation: 'translateX 30s linear infinite',
             }}
@@ -185,9 +189,9 @@ export default function Home() {
             ].map((tag, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 text-sm font-semibold text-ink"
+                className="flex items-center gap-2.5 text-sm font-medium text-ink-light"
               >
-                <Zap className="w-3 h-3 text-ink" /> {tag}
+                <Zap className="w-3.5 h-3.5 text-accent-gold" /> {tag}
               </div>
             ))}
             {[
@@ -200,9 +204,9 @@ export default function Home() {
             ].map((tag, i) => (
               <div
                 key={`dup-${i}`}
-                className="flex items-center gap-2 text-sm font-semibold text-ink"
+                className="flex items-center gap-2.5 text-sm font-medium text-ink-light"
               >
-                <Zap className="w-3 h-3 text-ink" /> {tag}
+                <Zap className="w-3.5 h-3.5 text-accent-gold" /> {tag}
               </div>
             ))}
           </div>
@@ -210,19 +214,19 @@ export default function Home() {
       </div>
 
       {/* Competitive Advantages */}
-      <section className="py-32 relative">
+      <section className="py-24 md:py-32 relative">
         <div className="container mx-auto px-6">
-          <div className="mb-20 max-w-2xl">
+          <div className="mb-16 max-w-2xl">
             <Reveal>
-              <h2 className="text-sm text-ink font-semibold uppercase tracking-[0.2em] mb-3">
+              <span className="inline-block text-sm text-accent-gold font-semibold uppercase tracking-widest mb-4">
                 Ventajas Competitivas
-              </h2>
-              <h3 className="text-4xl md:text-5xl font-extrabold text-ink mb-6">
+              </span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6 leading-tight">
                 Ingeniería de Precisión.
                 <br />
                 Resultados Garantizados.
               </h3>
-              <p className="text-ink/70 text-lg">
+              <p className="text-ink-light text-lg leading-relaxed">
                 No solo instalamos paneles; desplegamos infraestructura
                 energética crítica diseñada para durar décadas bajo condiciones
                 extremas.
@@ -236,57 +240,57 @@ export default function Home() {
                 title: '30 Años de Garantía',
                 subtitle: 'Generation Performance',
                 desc: 'Aseguramos contractualmente que tu sistema producirá energía por encima del 85% incluso después de tres décadas de operación continua.',
-                icon: <Shield />,
+                icon: <Shield className="w-5 h-5" />,
                 metric: '30yr',
               },
               {
                 title: 'Financiamiento 0%',
                 subtitle: 'Direct Capital Access',
                 desc: 'Elimina la barrera de entrada. Modelos de financiamiento directo que permiten que el ahorro energético pague la infraestructura.',
-                icon: <BarChart3 />,
+                icon: <BarChart3 className="w-5 h-5" />,
                 metric: '0% APR',
               },
               {
                 title: 'Mantenimiento Integral',
                 subtitle: 'Full Service O&M',
                 desc: 'Dos años de operación y mantenimiento (O&M) incluidos. Limpieza, termografía de drones y ajuste de torque sin costo adicional.',
-                icon: <Settings />,
+                icon: <Settings className="w-5 h-5" />,
                 metric: '24mo',
               },
               {
                 title: 'Plug & Play',
                 subtitle: 'Seamless Integration',
                 desc: 'Interconexión sin fricción con la red de CFE. Nos encargamos de toda la gestoría, trámites y certificación UVIE.',
-                icon: <Activity />,
+                icon: <Activity className="w-5 h-5" />,
                 metric: '100%',
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="group relative p-8 h-full rounded-lg border border-ink/10 bg-canvas shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-500 overflow-hidden">
+                <div className="group relative p-7 h-full rounded-2xl border border-ink/8 bg-canvas-alt shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                   {/* Decorative Corner */}
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-accent-gold/20 rounded-bl-xl -mr-8 -mt-8 transition-all group-hover:bg-highlight/25"></div>
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent-gold/15 to-transparent rounded-bl-3xl -mr-4 -mt-4 transition-all group-hover:from-accent-gold/25"></div>
 
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="w-12 h-12 rounded-md bg-ink/5 flex items-center justify-center text-ink border border-ink/10 group-hover:scale-110 transition-transform">
+                  <div className="flex justify-between items-start mb-5">
+                    <div className="w-11 h-11 rounded-xl bg-accent-gold/10 flex items-center justify-center text-accent-gold-dark border border-accent-gold/20 group-hover:scale-110 group-hover:bg-accent-gold/15 transition-all">
                       {item.icon}
                     </div>
-                    <span className="text-2xl font-extrabold text-ink/40 group-hover:text-ink transition-colors">
+                    <span className="text-2xl font-bold text-ink/30 group-hover:text-accent-gold transition-colors">
                       {item.metric}
                     </span>
                   </div>
 
-                  <h4 className="text-xl font-extrabold text-ink mb-1">
+                  <h4 className="text-lg font-bold text-ink mb-1">
                     {item.title}
                   </h4>
-                  <span className="text-xs font-semibold text-ink uppercase tracking-[0.2em] mb-4 block">
+                  <span className="text-xs font-medium text-ink-light uppercase tracking-wider mb-4 block">
                     {item.subtitle}
                   </span>
-                  <p className="text-ink/70 leading-relaxed text-sm">
+                  <p className="text-ink-light leading-relaxed text-sm">
                     {item.desc}
                   </p>
 
-                  {/* Scanning line effect on hover */}
-                  <div className="absolute bottom-0 left-0 h-[2px] bg-accent-gold w-0 group-hover:w-full transition-all duration-700"></div>
+                  {/* Accent line on hover */}
+                  <div className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-accent-gold to-highlight w-0 group-hover:w-full transition-all duration-500"></div>
                 </div>
               </Reveal>
             ))}
@@ -397,10 +401,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Quick Stats */}
-      <section className="py-20 bg-canvas text-ink border border-ink/15 rounded-xl mx-4 lg:mx-10 shadow-2xl">
+      < section className="py-20 bg-canvas text-ink border border-ink/15 rounded-xl mx-4 lg:mx-10 shadow-2xl" >
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <Reveal>
@@ -429,10 +433,10 @@ export default function Home() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Interactive Map Section */}
-      <section className="py-32 relative">
+      < section className="py-32 relative" >
         <div className="container mx-auto px-6">
           <div className="mb-20 max-w-2xl mx-auto text-center">
             <Reveal>
@@ -455,10 +459,10 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </section >
 
       {/* Contact Section */}
-      <section
+      < section
         id="contacto"
         className="py-32 border-t border-ink/10 bg-canvas"
       >
@@ -481,9 +485,9 @@ export default function Home() {
             <ContactForm />
           </div>
         </div>
-      </section>
+      </section >
 
       <Footer />
-    </div>
+    </div >
   )
 }

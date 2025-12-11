@@ -14,11 +14,11 @@ interface LeadsTableProps {
 const STATUS_OPTIONS: LeadStatus[] = ['New', 'In Progress', 'Contacted', 'Closed', 'Archived']
 
 const STATUS_COLORS: Record<LeadStatus, string> = {
-  'New': 'bg-blue-500/20 text-blue-400 border-blue-500/50',
-  'In Progress': 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50',
-  'Contacted': 'bg-green-500/20 text-green-400 border-green-500/50',
-  'Closed': 'bg-gray-500/20 text-ink/70 border-gray-500/50',
-  'Archived': 'bg-purple-500/20 text-purple-400 border-purple-500/50',
+  'New': 'bg-blue-100 text-blue-700 border-blue-200',
+  'In Progress': 'bg-amber-100 text-amber-700 border-amber-200',
+  'Contacted': 'bg-green-100 text-green-700 border-green-200',
+  'Closed': 'bg-gray-100 text-gray-600 border-gray-200',
+  'Archived': 'bg-purple-100 text-purple-700 border-purple-200',
 }
 
 export function LeadsTable({ initialLeads }: LeadsTableProps) {
@@ -80,11 +80,10 @@ export function LeadsTable({ initialLeads }: LeadsTableProps) {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setStatusFilter('All')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              statusFilter === 'All'
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${statusFilter === 'All'
                 ? 'bg-accent-gold text-ink'
                 : 'bg-ink/5 text-ink/70 hover:bg-ink/10 border border-ink/10'
-            }`}
+              }`}
           >
             All ({leads.length})
           </button>
@@ -94,11 +93,10 @@ export function LeadsTable({ initialLeads }: LeadsTableProps) {
               <button
                 key={status}
                 onClick={() => setStatusFilter(status)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  statusFilter === status
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${statusFilter === status
                     ? 'bg-accent-gold text-ink'
                     : 'bg-ink/5 text-ink/70 hover:bg-ink/10 border border-ink/10'
-                }`}
+                  }`}
               >
                 {status} ({count})
               </button>
@@ -199,9 +197,8 @@ export function LeadsTable({ initialLeads }: LeadsTableProps) {
                       onChange={(e) =>
                         handleStatusChange(lead.id, e.target.value as LeadStatus)
                       }
-                      className={`px-3 py-1 rounded-lg text-xs font-medium border ${
-                        STATUS_COLORS[lead.status]
-                      } bg-transparent focus:outline-none focus:ring-2 focus:ring-accent-gold/50 cursor-pointer`}
+                      className={`px-3 py-1 rounded-lg text-xs font-medium border ${STATUS_COLORS[lead.status]
+                        } bg-transparent focus:outline-none focus:ring-2 focus:ring-accent-gold/50 cursor-pointer`}
                     >
                       {STATUS_OPTIONS.map((status) => (
                         <option key={status} value={status} className="bg-white">
