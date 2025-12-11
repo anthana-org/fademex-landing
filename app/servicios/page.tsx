@@ -43,7 +43,7 @@ export default function ServiciosPage() {
           <div className="mb-32">
             <Reveal>
               <div className="flex items-center gap-4 mb-12">
-                <span className="text-6xl font-bold text-accent-gold/20">01.</span>
+                <span className="text-6xl font-bold text-accent-gold/20 drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">01.</span>
                 <h3 className="text-4xl md:text-5xl font-bold text-ink">
                   ENERGÍA SOLAR
                 </h3>
@@ -283,7 +283,7 @@ export default function ServiciosPage() {
           <div className="mb-32">
             <Reveal>
               <div className="flex items-center gap-4 mb-12">
-                <span className="text-6xl font-bold text-accent-gold/20">02.</span>
+                <span className="text-6xl font-bold text-accent-gold/20 drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">02.</span>
                 <h3 className="text-4xl md:text-5xl font-bold text-ink">
                   BATERÍAS
                 </h3>
@@ -378,7 +378,7 @@ export default function ServiciosPage() {
           <div className="mb-32">
             <Reveal>
               <div className="flex items-center gap-4 mb-12">
-                <span className="text-6xl font-bold text-accent-gold/20">03.</span>
+                <span className="text-6xl font-bold text-accent-gold/20 drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">03.</span>
                 <h3 className="text-4xl md:text-5xl font-bold text-ink">
                   TECNOLOGÍA LUMÍNICA
                 </h3>
@@ -464,7 +464,7 @@ export default function ServiciosPage() {
           <div className="mb-16">
             <Reveal>
               <div className="flex items-center gap-4 mb-12">
-                <span className="text-6xl font-bold text-accent-gold/20">04.</span>
+                <span className="text-6xl font-bold text-accent-gold/20 drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">04.</span>
                 <h3 className="text-4xl md:text-5xl font-bold text-ink">
                   PROYECTOS ESPECIALES
                 </h3>

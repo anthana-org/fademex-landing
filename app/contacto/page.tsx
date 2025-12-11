@@ -66,7 +66,7 @@ export default function ContactoPage() {
                 <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-accent-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-accent-gold" />
+                      <MapPin className="w-5 h-5 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                     </div>
                     <div>
                       <h3 className="text-ink font-bold mb-1">Oficina Principal</h3>
@@ -84,7 +84,7 @@ export default function ContactoPage() {
                 <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-accent-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-accent-gold" />
+                      <Phone className="w-5 h-5 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                     </div>
                     <div>
                       <h3 className="text-ink font-bold mb-1">Teléfono</h3>
@@ -102,7 +102,7 @@ export default function ContactoPage() {
                 <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-accent-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-accent-gold" />
+                      <Mail className="w-5 h-5 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                     </div>
                     <div>
                       <h3 className="text-ink font-bold mb-1">Email</h3>
@@ -120,7 +120,7 @@ export default function ContactoPage() {
                 <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-accent-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Clock className="w-5 h-5 text-accent-gold" />
+                      <Clock className="w-5 h-5 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
                     </div>
                     <div>
                       <h3 className="text-ink font-bold mb-1">Horario</h3>

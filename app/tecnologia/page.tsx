@@ -140,7 +140,7 @@ export default function TecnologiaPage() {
                         <div className="text-xs text-ink/60 uppercase">
                           {spec.label}
                         </div>
-                        <div className="text-xs text-accent-gold/70">
+                        <div className="text-xs text-accent-gold drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">
                           {spec.desc}
                         </div>
                       </div>
