@@ -59,7 +59,7 @@ export default function Home() {
                   <img
                     src="/logos/FADEMEX LOGOTIPOS -03.svg"
                     alt="FADEMEX"
-                    className="h-64 w-auto"
+                    className="h-32 sm:h-40 md:h-52 lg:h-64 w-auto"
                   />
                 </div>
               </Reveal>
