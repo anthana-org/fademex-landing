@@ -44,11 +44,26 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="inicio"
-        className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10"
+        className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10"
       >
+        <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
+              <Reveal>
+                <div className="flex items-center gap-3 mb-6">
+                  <img
+                    src="/logos/FADEMEX LOGOTIPOS -01.svg"
+                    alt="FADEMEX"
+                    className="h-10 w-auto"
+                  />
+                  <span className="text-sm font-semibold text-ink/70 tracking-[0.12em] uppercase">
+                    Energía que transforma
+                  </span>
+                </div>
+              </Reveal>
+
               <Reveal>
                 <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase">
                   <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
@@ -60,7 +75,7 @@ export default function Home() {
                 <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-ink mb-8 leading-[0.9]">
                   Energía{' '}
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold via-highlight to-ink">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-ink via-accent-gold to-highlight">
                     Inteligente.
                   </span>
                 </h1>
