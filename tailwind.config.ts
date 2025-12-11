@@ -9,13 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'],
+        'sans': ['"Plus Jakarta Sans"', 'sans-serif'],
       },
       colors: {
-        'glass-border': 'rgba(255, 255, 255, 0.2)',
-        'glass-surface': 'rgba(255, 255, 255, 0.05)',
-        'accent-gold': '#FFD700',
-        'accent-cyan': '#00F0FF',
+        canvas: '#F0F2EB',
+        ink: '#2D2F30',
+        'accent-gold': '#E1EBA3',
+        highlight: '#F3E068',
+        'glass-border': 'rgba(45, 47, 48, 0.15)',
+        'glass-surface': 'rgba(45, 47, 48, 0.05)',
       },
       animation: {
         'blob': 'blob 10s infinite',
@@ -35,8 +37,10 @@ const config: Config = {
         }
       },
       backgroundImage: {
-        'mesh': 'radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)',
-        'liquid-gold': 'linear-gradient(135deg, rgba(255, 215, 0, 0.4) 0%, rgba(255, 165, 0, 0.1) 100%)',
+        mesh:
+          'radial-gradient(at 0% 0%, rgba(45,47,48,0.35) 0, transparent 45%), radial-gradient(at 50% 0%, rgba(225,235,163,0.35) 0, transparent 45%), radial-gradient(at 100% 0%, rgba(243,224,104,0.25) 0, transparent 45%)',
+        'liquid-gold':
+          'linear-gradient(135deg, rgba(225,235,163,0.5) 0%, rgba(243,224,104,0.2) 100%)',
       }
     }
   },

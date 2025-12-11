@@ -64,26 +64,26 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label className="text-xs font-mono text-gray-500 uppercase ml-1">Nombre Completo</label>
+          <label className="text-xs font-semibold text-ink/60 uppercase tracking-[0.18em] ml-1">Nombre Completo</label>
           <input
             type="text"
             name="nombre"
             value={formData.nombre}
             onChange={handleChange}
             required
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10"
+            className="w-full bg-ink/5 border border-ink/15 rounded-md px-4 py-3 text-ink placeholder:text-ink/40 focus:border-highlight focus:outline-none transition-colors focus:bg-ink/10"
             placeholder="Ej. Roberto Sánchez"
           />
         </div>
         <div className="space-y-2">
-          <label className="text-xs font-mono text-gray-500 uppercase ml-1">Empresa</label>
+          <label className="text-xs font-semibold text-ink/60 uppercase tracking-[0.18em] ml-1">Empresa</label>
           <input
             type="text"
             name="empresa"
             value={formData.empresa}
             onChange={handleChange}
             required
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10"
+            className="w-full bg-ink/5 border border-ink/15 rounded-md px-4 py-3 text-ink placeholder:text-ink/40 focus:border-highlight focus:outline-none transition-colors focus:bg-ink/10"
             placeholder="Ej. Industria S.A."
           />
         </div>
@@ -91,45 +91,45 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label className="text-xs font-mono text-gray-500 uppercase ml-1">Teléfono</label>
+          <label className="text-xs font-semibold text-ink/60 uppercase tracking-[0.18em] ml-1">Teléfono</label>
           <input
             type="tel"
             name="telefono"
             value={formData.telefono}
             onChange={handleChange}
             required
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10"
+            className="w-full bg-ink/5 border border-ink/15 rounded-md px-4 py-3 text-ink placeholder:text-ink/40 focus:border-highlight focus:outline-none transition-colors focus:bg-ink/10"
             placeholder="Ej. +52 (55) 1234-5678"
           />
         </div>
         <div className="space-y-2">
-          <label className="text-xs font-mono text-gray-500 uppercase ml-1">Correo Corporativo</label>
+          <label className="text-xs font-semibold text-ink/60 uppercase tracking-[0.18em] ml-1">Correo Corporativo</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10"
+            className="w-full bg-ink/5 border border-ink/15 rounded-md px-4 py-3 text-ink placeholder:text-ink/40 focus:border-highlight focus:outline-none transition-colors focus:bg-ink/10"
             placeholder="nombre@empresa.com"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label className="text-xs font-mono text-gray-500 uppercase ml-1">Detalles del Proyecto</label>
+        <label className="text-xs font-semibold text-ink/60 uppercase tracking-[0.18em] ml-1">Detalles del Proyecto</label>
         <textarea
           rows={4}
           name="mensaje"
           value={formData.mensaje}
           onChange={handleChange}
           required
-          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10 resize-none"
+          className="w-full bg-ink/5 border border-ink/15 rounded-md px-4 py-3 text-ink placeholder:text-ink/40 focus:border-highlight focus:outline-none transition-colors focus:bg-ink/10 resize-none"
           placeholder="Consumo actual, ubicación, objetivos..."
         />
       </div>
       {status === 'success' && (
-        <div className="bg-accent-gold/20 border border-accent-gold/50 rounded-lg p-4 text-accent-gold text-center flex items-center justify-center gap-2">
+        <div className="bg-accent-gold/30 border border-accent-gold/60 rounded-md p-4 text-ink text-center flex items-center justify-center gap-2 font-semibold">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -138,7 +138,7 @@ export default function ContactForm() {
       )}
 
       {status === 'error' && (
-        <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 text-red-300 text-center">
+        <div className="bg-ink/15 border border-ink/30 rounded-md p-4 text-ink text-center font-semibold">
           {errorMessage || 'Error al enviar el mensaje. Por favor intenta de nuevo.'}
         </div>
       )}
@@ -146,7 +146,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-accent-gold hover:bg-yellow-300 text-black font-bold py-4 rounded-lg transition-all shadow-[0_0_20px_rgba(255,215,0,0.2)] hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] flex items-center justify-center gap-2 uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-accent-gold"
+        className="w-full bg-accent-gold hover:bg-highlight text-ink font-extrabold py-4 rounded-md transition-all shadow-[0_12px_30px_rgba(225,235,163,0.35)] hover:shadow-[0_18px_40px_rgba(243,224,104,0.4)] flex items-center justify-center gap-2 uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-accent-gold"
       >
         {status === 'loading' ? 'Enviando...' : 'Solicitar Propuesta Técnica'}
         {status !== 'loading' && (
