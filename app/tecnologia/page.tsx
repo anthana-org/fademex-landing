@@ -108,9 +108,9 @@ export default function TecnologiaPage() {
             ].map((tag, i) => (
               <div
                 key={`dup-${i}`}
-                className="flex items-center gap-2 text-sm font-mono text-accent-gold/80"
+                className="flex items-center gap-2 text-sm font-mono text-accent-gold/80 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]"
               >
-                <Zap className="w-3 h-3" /> {tag}
+                <Zap className="w-3 h-3 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" /> {tag}
               </div>
             ))}
           </div>
