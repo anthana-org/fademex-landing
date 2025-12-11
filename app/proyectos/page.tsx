@@ -94,7 +94,7 @@ export default function ProyectosPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
             <div>
               <Reveal>
-                <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3">
+                <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">
                   Cobertura Nacional
                 </h2>
                 <h3 className="text-4xl font-bold text-ink mb-4">
@@ -127,7 +127,7 @@ export default function ProyectosPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             <Reveal delay={300}>
               <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all">
-                <div className="text-xs text-accent-gold font-mono mb-2">INDUSTRIAL</div>
+                <div className="text-xs text-accent-gold font-mono mb-2 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">INDUSTRIAL</div>
                 <h4 className="text-xl font-bold text-ink mb-2">
                   Planta Manufacturera - Querétaro
                 </h4>
@@ -143,7 +143,7 @@ export default function ProyectosPage() {
 
             <Reveal delay={400}>
               <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all">
-                <div className="text-xs text-accent-gold font-mono mb-2">COMERCIAL</div>
+                <div className="text-xs text-accent-gold font-mono mb-2 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">COMERCIAL</div>
                 <h4 className="text-xl font-bold text-ink mb-2">
                   Centro Comercial - CDMX
                 </h4>
@@ -159,7 +159,7 @@ export default function ProyectosPage() {
 
             <Reveal delay={500}>
               <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all">
-                <div className="text-xs text-accent-gold font-mono mb-2">AGROINDUSTRIAL</div>
+                <div className="text-xs text-accent-gold font-mono mb-2 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">AGROINDUSTRIAL</div>
                 <h4 className="text-xl font-bold text-ink mb-2">
                   Complejo Agrícola - Jalisco
                 </h4>
