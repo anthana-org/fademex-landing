@@ -32,17 +32,13 @@ export default function Navigation() {
         className={`fixed w-full z-50 transition-all duration-500 border-b ${
           scrolled
             ? 'bg-canvas/95 backdrop-blur-xl border-ink/10 shadow-sm py-3'
-            : 'bg-ink/90 border-transparent py-6'
+            : 'bg-canvas/80 backdrop-blur border-ink/5 py-6'
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           <Link href="/" className="relative z-50" aria-label="FADEMEX - Inicio">
             <img
-              src={
-                scrolled
-                  ? '/logos/FADEMEX%20LOGOTIPOS%20-01.svg'
-                  : '/logos/FADEMEX%20LOGOTIPOS%20-06.svg'
-              }
+              src="/logos/FADEMEX%20LOGOTIPOS%20-01.svg"
               alt="FADEMEX"
               className="h-8 w-auto"
             />
@@ -53,11 +49,7 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-wide transition-all duration-300 ${
-                  scrolled
-                    ? 'text-ink/70 hover:text-ink hover:bg-ink/10'
-                    : 'text-canvas/80 hover:text-canvas hover:bg-canvas/10'
-                }`}
+                className="px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-wide transition-all duration-300 text-ink/70 hover:text-ink hover:bg-ink/10"
               >
                 {item.label}
               </Link>
@@ -67,9 +59,7 @@ export default function Navigation() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-2 ${
-                scrolled ? 'text-ink' : 'text-canvas'
-              }`}
+              className="lg:hidden p-2 text-ink"
               aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={mobileMenuOpen}
             >
@@ -81,13 +71,13 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-ink flex flex-col items-center justify-center space-y-8">
+        <div className="fixed inset-0 z-40 bg-canvas flex flex-col items-center justify-center space-y-8">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-3xl font-semibold text-canvas hover:text-accent-gold transition-colors"
+              className="text-3xl font-semibold text-ink hover:text-accent-gold transition-colors"
             >
               {item.label}
             </Link>

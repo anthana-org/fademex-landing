@@ -44,30 +44,30 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="inicio"
-        className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-ink text-canvas shadow-2xl rounded-b-xl border-b border-canvas/10"
+        className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10"
       >
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
               <Reveal>
-                <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/40 bg-accent-gold/15 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase">
+                <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase">
                   <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
                   Sistema Operacional
                 </div>
               </Reveal>
 
               <Reveal delay={100}>
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-canvas mb-8 leading-[0.9]">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-ink mb-8 leading-[0.9]">
                   Energía{' '}
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold via-highlight to-canvas">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold via-highlight to-ink">
                     Inteligente.
                   </span>
                 </h1>
               </Reveal>
 
               <Reveal delay={200}>
-                <p className="text-xl text-canvas/80 mb-10 max-w-lg font-normal leading-relaxed border-l-4 border-accent-gold/60 pl-6">
+                <p className="text-xl text-ink/70 mb-10 max-w-lg font-normal leading-relaxed border-l-4 border-accent-gold/80 pl-6">
                   Diseñamos la infraestructura energética del futuro. Sistemas
                   solares de grado industrial, almacenamiento inteligente y
                   gestión basada en datos.
@@ -85,7 +85,7 @@ export default function Home() {
                   </a>
                   <Link
                     href="/soluciones"
-                    className="px-8 py-4 border border-canvas/40 hover:bg-canvas/10 text-canvas font-semibold rounded-md transition-all"
+                    className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-semibold rounded-md transition-all"
                   >
                     Ver Soluciones
                   </Link>
@@ -101,7 +101,7 @@ export default function Home() {
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className={`absolute border border-dashed border-canvas/20 rounded-full`}
+                      className={`absolute border border-dashed border-ink/15 rounded-full`}
                       style={{
                         inset: `${i * 10}%`,
                         animation: `spin ${30 + i * 10}s linear infinite`,
@@ -110,30 +110,30 @@ export default function Home() {
                   ))}
 
                   {/* Central Core */}
-                  <div className="absolute inset-0 m-auto w-64 h-64 bg-gradient-to-br from-accent-gold/25 to-transparent rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute inset-0 m-auto w-64 h-64 bg-gradient-to-br from-accent-gold/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
 
                   {/* Floating Cards */}
                   <div
-                    className="hidden sm:block absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-ink/80 backdrop-blur border border-canvas/15 p-2 sm:p-3 md:p-4 rounded-md md:rounded-lg shadow-2xl z-20 max-w-[120px] sm:max-w-[140px] md:max-w-none"
+                    className="hidden sm:block absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-1/4 lg:right-0 bg-canvas backdrop-blur border border-ink/10 p-2 sm:p-3 md:p-4 rounded-md md:rounded-lg shadow-xl z-20 max-w-[120px] sm:max-w-[140px] md:max-w-none"
                     style={{
                       animation: 'bounce-mobile 4s ease-in-out infinite',
                     }}
                   >
-                    <div className="text-[10px] sm:text-xs text-canvas/60 uppercase mb-0.5 sm:mb-1 tracking-widest">
+                    <div className="text-[10px] sm:text-xs text-ink/60 uppercase mb-0.5 sm:mb-1 tracking-widest">
                       Potencia Actual
                     </div>
-                    <div className="text-base sm:text-xl md:text-2xl text-canvas font-bold">
+                    <div className="text-base sm:text-xl md:text-2xl text-ink font-bold">
                       8.4 MW
                     </div>
                   </div>
 
                   <div
-                    className="hidden sm:block absolute bottom-4 left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-ink/80 backdrop-blur border border-canvas/15 p-3 md:p-4 rounded-md md:rounded-lg shadow-2xl z-20 max-w-[140px] md:max-w-none"
+                    className="hidden sm:block absolute bottom-4 left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-canvas backdrop-blur border border-ink/10 p-3 md:p-4 rounded-md md:rounded-lg shadow-xl z-20 max-w-[140px] md:max-w-none"
                     style={{
                       animation: 'bounce-mobile 5s ease-in-out infinite',
                     }}
                   >
-                    <div className="text-xs text-canvas/60 uppercase mb-1 tracking-widest">
+                    <div className="text-xs text-ink/60 uppercase mb-1 tracking-widest">
                       Estado de Red
                     </div>
                     <div className="flex items-center text-accent-gold text-sm font-bold">
@@ -147,7 +147,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce text-canvas/60">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce text-ink/60">
           <span className="text-[10px] uppercase tracking-widest mb-2">
             Explora
           </span>
@@ -389,31 +389,31 @@ export default function Home() {
       </section>
 
       {/* Quick Stats */}
-      <section className="py-20 bg-ink text-canvas border-y border-ink/30 rounded-xl mx-4 lg:mx-10 shadow-2xl">
+      <section className="py-20 bg-canvas text-ink border border-ink/15 rounded-xl mx-4 lg:mx-10 shadow-2xl">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <Reveal>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold text-accent-gold mb-2">450+</div>
-                <div className="text-sm text-canvas/70">MW Instalados</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-ink mb-2">450+</div>
+                <div className="text-sm text-ink/60">MW Instalados</div>
               </div>
             </Reveal>
             <Reveal delay={100}>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold text-accent-gold mb-2">150+</div>
-                <div className="text-sm text-canvas/70">Proyectos Completados</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-ink mb-2">150+</div>
+                <div className="text-sm text-ink/60">Proyectos Completados</div>
               </div>
             </Reveal>
             <Reveal delay={200}>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold text-accent-gold mb-2">30</div>
-                <div className="text-sm text-canvas/70">Años de Garantía</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-ink mb-2">30</div>
+                <div className="text-sm text-ink/60">Años de Garantía</div>
               </div>
             </Reveal>
             <Reveal delay={300}>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold text-accent-gold mb-2">24/7</div>
-                <div className="text-sm text-canvas/70">Monitoreo NOC</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-ink mb-2">24/7</div>
+                <div className="text-sm text-ink/60">Monitoreo NOC</div>
               </div>
             </Reveal>
           </div>
@@ -449,7 +449,7 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contacto"
-        className="py-32 border-t border-ink/10 bg-ink"
+        className="py-32 border-t border-ink/10 bg-canvas"
       >
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto bg-canvas backdrop-blur-xl border border-ink/15 rounded-xl p-8 md:p-16 relative overflow-hidden shadow-2xl text-ink">

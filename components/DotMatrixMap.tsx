@@ -28,13 +28,13 @@ export default function DotMatrixMap() {
   ]
 
   return (
-    <div className="relative w-full h-full bg-ink rounded-xl overflow-hidden border border-ink/20 shadow-2xl group">
+    <div className="relative w-full h-full bg-canvas rounded-xl overflow-hidden border border-ink/15 shadow-2xl group">
       {/* Grid Background */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(225,235,163,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(225,235,163,0.08) 1px, transparent 1px)',
+            'linear-gradient(rgba(45,47,48,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(45,47,48,0.07) 1px, transparent 1px)',
           backgroundSize: '20px 20px',
         }}
       ></div>
@@ -49,7 +49,7 @@ export default function DotMatrixMap() {
           {points.map((p, i) => (
             <div
               key={i}
-              className="absolute w-1.5 h-1.5 bg-canvas/20 rounded-sm transition-colors duration-500 hover:bg-accent-gold/60"
+              className="absolute w-1.5 h-1.5 bg-ink/20 rounded-sm transition-colors duration-500 hover:bg-accent-gold/60"
               style={{ left: `${p[0]}%`, top: `${p[1]}%` }}
             />
           ))}
@@ -102,11 +102,11 @@ export default function DotMatrixMap() {
 
               {/* Tech Tooltip */}
               <div className="absolute left-6 top-1/2 -translate-y-1/2 w-max opacity-0 group-hover/pin:opacity-100 transition-all duration-300 translate-x-2 group-hover/pin:translate-x-0 z-20">
-                <div className="bg-ink/90 backdrop-blur-md border border-accent-gold/40 p-3 rounded-r-md rounded-tl-md shadow-2xl">
-                  <div className="text-xs font-semibold text-accent-gold mb-1 uppercase tracking-[0.2em]">
+                <div className="bg-ink/95 backdrop-blur-md border border-accent-gold/40 p-3 rounded-r-md rounded-tl-md shadow-2xl">
+                  <div className="text-xs font-semibold text-accent-gold mb-1 uppercase tracking-[0.2em] text-canvas">
                     {proj.city}
                   </div>
-                  <div className="text-[10px] text-canvas/70 flex items-center gap-1">
+                  <div className="text-[10px] text-canvas/80 flex items-center gap-1">
                     <div className="w-1 h-1 bg-highlight rounded-sm animate-pulse"></div>
                     {proj.type}
                   </div>
@@ -118,17 +118,17 @@ export default function DotMatrixMap() {
       </div>
 
       {/* Overlay Stats */}
-      <div className="absolute bottom-6 left-6 bg-ink/80 backdrop-blur border border-canvas/10 px-4 py-2 rounded-md">
+      <div className="absolute bottom-6 left-6 bg-ink/90 backdrop-blur border border-canvas/10 px-4 py-2 rounded-md">
         <div className="flex items-center gap-3">
           <div className="flex flex-col">
-            <span className="text-[10px] text-canvas/60 uppercase tracking-[0.2em]">
+            <span className="text-[10px] text-canvas/80 uppercase tracking-[0.2em]">
               Proyectos Activos
             </span>
             <span className="text-xl font-extrabold text-canvas">250+</span>
           </div>
           <div className="h-8 w-px bg-canvas/15"></div>
           <div className="flex flex-col">
-            <span className="text-[10px] text-canvas/60 uppercase tracking-[0.2em]">
+            <span className="text-[10px] text-canvas/80 uppercase tracking-[0.2em]">
               Potencia Total
             </span>
             <span className="text-xl font-extrabold text-accent-gold">
