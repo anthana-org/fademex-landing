@@ -9,32 +9,33 @@ import Link from 'next/link'
 
 export default function ProyectosPage() {
   return (
-    <div className="font-sans text-ink min-h-screen bg-[#050505]">
+    <div className="font-sans text-ink min-h-screen bg-canvas">
       {/* Fixed Background Elements */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-grid-pattern opacity-40"></div>
-        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-highlight/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent-gold/30 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3"></div>
+        <div className="absolute top-0 left-0 w-[720px] h-[720px] bg-highlight/20 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-[560px] h-[560px] bg-accent-gold/30 rounded-full blur-[140px] translate-x-1/3 translate-y-1/3"></div>
       </div>
 
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10">
+        <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Reveal>
-              <div className="inline-flex items-center px-3 py-1 rounded border border-accent-gold/30 bg-accent-gold/10 text-accent-gold text-[10px] font-mono tracking-widest mb-8 uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-gold mr-2 animate-pulse"></span>
+              <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase">
+                <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
                 Cobertura Nacional
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="text-6xl md:text-7xl font-bold tracking-tighter text-ink mb-8 leading-[0.9]">
+              <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-ink mb-8 leading-[0.9]">
                 Red de Proyectos
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold via-yellow-200 to-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ink via-accent-gold to-highlight">
                   Activos
                 </span>
               </h1>
@@ -175,7 +176,7 @@ export default function ProyectosPage() {
 
           {/* CTA Section */}
           <Reveal delay={600}>
-            <div className="mt-20 text-center bg-gradient-to-r from-black/80 to-black/60 border border-ink/10 rounded-3xl p-12 backdrop-blur-sm">
+            <div className="mt-20 text-center bg-gradient-to-r from-accent-gold/10 via-white/70 to-white/80 border border-ink/10 rounded-3xl p-12 backdrop-blur-sm shadow-2xl">
               <h3 className="text-3xl font-bold text-ink mb-4">
                 ¿Listo para ser parte de nuestra red?
               </h3>
@@ -185,13 +186,13 @@ export default function ProyectosPage() {
               <div className="flex gap-4 justify-center flex-wrap">
                 <Link
                   href="/contacto"
-                  className="px-8 py-4 bg-accent-gold hover:bg-yellow-300 text-ink font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(255,215,0,0.3)]"
+                  className="px-8 py-4 bg-accent-gold hover:bg-highlight text-ink font-extrabold rounded-md transition-all shadow-[0_20px_40px_rgba(225,235,163,0.35)]"
                 >
                   Iniciar Mi Proyecto
                 </Link>
                 <Link
                   href="/ingenieria"
-                  className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-medium rounded-lg transition-all"
+                  className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-semibold rounded-md transition-all"
                 >
                   Ver Metodología
                 </Link>

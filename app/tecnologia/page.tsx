@@ -156,7 +156,7 @@ export default function TecnologiaPage() {
             {/* Right: Dashboard Preview */}
             <div className="lg:w-2/3">
               <Reveal delay={200}>
-                <div className="relative rounded-xl overflow-hidden border border-ink/10 shadow-2xl bg-[#0F0F0F]">
+                <div className="relative rounded-xl overflow-hidden border border-ink/10 shadow-2xl bg-white">
                   <div className="bg-ink/5 px-4 py-2 flex items-center gap-2 border-b border-ink/10">
                     <div className="flex gap-1.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
@@ -243,7 +243,7 @@ export default function TecnologiaPage() {
 
           {/* CTA Section */}
           <Reveal delay={500}>
-            <div className="mt-20 text-center bg-gradient-to-r from-black/80 to-black/60 border border-ink/10 rounded-3xl p-12 backdrop-blur-sm">
+            <div className="mt-20 text-center bg-gradient-to-r from-accent-gold/10 via-white/70 to-white/80 border border-ink/10 rounded-3xl p-12 backdrop-blur-sm shadow-2xl">
               <h3 className="text-3xl font-bold text-ink mb-4">
                 ¿Quieres conocer más detalles técnicos?
               </h3>
@@ -253,13 +253,13 @@ export default function TecnologiaPage() {
               <div className="flex gap-4 justify-center flex-wrap">
                 <Link
                   href="/contacto"
-                  className="px-8 py-4 bg-accent-gold hover:bg-yellow-300 text-ink font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(255,215,0,0.3)]"
+                  className="px-8 py-4 bg-accent-gold hover:bg-highlight text-ink font-extrabold rounded-md transition-all shadow-[0_20px_40px_rgba(225,235,163,0.35)]"
                 >
                   Consultar con Ingeniero
                 </Link>
                 <Link
                   href="/servicios"
-                  className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-medium rounded-lg transition-all"
+                  className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-semibold rounded-md transition-all"
                 >
                   Ver Catálogo de Servicios
                 </Link>
