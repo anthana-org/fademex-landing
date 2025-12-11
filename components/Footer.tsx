@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-ink/15 bg-canvas pt-20 pb-10 text-ink">
+    <footer className="border-t border-ink/8 bg-canvas pt-20 pb-10 text-ink">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
@@ -12,7 +12,7 @@ export default function Footer() {
               alt="FADEMEX"
               className="h-8 w-auto mb-6"
             />
-            <p className="text-ink/70 text-sm leading-relaxed">
+            <p className="text-ink-light text-sm leading-relaxed">
               Soluciones de ingeniería energética para el sector industrial y
               comercial de México.
             </p>
@@ -20,11 +20,11 @@ export default function Footer() {
 
           <div>
             <h4 className="text-ink font-extrabold mb-6">Soluciones</h4>
-            <ul className="space-y-3 text-sm text-ink/70">
+            <ul className="space-y-3 text-sm text-ink-light">
               <li>
                 <Link
                   href="/soluciones"
-                  className="hover:text-accent-gold transition-colors"
+                  className="hover:text-accent-gold-dark transition-colors"
                 >
                   Solar Industrial
                 </Link>
@@ -58,7 +58,7 @@ export default function Footer() {
 
           <div>
             <h4 className="text-ink font-extrabold mb-6">Compañía</h4>
-            <ul className="space-y-3 text-sm text-ink/70">
+            <ul className="space-y-3 text-sm text-ink-light">
               <li>
                 <Link
                   href="/"
@@ -96,7 +96,7 @@ export default function Footer() {
 
           <div>
             <h4 className="text-ink font-extrabold mb-6">Contacto</h4>
-            <ul className="space-y-3 text-sm text-ink/70">
+            <ul className="space-y-3 text-sm text-ink-light">
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-accent-gold" /> Querétaro,
                 México
@@ -112,11 +112,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-ink/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-ink/50">
+        <div className="border-t border-ink/8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-ink-light">
             © 2025 FADEMEX Energy Systems. Todos los derechos reservados.
           </p>
-          <div className="flex gap-6 text-xs text-ink/50">
+          <div className="flex gap-6 text-xs text-ink-light">
             <Link href="/" className="hover:text-ink transition-colors">
               Privacidad
             </Link>

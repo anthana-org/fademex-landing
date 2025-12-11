@@ -42,29 +42,32 @@ export default function TecnologiaPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10">
-        <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/10 via-canvas to-canvas"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-highlight/15 via-transparent to-accent-gold/10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/30 to-transparent"></div>
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Reveal>
-              <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">
-                <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-accent-gold mr-2.5 animate-pulse"></span>
                 Tecnología de Vanguardia
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-ink mb-8 leading-[0.9]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-ink mb-8 leading-[1]">
                 Especificaciones
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ink via-accent-gold to-highlight">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold-dark via-accent-gold to-highlight">
                   Técnicas
                 </span>
               </h1>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="text-xl text-ink/70 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-ink-light mb-10 max-w-3xl mx-auto leading-relaxed">
                 Utilizamos componentes Tier 1 clasificados por Bloomberg NEF.
                 Cada inversor, panel y estructura es auditada para cumplir
                 con estándares internacionales IEC y UL.
@@ -75,7 +78,7 @@ export default function TecnologiaPage() {
       </section>
 
       {/* Ticker/Stats Strip */}
-      <div className="border-y border-ink/10 bg-ink/5 backdrop-blur-sm overflow-hidden">
+      <div className="border-y border-ink/8 bg-canvas-alt/50 backdrop-blur-sm overflow-hidden">
         <div className="container mx-auto flex whitespace-nowrap py-4 overflow-hidden">
           <div
             className="flex gap-16 items-center opacity-60 hover:opacity-100 transition-opacity"
@@ -93,9 +96,9 @@ export default function TecnologiaPage() {
             ].map((tag, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 text-sm font-mono text-accent-gold/80 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]"
+                className="flex items-center gap-2 text-sm font-medium text-ink-light"
               >
-                <Zap className="w-3 h-3 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" /> {tag}
+                <Zap className="w-3 h-3 text-accent-gold" /> {tag}
               </div>
             ))}
             {[
@@ -108,9 +111,9 @@ export default function TecnologiaPage() {
             ].map((tag, i) => (
               <div
                 key={`dup-${i}`}
-                className="flex items-center gap-2 text-sm font-mono text-accent-gold/80 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]"
+                className="flex items-center gap-2 text-sm font-medium text-ink-light"
               >
-                <Zap className="w-3 h-3 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" /> {tag}
+                <Zap className="w-3 h-3 text-accent-gold" /> {tag}
               </div>
             ))}
           </div>
@@ -118,7 +121,7 @@ export default function TecnologiaPage() {
       </div>
 
       {/* Technical Specifications */}
-      <section className="py-32">
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Left: Specs Cards */}
@@ -127,14 +130,14 @@ export default function TecnologiaPage() {
                 <h3 className="text-3xl font-bold text-ink mb-6">
                   Especificaciones Técnicas
                 </h3>
-                <p className="text-ink/70 mb-8 leading-relaxed">
+                <p className="text-ink-light mb-8 leading-relaxed">
                   Cada componente es seleccionado bajo criterios rigurosos de eficiencia, durabilidad y certificación internacional.
                 </p>
                 <div className="space-y-4">
                   {technicalSpecs.map((spec, i) => (
                     <div
                       key={i}
-                      className="flex justify-between items-center p-4 rounded-lg bg-ink/5 border border-ink/10 hover:border-accent-gold/30 transition-all"
+                      className="flex justify-between items-center p-4 rounded-xl bg-canvas-alt border border-ink/8 shadow-card hover:shadow-card-hover transition-all"
                     >
                       <div>
                         <div className="text-xs text-ink/60 uppercase">

@@ -19,17 +19,20 @@ export default function ServiciosPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10">
-        <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/10 via-canvas to-canvas"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-highlight/15 via-transparent to-accent-gold/10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/30 to-transparent"></div>
+
         <div className="container mx-auto px-6 relative z-10 text-center">
           <Reveal>
-            <h2 className="text-sm text-accent-gold font-mono uppercase tracking-widest mb-3 drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">
+            <span className="inline-block text-sm text-accent-gold font-semibold uppercase tracking-widest mb-3">
               Catálogo de Soluciones Energéticas 2025
-            </h2>
-            <h1 className="text-5xl md:text-6xl font-bold text-ink mb-6">
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-ink mb-6">
               CATÁLOGO DE SERVICIOS
             </h1>
-            <p className="text-xl text-ink/70 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-ink-light max-w-3xl mx-auto">
               Consultoría y Energía Solar 360°
             </p>
           </Reveal>
@@ -37,7 +40,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* Services Content */}
-      <section className="py-16 relative border-t border-ink/10">
+      <section className="py-16 md:py-24 relative">
         <div className="container mx-auto px-6">
           {/* 01. ENERGÍA SOLAR */}
           <div className="mb-32">
@@ -53,17 +56,17 @@ export default function ServiciosPage() {
             {/* Main Description */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
               <Reveal delay={100}>
-                <div className="bg-gradient-to-br from-accent-gold/10 to-transparent border border-accent-gold/20 rounded-2xl p-8">
+                <div className="bg-canvas-alt border border-ink/8 rounded-2xl p-8 shadow-card">
                   <h4 className="text-2xl font-bold text-ink mb-4">
                     ENERGÍA QUE TRANSFORMA.
                   </h4>
-                  <p className="text-ink/80 leading-relaxed mb-4">
+                  <p className="text-ink-light leading-relaxed mb-4">
                     Somos Fademex. Una empresa mexicana especializada en paneles
                     solares y consultoría energética 360°, ofrecemos soluciones
                     integrales para optimizar el consumo eléctrico en empresas y
                     fomentar el uso de energías limpias.
                   </p>
-                  <p className="text-ink/70 leading-relaxed">
+                  <p className="text-ink-light leading-relaxed">
                     Nos especializamos en hacer análisis energéticos en las empresas,
                     cada vez acercándonos más a ser referentes de sostenibilidad y
                     energía limpia en México.
@@ -72,11 +75,11 @@ export default function ServiciosPage() {
               </Reveal>
 
               <Reveal delay={200}>
-                <div className="bg-ink/5 border border-ink/10 rounded-2xl p-8">
+                <div className="bg-canvas-alt border border-ink/8 rounded-2xl p-8 shadow-card">
                   <h4 className="text-xl font-bold text-ink mb-6">
                     APLICACIONES DE ENERGÍA SOLAR
                   </h4>
-                  <p className="text-ink/80 leading-relaxed mb-6">
+                  <p className="text-ink-light leading-relaxed mb-6">
                     Impulsamos la transición energética de las empresas a través de
                     la venta e instalación de paneles solares de alto rendimiento.
                     Más que un proveedor, somos una consultoría energética 360° que
@@ -101,9 +104,9 @@ export default function ServiciosPage() {
                 'FINANCIAMIENTO Y GESTIÓN ENERGÉTICA',
               ].map((service, i) => (
                 <Reveal key={i} delay={i * 100}>
-                  <div className="bg-ink/5 border border-ink/10 rounded-xl p-6 hover:border-accent-gold/30 transition-all group">
-                    <div className="w-12 h-12 bg-accent-gold/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent-gold/20 transition-colors">
-                      <Zap className="w-6 h-6 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
+                  <div className="bg-canvas-alt border border-ink/8 rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all group">
+                    <div className="w-11 h-11 bg-accent-gold/10 rounded-xl flex items-center justify-center mb-4 border border-accent-gold/20 group-hover:bg-accent-gold/15 transition-colors">
+                      <Zap className="w-5 h-5 text-accent-gold-dark" />
                     </div>
                     <h5 className="text-sm font-bold text-ink uppercase tracking-wide">
                       {service}
@@ -115,7 +118,7 @@ export default function ServiciosPage() {
 
             {/* Brands Section */}
             <Reveal>
-              <div className="bg-gradient-to-r from-accent-gold/10 via-white/70 to-white/80 border border-ink/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm shadow-2xl mb-16">
+              <div className="glass-panel p-8 md:p-12 mb-16">
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-accent-gold font-bold tracking-widest text-sm drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">01. ENERGÍA SOLAR</span>
                 </div>

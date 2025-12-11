@@ -19,29 +19,32 @@ export default function SolucionesPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-32 pb-20 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10">
-        <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
+      <section className="relative min-h-[60vh] flex items-center pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/10 via-canvas to-canvas"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-highlight/15 via-transparent to-accent-gold/10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/30 to-transparent"></div>
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Reveal>
-              <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase">
-                <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-accent-gold mr-2.5 animate-pulse"></span>
                 Ventajas Competitivas
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-ink mb-8 leading-[0.9]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-ink mb-8 leading-[1]">
                 Ingeniería de Precisión.
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ink via-accent-gold to-highlight">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold-dark via-accent-gold to-highlight">
                   Resultados Garantizados.
                 </span>
               </h1>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="text-xl text-ink/70 mb-10 max-w-3xl mx-auto font-normal leading-relaxed">
+              <p className="text-lg md:text-xl text-ink-light mb-10 max-w-3xl mx-auto font-normal leading-relaxed">
                 No solo instalamos paneles; desplegamos infraestructura
                 energética crítica diseñada para durar décadas bajo condiciones
                 extremas.
@@ -52,13 +55,13 @@ export default function SolucionesPage() {
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
                   href="/contacto"
-                  className="px-8 py-4 bg-accent-gold hover:bg-highlight text-ink font-extrabold rounded-md transition-all shadow-[0_20px_40px_rgba(225,235,163,0.35)]"
+                  className="px-8 py-4 bg-accent-gold hover:bg-accent-gold-dark text-ink font-bold rounded-xl transition-all shadow-button hover:shadow-button-hover"
                 >
                   Agenda Consultoría
                 </Link>
                 <Link
                   href="/servicios"
-                  className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-semibold rounded-md transition-all"
+                  className="px-8 py-4 bg-canvas-alt border border-ink/10 hover:border-ink/20 hover:bg-canvas text-ink font-semibold rounded-xl transition-all shadow-card hover:shadow-card-hover"
                 >
                   Ver Servicios
                 </Link>
@@ -69,7 +72,7 @@ export default function SolucionesPage() {
       </section>
 
       {/* Competitive Advantages */}
-      <section className="py-32 relative">
+      <section className="py-24 md:py-32 relative">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
@@ -77,57 +80,57 @@ export default function SolucionesPage() {
                 title: '30 Años de Garantía',
                 subtitle: 'Generation Performance',
                 desc: 'Aseguramos contractualmente que tu sistema producirá energía por encima del 85% incluso después de tres décadas de operación continua.',
-                icon: <Shield />,
+                icon: <Shield className="w-5 h-5" />,
                 metric: '30yr',
               },
               {
                 title: 'Financiamiento 0%',
                 subtitle: 'Direct Capital Access',
                 desc: 'Elimina la barrera de entrada. Modelos de financiamiento directo que permiten que el ahorro energético pague la infraestructura.',
-                icon: <BarChart3 />,
+                icon: <BarChart3 className="w-5 h-5" />,
                 metric: '0% APR',
               },
               {
                 title: 'Mantenimiento Integral',
                 subtitle: 'Full Service O&M',
                 desc: 'Dos años de operación y mantenimiento (O&M) incluidos. Limpieza, termografía de drones y ajuste de torque sin costo adicional.',
-                icon: <Settings />,
+                icon: <Settings className="w-5 h-5" />,
                 metric: '24mo',
               },
               {
                 title: 'Plug & Play',
                 subtitle: 'Seamless Integration',
                 desc: 'Interconexión sin fricción con la red de CFE. Nos encargamos de toda la gestoría, trámites y certificación UVIE.',
-                icon: <Activity />,
+                icon: <Activity className="w-5 h-5" />,
                 metric: '100%',
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="group relative p-8 h-full rounded-2xl border border-ink/10 bg-ink/5 hover:bg-white/40 transition-all duration-500 overflow-hidden">
+                <div className="group relative p-7 h-full rounded-2xl border border-ink/8 bg-canvas-alt shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                   {/* Decorative Corner */}
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-accent-gold/10 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-accent-gold/20"></div>
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent-gold/15 to-transparent rounded-bl-3xl -mr-4 -mt-4 transition-all group-hover:from-accent-gold/25"></div>
 
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-ink/5 flex items-center justify-center text-accent-gold border border-ink/10 group-hover:scale-110 transition-transform drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">
+                  <div className="flex justify-between items-start mb-5">
+                    <div className="w-11 h-11 rounded-xl bg-accent-gold/10 flex items-center justify-center text-accent-gold-dark border border-accent-gold/20 group-hover:scale-110 group-hover:bg-accent-gold/15 transition-all">
                       {item.icon}
                     </div>
-                    <span className="font-mono text-2xl font-bold text-ink/60 group-hover:text-ink transition-colors">
+                    <span className="text-2xl font-bold text-ink/30 group-hover:text-accent-gold transition-colors">
                       {item.metric}
                     </span>
                   </div>
 
-                  <h4 className="text-xl font-bold text-ink mb-1">
+                  <h4 className="text-lg font-bold text-ink mb-1">
                     {item.title}
                   </h4>
-                  <span className="text-xs font-mono text-accent-gold/70 uppercase tracking-wide mb-4 block">
+                  <span className="text-xs font-medium text-ink-light uppercase tracking-wider mb-4 block">
                     {item.subtitle}
                   </span>
-                  <p className="text-ink/70 leading-relaxed text-sm">
+                  <p className="text-ink-light leading-relaxed text-sm">
                     {item.desc}
                   </p>
 
-                  {/* Scanning line effect on hover */}
-                  <div className="absolute bottom-0 left-0 h-[1px] bg-accent-gold w-0 group-hover:w-full transition-all duration-700"></div>
+                  {/* Accent line on hover */}
+                  <div className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-accent-gold to-highlight w-0 group-hover:w-full transition-all duration-500"></div>
                 </div>
               </Reveal>
             ))}
@@ -135,23 +138,23 @@ export default function SolucionesPage() {
 
           {/* CTA Section */}
           <Reveal delay={400}>
-            <div className="mt-20 text-center bg-gradient-to-r from-accent-gold/10 via-white/70 to-white/80 border border-ink/10 rounded-3xl p-12 backdrop-blur-sm shadow-2xl">
-              <h3 className="text-3xl font-bold text-ink mb-4">
+            <div className="mt-20 text-center glass-panel p-10 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-ink mb-4">
                 ¿Listo para transformar tu infraestructura energética?
               </h3>
-              <p className="text-ink/70 mb-8 max-w-2xl mx-auto">
+              <p className="text-ink-light mb-8 max-w-2xl mx-auto">
                 Agenda una sesión técnica con nuestros ingenieros para evaluar tu consumo y diseñar una solución personalizada.
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
                 <Link
                   href="/contacto"
-                  className="px-8 py-4 bg-accent-gold hover:bg-highlight text-ink font-extrabold rounded-md transition-all shadow-[0_20px_40px_rgba(225,235,163,0.35)]"
+                  className="px-8 py-4 bg-accent-gold hover:bg-accent-gold-dark text-ink font-bold rounded-xl transition-all shadow-button hover:shadow-button-hover"
                 >
                   Iniciar Proyecto
                 </Link>
                 <Link
                   href="/proyectos"
-                  className="px-8 py-4 border border-ink/20 hover:bg-ink/5 text-ink font-semibold rounded-md transition-all"
+                  className="px-8 py-4 bg-canvas-alt border border-ink/10 hover:border-ink/20 hover:bg-canvas text-ink font-semibold rounded-xl transition-all shadow-card hover:shadow-card-hover"
                 >
                   Ver Proyectos Realizados
                 </Link>

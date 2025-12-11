@@ -18,29 +18,32 @@ export default function IngenieriaPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden bg-gradient-to-br from-accent-gold/15 via-canvas to-canvas text-ink shadow-2xl rounded-b-xl border-b border-ink/10">
-        <div className="absolute inset-0 bg-gradient-to-r from-highlight/20 via-accent-gold/10 to-transparent pointer-events-none"></div>
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/10 via-canvas to-canvas"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-highlight/15 via-transparent to-accent-gold/10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/30 to-transparent"></div>
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Reveal>
-              <div className="inline-flex items-center px-3 py-1 rounded-sm border border-accent-gold/60 bg-accent-gold/25 text-ink text-[10px] font-semibold tracking-[0.2em] mb-8 uppercase drop-shadow-[0_1px_0_rgba(45,47,48,0.65)]">
-                <span className="w-1.5 h-1.5 rounded-sm bg-highlight mr-2 animate-pulse"></span>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-accent-gold mr-2.5 animate-pulse"></span>
                 Proceso Certificado
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-ink mb-8 leading-[0.9]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-ink mb-8 leading-[1]">
                 Metodología de
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ink via-accent-gold to-highlight">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold-dark via-accent-gold to-highlight">
                   Implementación
                 </span>
               </h1>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="text-xl text-ink/70 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-ink-light mb-10 max-w-3xl mx-auto leading-relaxed">
                 Un proceso estructurado y probado para garantizar la máxima eficiencia,
                 seguridad y retorno de inversión en cada proyecto.
               </p>
@@ -50,7 +53,7 @@ export default function IngenieriaPage() {
       </section>
 
       {/* Process Timeline */}
-      <section className="py-32 relative">
+      <section className="py-24 md:py-32 relative">
         <div className="container mx-auto px-6">
           <Reveal>
             <h2 className="text-center text-3xl font-bold text-ink mb-20">
@@ -110,25 +113,23 @@ export default function IngenieriaPage() {
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div
-                  className={`flex flex-col md:flex-row items-center mb-16 ${
-                    i % 2 === 0 ? 'md:flex-row-reverse' : ''
-                  }`}
+                  className={`flex flex-col md:flex-row items-center mb-16 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''
+                    }`}
                 >
                   <div className="md:w-1/2 p-8">
                     <div
-                      className={`bg-ink/5 border border-ink/10 p-8 rounded-2xl relative hover:border-accent-gold/30 transition-colors ${
-                        i % 2 === 0 ? 'text-left' : 'text-left md:text-right'
-                      }`}
+                      className={`bg-canvas-alt border border-ink/8 p-8 rounded-2xl relative shadow-card hover:shadow-card-hover transition-all ${i % 2 === 0 ? 'text-left' : 'text-left md:text-right'
+                        }`}
                     >
-                      <span className="absolute -top-4 bg-ink/5 border border-ink/20 px-3 py-1 rounded text-accent-gold font-mono text-sm font-bold">
+                      <span className="absolute -top-4 bg-canvas-alt border border-accent-gold/30 px-3 py-1 rounded-lg text-accent-gold-dark text-sm font-bold shadow-sm">
                         {item.step}
                       </span>
                       <h4 className="text-xl font-bold text-ink mb-2">
                         {item.title}
                       </h4>
-                      <p className="text-ink/70 text-sm mb-6">{item.desc}</p>
+                      <p className="text-ink-light text-sm mb-6">{item.desc}</p>
 
-                      <ul className={`space-y-2 text-sm text-ink/60 ${i % 2 === 0 ? '' : 'md:text-right'}`}>
+                      <ul className={`space-y-2 text-sm text-ink-light ${i % 2 === 0 ? '' : 'md:text-right'}`}>
                         {item.details.map((detail, j) => (
                           <li key={j} className="flex items-center gap-2">
                             {i % 2 === 0 ? (
