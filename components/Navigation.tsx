@@ -38,7 +38,7 @@ export default function Navigation() {
         <div className="container mx-auto px-6 flex justify-between items-center">
           <Link href="/" className="relative z-50" aria-label="FADEMEX - Inicio">
             <img
-              src="/logos/FADEMEX LOGOTIPOS -01.svg"
+              src="/logos/FADEMEX ISOTIPOS-02.svg"
               alt="FADEMEX"
               className="h-8 w-auto"
             />

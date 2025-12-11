@@ -54,7 +54,7 @@ export default function Home() {
               <Reveal>
                 <div className="flex items-center gap-3 mb-6">
                   <img
-                    src="/logos/FADEMEX LOGOTIPOS -01.svg"
+                    src="/logos/FADEMEX LOGOTIPOS -03.svg"
                     alt="FADEMEX"
                     className="h-10 w-auto"
                   />
