@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useCallback } from 'react'
-import Map, { Marker, Popup } from 'react-map-gl'
+import { useState } from 'react'
+import Map, { Marker, Popup } from 'react-map-gl/maplibre'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 interface ProjectPin {
@@ -98,7 +98,7 @@ export default function MexicoMap() {
                         longitude={project.longitude}
                         latitude={project.latitude}
                         anchor="center"
-                        onClick={(e) => {
+                        onClick={(e: any) => {
                             e.originalEvent.stopPropagation()
                             setPopupInfo(project)
                         }}
