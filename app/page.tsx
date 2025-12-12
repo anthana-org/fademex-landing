@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
-import DotMatrixMap from '@/components/DotMatrixMap'
+import MexicoMap from '@/components/MexicoMap'
 import { Reveal } from '@/lib/hooks'
 import {
   Check,
@@ -113,21 +113,16 @@ export default function Home() {
             {/* Hero Visual */}
             <div className="lg:w-1/2 relative">
               <Reveal delay={400}>
-                <div className="relative w-full aspect-square max-w-[600px]">
-                  {/* Rotating Rings */}
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className={`absolute border border-dashed border-ink/10 rounded-full`}
-                      style={{
-                        inset: `${i * 10}%`,
-                        animation: `spin ${30 + i * 10}s linear infinite`,
-                      }}
-                    ></div>
-                  ))}
-
-                  {/* Central Core */}
-                  <div className="absolute inset-0 m-auto w-64 h-64 bg-gradient-to-br from-accent-gold/40 to-highlight/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="relative w-full aspect-square max-w-[600px] flex items-center justify-center">
+                  {/* Hero Image - Solar Panels */}
+                  <div className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl skew-y-3 hover:skew-y-0 transition-all duration-700 ease-out group">
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent z-10"></div>
+                    <img
+                      src="/hero-solar.png"
+                      alt="Instalación Solar Industrial"
+                      className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+                    />
+                  </div>
 
                   {/* Floating Cards - Enhanced */}
                   <div
@@ -145,16 +140,17 @@ export default function Home() {
                   </div>
 
                   <div
-                    className="hidden sm:block absolute bottom-4 left-4 md:bottom-8 md:left-8 lg:bottom-1/4 lg:left-10 bg-canvas-alt/90 backdrop-blur-lg border border-ink/8 p-3 md:p-5 rounded-2xl shadow-card-lg z-20 max-w-[150px] md:max-w-none"
+                    className="hidden sm:block absolute bottom-4 left-4 md:bottom-12 md:left-0 lg:bottom-20 lg:-left-12 bg-canvas-alt/90 backdrop-blur-lg border border-ink/8 p-3 md:p-5 rounded-2xl shadow-card-lg z-20 max-w-[180px] md:max-w-[220px]"
                     style={{
                       animation: 'bounce-mobile 5s ease-in-out infinite',
                     }}
                   >
                     <div className="text-xs text-ink-light uppercase mb-1.5 tracking-wider font-medium">
-                      Estado de Red
+                      Impacto Ambiental
                     </div>
-                    <div className="flex items-center text-accent-gold-dark text-sm font-bold">
-                      <Check className="w-4 h-4 mr-1.5" /> ESTABLE
+                    <div className="flex flex-col text-accent-gold-dark text-sm font-bold leading-tight">
+                      <span className="text-2xl md:text-3xl font-extrabold text-ink">-3,608</span>
+                      <span>TON de CO2 evitadas</span>
                     </div>
                   </div>
                 </div>
@@ -411,7 +407,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <Reveal>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-extrabold text-ink mb-2">450+</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-ink mb-2">8.4</div>
                 <div className="text-sm text-ink/60">MW Instalados</div>
               </div>
             </Reveal>
@@ -457,7 +453,7 @@ export default function Home() {
 
           <Reveal delay={200}>
             <div className="w-full h-[500px] md:h-[600px]">
-              <DotMatrixMap />
+              <MexicoMap />
             </div>
           </Reveal>
         </div>

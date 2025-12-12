@@ -178,20 +178,17 @@ export default function ServiciosPage() {
                         {
                           name: 'Fronius',
                           url: 'https://logo.clearbit.com/fronius.com',
-                          origin: 'MADE IN AUSTRIA',
-                          flag: '🇦🇹'
+
                         },
                         {
                           name: 'Huawei',
                           url: 'https://logo.clearbit.com/huawei.com',
-                          origin: 'MADE IN CHINA',
-                          flag: '🇨🇳'
+
                         },
                         {
                           name: 'SMA',
                           url: 'https://logo.clearbit.com/sma.de',
-                          origin: 'MADE IN GERMANY',
-                          flag: '🇩🇪'
+
                         },
                       ].map((inv, i) => (
                         <div key={i} className="flex flex-col items-center text-center group">
@@ -208,11 +205,8 @@ export default function ServiciosPage() {
                           </div>
 
                           {/* Flag and Text */}
-                          <div className="space-y-1">
-                            <div className="text-2xl">{inv.flag}</div>
-                            <div className="text-[10px] font-bold text-ink/60 tracking-widest uppercase">
-                              {inv.origin}
-                            </div>
+                          <div className="text-[10px] font-bold text-ink/60 tracking-widest uppercase">
+                            PREMIUM PARTNER
                           </div>
                         </div>
                       ))}
@@ -377,157 +371,26 @@ export default function ServiciosPage() {
             </div>
           </div>
 
-          {/* 03. TECNOLOGÍA LUMÍNICA */}
-          <div className="mb-32">
-            <Reveal>
-              <div className="flex items-center gap-4 mb-12">
-                <span className="text-6xl font-bold text-accent-gold/20 drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">03.</span>
-                <h3 className="text-4xl md:text-5xl font-bold text-ink">
-                  TECNOLOGÍA LUMÍNICA
-                </h3>
-              </div>
-            </Reveal>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <Reveal delay={100}>
-                <div className="bg-ink/5 border border-ink/10 rounded-2xl p-8">
-                  <h4 className="text-2xl font-bold text-ink mb-6">
-                    APLICACIONES DE TECNOLOGÍA LUMÍNICA INDUSTRIAL Y COMERCIAL
-                  </h4>
-                  <p className="text-ink/80 leading-relaxed mb-6">
-                    Soluciones profesionales en iluminación industrial y comercial
-                    para todo tipo de espacios.
-                  </p>
-                  <p className="text-ink/70 leading-relaxed mb-8">
-                    Junto a ello se ofrece servicios de instalaciones
-                    electromecánicas para proyectos nuevos o existentes, estudios de
-                    iluminación y consultoría energética y plataformas para
-                    controlar, automatizar y monitorear equipos inteligentes.
-                  </p>
-                  <div className="bg-ink/5 border border-accent-gold/30 rounded-lg p-4">
-                    <div className="text-xs text-accent-gold font-mono uppercase mb-2">
-                      Certificaciones
-                    </div>
-                    <div className="flex gap-3">
-                      <div className="px-3 py-1 bg-accent-gold/10 rounded text-sm text-ink">
-                        UL Certified
-                      </div>
-                      <div className="px-3 py-1 bg-accent-gold/10 rounded text-sm text-ink">
-                        DLC Listed
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-
-              <Reveal delay={200}>
-                <div className="bg-gradient-to-br from-accent-gold/10 to-transparent border border-accent-gold/20 rounded-2xl p-8">
-                  <h4 className="text-2xl font-bold text-ink mb-6">
-                    ILUMINACIÓN COMERCIAL E INDUSTRIAL
-                  </h4>
-                  <p className="text-ink/80 leading-relaxed mb-8">
-                    Soluciones en tecnología lumínica para interiores y exteriores
-                    diseñadas para maximizar el rendimiento laboral y garantizar
-                    ahorros de operación.
-                  </p>
-                  <div className="space-y-4">
-                    <div className="bg-ink/5 border border-ink/10 rounded-xl p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-xs text-ink/60 uppercase mb-1">
-                            Garantía Limitada
-                          </div>
-                          <div className="text-2xl font-bold text-ink">
-                            5 AÑOS
-                          </div>
-                        </div>
-                        <Shield className="w-8 h-8 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
-                      </div>
-                    </div>
-                    <div className="bg-ink/5 border border-ink/10 rounded-xl p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-xs text-ink/60 uppercase mb-1">
-                            Garantía Limitada Extendida
-                          </div>
-                          <div className="text-2xl font-bold text-ink">
-                            10 AÑOS
-                          </div>
-                        </div>
-                        <Shield className="w-8 h-8 text-accent-gold drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-
-          {/* 04. PROYECTOS ESPECIALES */}
-          <div className="mb-16">
-            <Reveal>
-              <div className="flex items-center gap-4 mb-12">
-                <span className="text-6xl font-bold text-accent-gold/20 drop-shadow-[0_2px_6px_rgba(45,47,48,0.35)]">04.</span>
-                <h3 className="text-4xl md:text-5xl font-bold text-ink">
-                  PROYECTOS ESPECIALES
-                </h3>
-              </div>
-            </Reveal>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: 'SUBESTACIONES',
-                  desc: 'Contamos con transformadores y subestaciones que complementen la instalación eléctrica de tu hogar y empresa.',
-                  icon: <Activity />,
-                },
-                {
-                  title: 'INGENIERÍAS ELÉCTRICAS',
-                  desc: 'Contamos con el servicio de desarrollo de ingeniería eléctrica para tu nuevo proyecto para que solo tengas un proveedor que te asegure que, desde la planeación hasta la instalación, se haga con la mejor calidad.',
-                  icon: <Settings />,
-                },
-                {
-                  title: 'PARARRAYOS',
-                  desc: 'Sistemas de protección contra descargas atmosféricas para tu personal y activos.',
-                  icon: <Shield />,
-                },
-              ].map((project, i) => (
-                <Reveal key={i} delay={i * 100}>
-                  <div className="bg-ink/5 border border-ink/10 rounded-2xl p-8 hover:border-accent-gold/30 transition-all group h-full">
-                    <div className="w-14 h-14 bg-accent-gold/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-gold/20 transition-colors">
-                      <div className="text-accent-gold">{project.icon}</div>
-                    </div>
-                    <h4 className="text-xl font-bold text-ink mb-4 uppercase">
-                      {project.title}
-                    </h4>
-                    <p className="text-ink/70 leading-relaxed text-sm">
-                      {project.desc}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom Tagline */}
-          <Reveal>
-            <div className="text-center py-12 border-t border-ink/10">
-              <div className="flex justify-center items-center gap-4 text-2xl font-bold mb-8">
-                <span className="text-ink">ENERGÍA</span>
-                <span className="text-accent-gold">/</span>
-                <span className="text-ink">CONFIANZA</span>
-                <span className="text-accent-gold">/</span>
-                <span className="text-ink">FUTURO</span>
-              </div>
-              <Link
-                href="/contacto"
-                className="inline-block px-8 py-4 bg-accent-gold hover:bg-highlight text-ink font-extrabold rounded-md transition-all shadow-[0_20px_40px_rgba(225,235,163,0.35)]"
-              >
-                Solicitar Cotización
-              </Link>
-            </div>
-          </Reveal>
         </div>
+
+        {/* Bottom Tagline */}
+        <Reveal>
+          <div className="text-center py-12 border-t border-ink/10">
+            <div className="flex justify-center items-center gap-4 text-2xl font-bold mb-8">
+              <span className="text-ink">ENERGÍA</span>
+              <span className="text-accent-gold">/</span>
+              <span className="text-ink">CONFIANZA</span>
+              <span className="text-accent-gold">/</span>
+              <span className="text-ink">FUTURO</span>
+            </div>
+            <Link
+              href="/contacto"
+              className="inline-block px-8 py-4 bg-accent-gold hover:bg-highlight text-ink font-extrabold rounded-md transition-all shadow-[0_20px_40px_rgba(225,235,163,0.35)]"
+            >
+              Solicitar Cotización
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
       <Footer />
