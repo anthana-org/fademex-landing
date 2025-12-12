@@ -78,13 +78,13 @@ export default function MexicoMap() {
     return (
         <div className="relative w-full h-full group">
             {/* Map Image */}
-            <div className="relative w-full h-full flex items-center justify-center p-4">
-                <div className="relative w-full h-full max-w-4xl">
+            <div className="relative w-full h-full flex items-center justify-center p-8">
+                <div className="relative w-full h-full max-w-5xl">
                     <Image
-                        src="/mexico-map.png"
+                        src="/mexico-outline.png"
                         alt="Mexico Map"
                         fill
-                        className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)] opacity-90"
+                        className="object-contain drop-shadow-[0_4px_12px_rgba(212,175,55,0.2)]"
                         priority
                     />
 
@@ -92,28 +92,32 @@ export default function MexicoMap() {
                     {projects.map((proj) => (
                         <div
                             key={proj.id}
-                            className="absolute cursor-pointer group/pin"
+                            className="absolute cursor-pointer group/pin z-10"
                             style={{ left: proj.x, top: proj.y, transform: 'translate(-50%, -50%)' }}
                             onMouseEnter={() => setActivePin(proj.id)}
                             onMouseLeave={() => setActivePin(null)}
                         >
                             {/* Pulse Animation */}
-                            <div className="absolute inset-0 -m-3">
-                                <div className="w-6 h-6 rounded-full bg-accent-gold/30 animate-ping" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className={`w-8 h-8 rounded-full bg-accent-gold/20 animate-ping ${activePin === proj.id ? 'opacity-100' : 'opacity-50'}`} />
                             </div>
 
                             {/* Pin Dot */}
-                            <div className={`relative w-3 h-3 rounded-full border-2 border-ink shadow-lg transition-all duration-300 ${activePin === proj.id ? 'bg-accent-gold scale-150' : 'bg-highlight'
-                                }`} />
+                            <div className="relative flex items-center justify-center">
+                                <div className={`w-4 h-4 rounded-full border-2 shadow-lg transition-all duration-300 ${activePin === proj.id
+                                        ? 'bg-accent-gold border-accent-gold scale-150 shadow-accent-gold/50'
+                                        : 'bg-highlight border-accent-gold/60'
+                                    }`} />
+                            </div>
 
                             {/* Tooltip */}
-                            <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 pointer-events-none transition-all duration-300 ${activePin === proj.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                            <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-4 pointer-events-none transition-all duration-300 z-20 ${activePin === proj.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                                 }`}>
-                                <div className="bg-ink/90 backdrop-blur-md text-canvas px-3 py-2 rounded-lg shadow-xl border border-accent-gold/20 whitespace-nowrap">
-                                    <div className="text-[10px] uppercase tracking-widest text-accent-gold font-bold mb-0.5">{proj.city}</div>
-                                    <div className="text-xs font-semibold">{proj.type}</div>
-                                    {proj.stats && <div className="text-[10px] text-canvas/70">{proj.stats}</div>}
-                                    <div className="w-2 h-2 bg-ink/90 rotate-45 absolute -bottom-1 left-1/2 -translate-x-1/2 border-r border-b border-accent-gold/20" />
+                                <div className="bg-ink/95 backdrop-blur-sm text-canvas px-4 py-2.5 rounded-lg shadow-2xl border border-accent-gold/30 whitespace-nowrap">
+                                    <div className="text-[11px] uppercase tracking-wider text-accent-gold font-bold mb-1">{proj.city}</div>
+                                    <div className="text-sm font-medium">{proj.type}</div>
+                                    {proj.stats && <div className="text-xs text-canvas/80 mt-0.5">{proj.stats}</div>}
+                                    <div className="w-3 h-3 bg-ink/95 rotate-45 absolute -bottom-1.5 left-1/2 -translate-x-1/2 border-r border-b border-accent-gold/30" />
                                 </div>
                             </div>
                         </div>
