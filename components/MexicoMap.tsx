@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Map, { Marker, Popup } from 'react-map-gl/maplibre'
-import 'mapbox-gl/dist/mapbox-gl.css'
+import 'maplibre-gl/dist/maplibre-gl.css'
 
 interface ProjectPin {
     id: string
