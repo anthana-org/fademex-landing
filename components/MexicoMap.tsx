@@ -78,7 +78,7 @@ export default function MexicoMap() {
         <div className="relative w-full h-full text-ink group">
             <div className="w-full h-full flex items-center justify-center p-4">
                 <svg
-                    viewBox="0 150 1024 650"
+                    viewBox="0 0 1024 1024"
                     className="w-full h-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)] filter"
                     preserveAspectRatio="xMidYMid meet"
                 >
