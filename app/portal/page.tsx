@@ -1,5 +1,5 @@
 import { getCustomerStats, getCurrentCustomer } from '@/lib/actions/customers'
-import { Card } from '@/components/ui/card' // Assuming we have or will make a Card component, or I'll standard divs
+
 import { FileText, Upload, Clock, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 
