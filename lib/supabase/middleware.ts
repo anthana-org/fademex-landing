@@ -56,7 +56,7 @@ export async function updateSession(request: NextRequest) {
       return NextResponse.redirect(redirectUrl)
     }
 
-    // Optional: Check if user has admin role
+    // Check if user has admin role
     const userEmail = user.email
     const allowedAdmins = [
       'admin@fademex.com',
@@ -68,6 +68,28 @@ export async function updateSession(request: NextRequest) {
       // Redirect to unauthorized page or home
       const redirectUrl = request.nextUrl.clone()
       redirectUrl.pathname = '/'
+      return NextResponse.redirect(redirectUrl)
+    }
+  }
+
+  // Protect /portal routes
+  if (request.nextUrl.pathname.startsWith('/portal')) {
+    // Exclude public portal routes (login, register)
+    const isPublicPortalRoute =
+      request.nextUrl.pathname.startsWith('/portal/login') ||
+      request.nextUrl.pathname.startsWith('/portal/register')
+
+    if (!user && !isPublicPortalRoute) {
+      // Redirect to portal login
+      const redirectUrl = request.nextUrl.clone()
+      redirectUrl.pathname = '/portal/login'
+      return NextResponse.redirect(redirectUrl)
+    }
+
+    if (user && isPublicPortalRoute) {
+      // Redirect to portal dashboard if already logged in
+      const redirectUrl = request.nextUrl.clone()
+      redirectUrl.pathname = '/portal'
       return NextResponse.redirect(redirectUrl)
     }
   }

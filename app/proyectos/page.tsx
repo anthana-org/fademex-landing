@@ -2,7 +2,7 @@
 
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import DotMatrixMap from '@/components/DotMatrixMap'
+import MexicoMap from '@/components/MexicoMap'
 import { Reveal } from '@/lib/hooks'
 import { BarChart3, Zap, MapPin } from 'lucide-react'
 import Link from 'next/link'
@@ -122,7 +122,7 @@ export default function ProyectosPage() {
 
           <Reveal delay={200}>
             <div className="w-full aspect-[16/9] md:aspect-[2/1] relative">
-              <DotMatrixMap />
+              <MexicoMap />
             </div>
           </Reveal>
 
@@ -132,14 +132,14 @@ export default function ProyectosPage() {
               <div className="bg-canvas-alt border border-ink/8 rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all">
                 <div className="text-xs text-accent-gold font-semibold mb-2 uppercase tracking-wider">INDUSTRIAL</div>
                 <h4 className="text-lg font-bold text-ink mb-2">
-                  Planta Manufacturera - Querétaro
+                  Industria de Cuero Calzado
                 </h4>
                 <p className="text-ink-light text-sm mb-4">
-                  Sistema de 2.5 MW con almacenamiento de 500 kWh. Reducción de 40% en costos energéticos.
+                  Sistema de 500kWp con reducción del 99% en costos energéticos, se han evitado 2 mil ton. De CO2
                 </p>
                 <div className="flex gap-2 text-xs">
-                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">2.5 MW</span>
-                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">40% Ahorro</span>
+                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">500 kWp</span>
+                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">-2k Ton CO2</span>
                 </div>
               </div>
             </Reveal>
@@ -148,30 +148,30 @@ export default function ProyectosPage() {
               <div className="bg-canvas-alt border border-ink/8 rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all">
                 <div className="text-xs text-accent-gold font-semibold mb-2 uppercase tracking-wider">COMERCIAL</div>
                 <h4 className="text-lg font-bold text-ink mb-2">
-                  Centro Comercial - CDMX
+                  Proyecto Comercial - CDMX
                 </h4>
                 <p className="text-ink-light text-sm mb-4">
-                  Instalación de 1.8 MW en azotea con sistema de monitoreo inteligente.
+                  Instalación de 250kWp con un sistema de encendido inmediato, ahorrando el 88% en costos de energía
                 </p>
                 <div className="flex gap-2 text-xs">
-                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">1.8 MW</span>
-                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">35% Ahorro</span>
+                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">250 kWp</span>
+                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">88% Ahorro</span>
                 </div>
               </div>
             </Reveal>
 
             <Reveal delay={500}>
               <div className="bg-canvas-alt border border-ink/8 rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all">
-                <div className="text-xs text-accent-gold font-semibold mb-2 uppercase tracking-wider">AGROINDUSTRIAL</div>
+                <div className="text-xs text-accent-gold font-semibold mb-2 uppercase tracking-wider">INDUSTRIAL</div>
                 <h4 className="text-lg font-bold text-ink mb-2">
-                  Complejo Agrícola - Jalisco
+                  Instalación Industrial - Aguascalientes
                 </h4>
                 <p className="text-ink-light text-sm mb-4">
-                  Sistema híbrido de 3.2 MW con capacidad de isla para operación continua.
+                  Planta de ensamblaje con 500kWp, logrando un ahorro del 99% en costos de energía.
                 </p>
                 <div className="flex gap-2 text-xs">
-                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">3.2 MW</span>
-                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">45% Ahorro</span>
+                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">500 kWp</span>
+                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">99% Ahorro</span>
                 </div>
               </div>
             </Reveal>
