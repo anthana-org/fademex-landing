@@ -36,6 +36,12 @@ export default async function AdminLayout({
               >
                 Dashboard
               </Link>
+              <Link
+                href="/admin/customers"
+                className="text-ink/60 hover:text-ink transition-colors"
+              >
+                Clientes
+              </Link>
             </nav>
           </div>
 
