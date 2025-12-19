@@ -16,3 +16,9 @@ export async function POST(request: NextRequest) {
   requestUrl.pathname = '/portal/login'
   return NextResponse.redirect(requestUrl)
 }
+
+export async function GET(request: NextRequest) {
+  const requestUrl = request.nextUrl.clone()
+  requestUrl.pathname = '/portal/login'
+  return NextResponse.redirect(requestUrl)
+}
