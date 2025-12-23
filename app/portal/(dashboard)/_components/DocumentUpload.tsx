@@ -92,22 +92,8 @@ export default function DocumentUpload({ customerId }: { customerId: string }) {
                 throw new Error('Error al subir el archivo: ' + uploadError.message)
             }
 
-            // 2. Get Public URL (or signed URL if private, but we'll store the public one for simplicity or path)
-            // Since it's a private bucket, we usually store the path or signed URL. 
-            // For now, let's store the path relative to bucket.
-
-            const { data: { publicUrl } } = supabase.storage
-                .from('customer-documents')
-                .getPublicUrl(fileName)
-
-            // Note: If bucket is private, publicUrl won't work without signed URL. 
-            // But we'll store the full URL for now and later can just use the path if needed.
-            // Better to store the path if we want to generate signed URLs later.
-            // Let's stick to the convention of storing the full URL or path. 
-            // If we made the bucket private, we need signed URLs. 
-            // For this implementation, I'll store the publicUrl but in a real private setup 
-            // we would generate a signed URL on view. 
-            // Assuming for now the user will configure policies correctly.
+            // 2. We don't need the public URL anymore as we'll use signed URLs generated on the server
+            // Just access the file path we already have: fileName
 
             // 3. Create Database Record
             await createDocument({
@@ -115,7 +101,7 @@ export default function DocumentUpload({ customerId }: { customerId: string }) {
                 file_name: file.name,
                 file_type: getFileType(file.type),
                 file_size_bytes: file.size,
-                file_url: publicUrl, // or fileName
+                file_url: fileName, // Store path for signed URL generation
                 category: 'General'
             })
 

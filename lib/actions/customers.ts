@@ -159,18 +159,52 @@ export async function getMyDocuments(): Promise<CustomerDocument[]> {
     const customer = await getCurrentCustomer()
     if (!customer) return []
 
-    const { data, error } = await supabase
+    const result = await supabase
         .from('customer_documents')
         .select('*')
         .eq('customer_id', customer.id)
         .order('created_at', { ascending: false })
 
-    if (error) {
-        console.error('Error fetching documents:', error)
+    if (result.error) {
+        console.error('Error fetching documents:', result.error)
         return []
     }
 
-    return data as CustomerDocument[]
+    const data = result.data as CustomerDocument[] || []
+
+    // Generate signed URLs for each document
+    // We handle mixed content: old records might be full public URLs, new ones are paths
+    const start = Date.now()
+    const docsWithUrls = await Promise.all(data.map(async (doc) => {
+        // If it's already a full URL (legacy public URL), we assume it's broken or public.
+        // But for consistency we'll try to extract the path if it looks like a supabase URL
+        // or just use it as is if we can't parse it.
+        // However, standard practice: if it doesn't start with http, it's a path.
+
+        let filePath = doc.file_url
+        if (filePath.startsWith('http')) {
+            // Try to extract path from public URL if possible, or skip signing
+            // Format: .../storage/v1/object/public/bucket-name/path/to/file
+            const publicMarker = '/customer-documents/'
+            const index = filePath.indexOf(publicMarker)
+            if (index !== -1) {
+                filePath = filePath.substring(index + publicMarker.length)
+            } else {
+                return doc // Can't sign it, return original
+            }
+        }
+
+        const { data: signed } = await supabase.storage
+            .from('customer-documents')
+            .createSignedUrl(filePath, 3600) // 1 hour expiry
+
+        return {
+            ...doc,
+            file_url: signed?.signedUrl || doc.file_url
+        }
+    }))
+
+    return docsWithUrls
 }
 
 // Upload document record (after file upload to storage)
