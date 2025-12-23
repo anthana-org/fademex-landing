@@ -1,10 +1,24 @@
 import { createClient } from '@/lib/supabase/server'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
-export async function POST() {
+export async function POST(request: NextRequest) {
+  const requestUrl = request.nextUrl.clone()
   const supabase = await createClient()
 
-  await supabase.auth.signOut()
+  // Sign out logic
+  const { error } = await supabase.auth.signOut()
 
-  return NextResponse.redirect(new URL('/login', process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'))
+  if (error) {
+    console.error('Sign out error:', error)
+  }
+
+  // Redirect to portal login page after signout
+  requestUrl.pathname = '/portal/login'
+  return NextResponse.redirect(requestUrl)
+}
+
+export async function GET(request: NextRequest) {
+  const requestUrl = request.nextUrl.clone()
+  requestUrl.pathname = '/portal/login'
+  return NextResponse.redirect(requestUrl)
 }

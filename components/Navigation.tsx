@@ -30,8 +30,8 @@ export default function Navigation() {
       {/* Navbar */}
       <header
         className={`fixed w-full z-50 transition-all duration-500 border-b ${scrolled
-          ? 'bg-canvas/95 backdrop-blur-xl border-ink/8 shadow-card py-3'
-          : 'bg-canvas/80 backdrop-blur border-transparent py-6'
+          ? 'bg-canvas/95 backdrop-blur-xl border-ink/8 shadow-card py-2'
+          : 'bg-canvas/80 backdrop-blur border-transparent py-4'
           }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
@@ -39,7 +39,7 @@ export default function Navigation() {
             <img
               src="/logos/FADEMEX LOGOTIPOS -03.svg"
               alt="FADEMEX"
-              className="h-12 md:h-16 lg:h-24 w-auto"
+              className="h-10 md:h-12 lg:h-16 w-auto"
             />
           </Link>
 

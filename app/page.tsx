@@ -51,28 +51,18 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-highlight/15 via-transparent to-accent-gold/10 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/30 to-transparent"></div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 mt-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
               <Reveal>
-                <div className="flex items-center gap-3 mb-6">
-                  <img
-                    src="/logos/FADEMEX LOGOTIPOS -03.svg"
-                    alt="FADEMEX"
-                    className="h-32 sm:h-40 md:h-52 lg:h-64 w-auto"
-                  />
-                </div>
-              </Reveal>
-
-              <Reveal>
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm relative z-30">
                   <span className="w-2 h-2 rounded-full bg-accent-gold mr-2.5 animate-pulse"></span>
                   Sistema Operacional
                 </div>
               </Reveal>
 
               <Reveal delay={100}>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-ink mb-8 leading-[1]">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink mb-4 leading-[1.1]">
                   Energía{' '}
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold-dark via-accent-gold to-highlight">
@@ -81,9 +71,19 @@ export default function Home() {
                 </h1>
               </Reveal>
 
+              <Reveal delay={150}>
+                <div className="flex items-center gap-3 mb-4">
+                  <img
+                    src="/logos/FADEMEX LOGOTIPOS -03.svg"
+                    alt="FADEMEX"
+                    className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto"
+                  />
+                </div>
+              </Reveal>
+
               <Reveal delay={200}>
-                <p className="flex items-start gap-4 text-lg md:text-xl text-ink/70 mb-10 max-w-xl font-normal leading-relaxed">
-                  <span className="mt-0.5 w-1.5 h-12 bg-accent-gold rounded-full flex-shrink-0 shadow-[0_2px_6px_rgba(45,47,48,0.25)]"></span>
+                <p className="flex items-start gap-3 text-base md:text-lg text-ink/70 mb-6 max-w-xl font-normal leading-relaxed">
+                  <span className="mt-0.5 w-1.5 h-10 bg-accent-gold rounded-full flex-shrink-0 shadow-[0_2px_6px_rgba(45,47,48,0.25)]"></span>
                   <span>
                     Sistemas solares de grado industrial, almacenamiento inteligente y
                     gestión basada en datos.

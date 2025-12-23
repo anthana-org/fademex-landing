@@ -141,25 +141,21 @@ export default function ServiciosPage() {
                     {/* Solar Logos Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                       {[
-                        { name: 'Longi', url: 'https://logo.clearbit.com/longi.com' },
-                        { name: 'Trina Solar', url: 'https://logo.clearbit.com/trinasolar.com' },
-                        { name: 'Jinko Solar', url: 'https://logo.clearbit.com/jinkosolar.com' },
-                        { name: 'JA Solar', url: 'https://logo.clearbit.com/jasolar.com' },
-                        { name: 'Canadian Solar', url: 'https://logo.clearbit.com/canadiansolar.com' },
-                        { name: 'First Solar', url: 'https://logo.clearbit.com/firstsolar.com' },
+                        { name: 'Longi', logo: '/logos/brands/longi-logo-png_seeklogo-448395.png' },
+                        { name: 'Trina Solar', logo: '/logos/brands/Trina_Solar_logo.svg.png' },
+                        { name: 'Jinko Solar', logo: '/logos/brands/Jinko_Solar_logo.svg' },
+                        { name: 'JA Solar', logo: '/logos/brands/JA-solar-vico-export-solar_energy.png' },
+                        { name: 'Canadian Solar', logo: '/logos/brands/logo-canadian-solar.png' },
+                        { name: 'First Solar', logo: '/logos/brands/First_Solar_logo.svg.png' },
                       ].map((brand, i) => (
                         <div
                           key={i}
                           className="group bg-white rounded-xl p-4 flex items-center justify-center h-20 transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                         >
                           <img
-                            src={brand.url}
+                            src={brand.logo}
                             alt={brand.name}
-                            className="max-h-full max-w-full object-contain opacity-90 group-hover:opacity-100 transition-opacity filter contrast-125"
-                            onError={(e) => {
-                              e.currentTarget.onerror = null;
-                              e.currentTarget.src = "https://via.placeholder.com/150x50?text=" + brand.name
-                            }}
+                            className="max-h-full max-w-full object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                           />
                         </div>
                       ))}
@@ -175,32 +171,16 @@ export default function ServiciosPage() {
                     {/* Inverter List */}
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
                       {[
-                        {
-                          name: 'Fronius',
-                          url: 'https://logo.clearbit.com/fronius.com',
-
-                        },
-                        {
-                          name: 'Huawei',
-                          url: 'https://logo.clearbit.com/huawei.com',
-
-                        },
-                        {
-                          name: 'SMA',
-                          url: 'https://logo.clearbit.com/sma.de',
-
-                        },
+                        { name: 'Fronius', logo: '/logos/brands/Fronius-logo.png' },
+                        { name: 'Huawei', logo: '/logos/brands/Huawei-Logo.wine.png' },
+                        { name: 'SMA', logo: '/logos/brands/Logo_SMA.svg.png' },
                       ].map((inv, i) => (
                         <div key={i} className="flex flex-col items-center text-center group">
                           <div className="bg-white rounded-xl p-4 w-full h-24 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                             <img
-                              src={inv.url}
+                              src={inv.logo}
                               alt={inv.name}
-                              className="max-h-12 max-w-full object-contain"
-                              onError={(e) => {
-                                e.currentTarget.onerror = null;
-                                e.currentTarget.src = "https://via.placeholder.com/150x50?text=" + inv.name
-                              }}
+                              className="max-h-12 max-w-full object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                             />
                           </div>
 
