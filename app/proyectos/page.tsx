@@ -46,7 +46,7 @@ export default function ProyectosPage() {
 
             <Reveal delay={200}>
               <p className="text-lg md:text-xl text-ink-light mb-10 max-w-3xl mx-auto leading-relaxed">
-                Monitoreamos más de 450 MW de capacidad instalada desde
+                Monitoreamos nuestros proyectos desde
                 nuestro Centro de Control en tiempo real.
               </p>
             </Reveal>
@@ -63,7 +63,7 @@ export default function ProyectosPage() {
                 <div className="w-12 h-12 bg-accent-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4 border border-accent-gold/20">
                   <Zap className="w-6 h-6 text-accent-gold-dark" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-ink mb-2">450+ MW</div>
+                <div className="text-3xl md:text-4xl font-bold text-ink mb-2">Gran Escala</div>
                 <div className="text-sm text-ink-light">Capacidad Instalada</div>
               </div>
             </Reveal>
@@ -135,11 +135,11 @@ export default function ProyectosPage() {
                   Industria de Cuero Calzado
                 </h4>
                 <p className="text-ink-light text-sm mb-4">
-                  Sistema de 500kWp con reducción del 99% en costos energéticos, se han evitado 2 mil ton. De CO2
+                  Sistema de 500kWp con reducción significativa en costos energéticos.
                 </p>
                 <div className="flex gap-2 text-xs">
                   <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">500 kWp</span>
-                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">-2k Ton CO2</span>
+                  <span className="px-2.5 py-1 bg-accent-gold/10 rounded-lg text-accent-gold-dark font-medium border border-accent-gold/20">-CO2</span>
                 </div>
               </div>
             </Reveal>
