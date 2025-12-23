@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { Mail, Lock, AlertCircle } from 'lucide-react'
 
@@ -94,9 +95,15 @@ export function LoginForm() {
 
       {/* Additional Info */}
       <div className="text-center">
-        <p className="text-xs text-ink-light">
+        <p className="text-xs text-ink-light mb-2">
           Contact your administrator for access credentials
         </p>
+        <Link
+          href="/portal/login"
+          className="text-sm text-accent-teal hover:text-ink font-medium transition-colors inline-flex items-center gap-1"
+        >
+          Customer Portal Login <span aria-hidden="true">&rarr;</span>
+        </Link>
       </div>
     </form>
   )
