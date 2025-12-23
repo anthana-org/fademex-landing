@@ -149,8 +149,8 @@ export default function Home() {
                       Impacto Ambiental
                     </div>
                     <div className="flex flex-col text-accent-gold-dark text-sm font-bold leading-tight">
-                      <span className="text-2xl md:text-3xl font-extrabold text-ink">-3,608</span>
-                      <span>TON de CO2 evitadas</span>
+                      <span className="text-2xl md:text-3xl font-extrabold text-ink">CO2</span>
+                      <span>Impacto Positivo</span>
                     </div>
                   </div>
                 </div>
@@ -343,7 +343,7 @@ export default function Home() {
               {
                 title: 'Proyectos',
                 subtitle: 'Casos de Éxito',
-                desc: 'Más de 450 MW instalados en toda la República Mexicana.',
+                desc: 'Proyectos instalados en toda la República Mexicana.',
                 icon: <MapPin />,
                 href: '/proyectos',
                 color: 'from-ink/15 to-transparent',
@@ -445,8 +445,7 @@ export default function Home() {
                 Proyectos en Toda la República
               </h3>
               <p className="text-ink/70 text-lg">
-                Más de 450 MW instalados en proyectos industriales y comerciales
-                a lo largo de México.
+                Proyectos industriales y comerciales a lo largo de México.
               </p>
             </Reveal>
           </div>
