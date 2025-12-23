@@ -54,21 +54,10 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
-
-
               <Reveal>
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent-gold bg-accent-gold/20 text-ink text-[11px] font-semibold tracking-[0.15em] mb-8 uppercase shadow-sm relative z-30">
                   <span className="w-2 h-2 rounded-full bg-accent-gold mr-2.5 animate-pulse"></span>
                   Sistema Operacional
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="flex items-center gap-3 mb-6">
-                  <img
-                    src="/logos/FADEMEX LOGOTIPOS -03.svg"
-                    alt="FADEMEX"
-                    className="h-32 sm:h-40 md:h-52 lg:h-64 w-auto"
-                  />
                 </div>
               </Reveal>
 
@@ -80,6 +69,16 @@ export default function Home() {
                     Que Transforma.
                   </span>
                 </h1>
+              </Reveal>
+
+              <Reveal delay={150}>
+                <div className="flex items-center gap-3 mb-6">
+                  <img
+                    src="/logos/FADEMEX LOGOTIPOS -03.svg"
+                    alt="FADEMEX"
+                    className="h-32 sm:h-40 md:h-52 lg:h-64 w-auto"
+                  />
+                </div>
               </Reveal>
 
               <Reveal delay={200}>
