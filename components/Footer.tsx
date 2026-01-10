@@ -98,15 +98,15 @@ export default function Footer() {
             <h4 className="text-ink font-extrabold mb-6">Contacto</h4>
             <ul className="space-y-3 text-sm text-ink-light">
               <li className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-accent-gold" /> Querétaro,
-                México
+                <MapPin className="w-4 h-4 text-accent-gold" /> León,
+                Guanajuato
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-accent-gold" /> +52 (442)
-                123-4567
+                <Phone className="w-4 h-4 text-accent-gold" /> +52 (479)
+                136-9896
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-accent-gold" /> info@fademex.com
+                <Mail className="w-4 h-4 text-accent-gold" /> contacto@fademex.com
               </li>
             </ul>
           </div>
