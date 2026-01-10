@@ -74,7 +74,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="text-ink font-bold mb-1">Oficina Principal</h3>
                       <p className="text-ink-light text-sm">
-                        Querétaro, México
+                        León, Guanajuato
                         <br />
                         Centro de Operaciones
                       </p>
@@ -92,7 +92,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="text-ink font-bold mb-1">Teléfono</h3>
                       <p className="text-ink-light text-sm">
-                        +52 (442) 123-4567
+                        +52 (479) 136-9896
                         <br />
                         Lunes a Viernes
                       </p>
@@ -110,7 +110,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="text-ink font-bold mb-1">Email</h3>
                       <p className="text-ink-light text-sm">
-                        info@fademex.com
+                        contacto@fademex.com
                         <br />
                         Respuesta en 24hrs
                       </p>
@@ -128,9 +128,7 @@ export default function ContactoPage() {
                     <div>
                       <h3 className="text-ink font-bold mb-1">Horario</h3>
                       <p className="text-ink-light text-sm">
-                        Lun - Vie: 9:00 - 18:00
-                        <br />
-                        Sábado: 10:00 - 14:00
+                        Lun - Vie: 8:00 AM - 7:00 PM
                       </p>
                     </div>
                   </div>
@@ -172,13 +170,13 @@ export default function ContactoPage() {
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
                 <a
-                  href="tel:+524421234567"
+                  href="tel:+524791369896"
                   className="px-8 py-4 bg-accent-gold hover:bg-accent-gold-dark text-ink font-bold rounded-xl transition-all shadow-button hover:shadow-button-hover"
                 >
                   Llamar Ahora
                 </a>
                 <a
-                  href="mailto:ingenieria@fademex.com"
+                  href="mailto:contacto@fademex.com"
                   className="px-8 py-4 bg-canvas-alt border border-ink/10 hover:border-ink/20 hover:bg-canvas text-ink font-semibold rounded-xl transition-all shadow-card hover:shadow-card-hover"
                 >
                   Email Ingeniería
