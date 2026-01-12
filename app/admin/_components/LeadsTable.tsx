@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState, useMemo } from 'react'
 import type { Lead, LeadStatus } from '@/lib/types/lead'
 import { updateLeadStatus, toggleLeadContacted } from '@/lib/actions/leads'
 import { format } from 'date-fns'
@@ -23,24 +22,11 @@ const STATUS_COLORS: Record<LeadStatus, string> = {
 }
 
 export function LeadsTable({ initialLeads }: LeadsTableProps) {
-  const searchParams = useSearchParams()
-  const initialFilter = (searchParams.get('status') as LeadStatus) || 'All'
-
   const [leads, setLeads] = useState<Lead[]>(initialLeads)
-  const [statusFilter, setStatusFilter] = useState<LeadStatus | 'All'>(
-    STATUS_OPTIONS.includes(initialFilter as LeadStatus) ? initialFilter : 'All'
-  )
+  const [statusFilter, setStatusFilter] = useState<LeadStatus | 'All'>('All')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  // Update filter if URL changes
-  useEffect(() => {
-    const status = searchParams.get('status')
-    if (status && STATUS_OPTIONS.includes(status as LeadStatus)) {
-      setStatusFilter(status as LeadStatus)
-    }
-  }, [searchParams])
 
   const filteredLeads = useMemo(() => {
     let result = leads
