@@ -19,6 +19,7 @@ export async function updateSession(request: NextRequest) {
     if (request.nextUrl.pathname.startsWith('/admin') || request.nextUrl.pathname.startsWith('/login')) {
       const redirectUrl = request.nextUrl.clone()
       redirectUrl.pathname = '/'
+      redirectUrl.searchParams.set('error', 'missing_supabase_keys')
       return NextResponse.redirect(redirectUrl)
     }
 
@@ -65,9 +66,9 @@ export async function updateSession(request: NextRequest) {
     ]
 
     if (!allowedAdmins.includes(userEmail || '')) {
-      // Redirect to unauthorized page or home
+      // If user is logged in but not an admin, redirect to customer portal
       const redirectUrl = request.nextUrl.clone()
-      redirectUrl.pathname = '/'
+      redirectUrl.pathname = '/portal'
       return NextResponse.redirect(redirectUrl)
     }
   }
