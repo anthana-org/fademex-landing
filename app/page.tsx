@@ -107,6 +107,12 @@ export default function Home() {
                     Ver Soluciones
                   </Link>
                 </div>
+                <div className="mt-4 relative z-30">
+                  <Link href="/admin" className="text-sm font-medium text-ink/40 hover:text-ink transition-colors flex items-center gap-1">
+                    <Shield className="w-3 h-3" />
+                    Acceso Administrativo
+                  </Link>
+                </div>
               </Reveal>
             </div>
 
