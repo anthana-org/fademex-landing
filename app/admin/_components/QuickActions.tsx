@@ -15,7 +15,7 @@ const actions = [
     {
         label: 'Ver Leads Pendientes',
         description: 'Leads sin contactar',
-        href: '/admin',
+        href: '/admin?status=New',
         icon: UserPlus,
         color: 'bg-blue-500/10 text-blue-600 hover:bg-blue-500/20',
     },
