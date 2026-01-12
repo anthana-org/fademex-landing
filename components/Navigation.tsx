@@ -53,12 +53,6 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/admin"
-              className="px-5 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all duration-300 bg-ink text-canvas hover:bg-accent-gold hover:text-ink ml-2"
-            >
-              Admin
-            </Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -87,13 +81,6 @@ export default function Navigation() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/admin"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-3xl font-semibold text-accent-gold hover:text-accent-gold-dark transition-colors"
-          >
-            Admin
-          </Link>
         </div>
       )}
     </>
