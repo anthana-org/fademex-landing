@@ -8,6 +8,8 @@ import {
     Users,
     ArrowRight
 } from 'lucide-react'
+import { format } from 'date-fns'
+import type { Lead } from '@/lib/types/lead'
 
 const actions = [
     {
@@ -42,10 +44,34 @@ const actions = [
 ]
 
 interface QuickActionsProps {
-    onExport?: () => void
+    leads: Lead[]
 }
 
-export function QuickActions({ onExport }: QuickActionsProps) {
+export function QuickActions({ leads }: QuickActionsProps) {
+    const handleExport = () => {
+        if (!leads || leads.length === 0) return
+
+        const headers = ['Nombre', 'Email', 'Teléfono', 'Empresa', 'Estado', 'Contactado', 'Fecha']
+        const csvContent = [
+            headers.join(','),
+            ...leads.map(lead => [
+                `"${lead.full_name}"`,
+                lead.email,
+                lead.phone || '',
+                `"${lead.company_name || ''}"`,
+                lead.status,
+                lead.contacted ? 'Sí' : 'No',
+                format(new Date(lead.created_at), 'yyyy-MM-dd'),
+            ].join(','))
+        ].join('\n')
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+        const link = document.createElement('a')
+        link.href = URL.createObjectURL(blob)
+        link.download = `leads-${format(new Date(), 'yyyy-MM-dd')}.csv`
+        link.click()
+    }
+
     return (
         <div className="glass-panel p-6">
             <h2 className="text-lg font-bold text-ink mb-4">Acciones Rápidas</h2>
@@ -57,7 +83,7 @@ export function QuickActions({ onExport }: QuickActionsProps) {
                         return (
                             <button
                                 key={action.label}
-                                onClick={onExport}
+                                onClick={handleExport}
                                 className={`
                   flex items-center gap-3 p-4 rounded-xl transition-all
                   ${action.color} text-left group

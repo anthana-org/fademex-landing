@@ -33,7 +33,7 @@ export default async function AdminDashboard() {
 
       {/* Quick Actions + Activity Feed */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <QuickActions />
+        <QuickActions leads={leads} />
         <RecentActivity
           leads={leads.slice(0, 5).map(l => ({
             id: l.id,
