@@ -53,15 +53,15 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/admin"
-              className="px-5 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all duration-300 bg-ink text-canvas hover:bg-accent-gold hover:text-ink ml-2"
-            >
-              Login
-            </Link>
           </nav>
 
           <div className="flex items-center gap-4">
+            <Link
+              href="/admin"
+              className="hidden lg:block px-5 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all duration-300 bg-ink text-canvas hover:bg-accent-gold hover:text-ink"
+            >
+              Login
+            </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 text-ink"
