@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import Link from 'next/link'
+import { AdminSidebar } from './_components/AdminSidebar'
 
 export default async function AdminLayout({
   children,
@@ -14,55 +14,46 @@ export default async function AdminLayout({
     redirect('/login')
   }
 
+  // Get pending counts for sidebar badges
+  const [leadsResult, docsResult] = await Promise.all([
+    supabase
+      .from('leads')
+      .select('id', { count: 'exact', head: true })
+      .eq('contacted', false),
+    supabase
+      .from('customer_documents')
+      .select('id', { count: 'exact', head: true })
+      .eq('status', 'Pending')
+  ])
+
+  const pendingLeads = leadsResult.count || 0
+  const pendingDocuments = docsResult.count || 0
+
   return (
     <div className="min-h-screen bg-canvas text-ink relative">
+      {/* Background Effects */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-grid-pattern opacity-40"></div>
         <div className="absolute top-0 left-0 w-[520px] h-[520px] bg-highlight/20 rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3"></div>
         <div className="absolute bottom-0 right-0 w-[480px] h-[480px] bg-accent-gold/30 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3"></div>
       </div>
 
-      {/* Admin Header */}
-      <header className="border-b border-ink/10 bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-xl font-extrabold text-ink">
-              FADEMEX <span className="text-accent-gold">Admin</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link
-                href="/admin"
-                className="text-ink/60 hover:text-ink transition-colors"
-              >
-                Dashboard
-              </Link>
-              <Link
-                href="/admin/customers"
-                className="text-ink/60 hover:text-ink transition-colors"
-              >
-                Clientes
-              </Link>
-            </nav>
-          </div>
+      {/* Layout with Sidebar */}
+      <div className="flex min-h-screen">
+        <AdminSidebar
+          userEmail={user.email || ''}
+          pendingLeads={pendingLeads}
+          pendingDocuments={pendingDocuments}
+        />
 
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-ink/70 hidden sm:block">{user.email}</span>
-            <form action="/api/auth/signout" method="post">
-              <button
-                type="submit"
-                className="text-sm text-ink/70 hover:text-ink transition-colors"
-              >
-                Sign Out
-              </button>
-            </form>
+        {/* Main Content */}
+        <main className="flex-1 lg:ml-0 min-h-screen">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-16 lg:pt-8">
+            {children}
           </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8 relative z-10">
-        {children}
-      </main>
+        </main>
+      </div>
     </div>
   )
 }
+

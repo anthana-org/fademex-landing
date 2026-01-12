@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 import type { Lead, LeadStatus } from '@/lib/types/lead'
 import { updateLeadStatus, toggleLeadContacted } from '@/lib/actions/leads'
 import { format } from 'date-fns'
-import { Filter, Eye, Mail, Phone, Building2 } from 'lucide-react'
+import { Search, X, Eye, Mail, Phone, Building2, Download } from 'lucide-react'
 import { LeadDetailModal } from './LeadDetailModal'
 
 interface LeadsTableProps {
@@ -24,13 +24,30 @@ const STATUS_COLORS: Record<LeadStatus, string> = {
 export function LeadsTable({ initialLeads }: LeadsTableProps) {
   const [leads, setLeads] = useState<Lead[]>(initialLeads)
   const [statusFilter, setStatusFilter] = useState<LeadStatus | 'All'>('All')
+  const [searchQuery, setSearchQuery] = useState('')
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const filteredLeads = useMemo(() => {
-    if (statusFilter === 'All') return leads
-    return leads.filter((lead) => lead.status === statusFilter)
-  }, [leads, statusFilter])
+    let result = leads
+
+    // Apply status filter
+    if (statusFilter !== 'All') {
+      result = result.filter((lead) => lead.status === statusFilter)
+    }
+
+    // Apply search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase()
+      result = result.filter((lead) =>
+        lead.full_name.toLowerCase().includes(query) ||
+        lead.email.toLowerCase().includes(query) ||
+        (lead.company_name && lead.company_name.toLowerCase().includes(query))
+      )
+    }
+
+    return result
+  }, [leads, statusFilter, searchQuery])
 
   const handleStatusChange = async (leadId: string, newStatus: LeadStatus) => {
     try {
@@ -69,41 +86,78 @@ export function LeadsTable({ initialLeads }: LeadsTableProps) {
     )
   }
 
+  const exportToCSV = () => {
+    const headers = ['Nombre', 'Email', 'Teléfono', 'Empresa', 'Estado', 'Contactado', 'Fecha']
+    const csvContent = [
+      headers.join(','),
+      ...filteredLeads.map(lead => [
+        `"${lead.full_name}"`,
+        lead.email,
+        lead.phone || '',
+        `"${lead.company_name || ''}"`,
+        lead.status,
+        lead.contacted ? 'Sí' : 'No',
+        format(new Date(lead.created_at), 'yyyy-MM-dd'),
+      ].join(','))
+    ].join('\n')
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(blob)
+    link.download = `leads-${format(new Date(), 'yyyy-MM-dd')}.csv`
+    link.click()
+  }
+
   return (
     <>
-      {/* Filter Bar */}
-      <div className="mb-6 flex items-center gap-4 flex-wrap">
-        <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-ink/70" />
-          <span className="text-sm text-ink/70">Filter by status:</span>
+      {/* Search and Actions Bar */}
+      <div className="mb-6 flex flex-col sm:flex-row gap-4">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" />
+          <input
+            type="text"
+            placeholder="Buscar por nombre, email o empresa..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-10 pr-10 py-2.5 rounded-lg border border-ink/10 bg-white/50 text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-accent-gold/50"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-ink/10 text-ink/40"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
         </div>
-        <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => setStatusFilter('All')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${statusFilter === 'All'
-                ? 'bg-accent-gold text-ink'
-                : 'bg-ink/5 text-ink/70 hover:bg-ink/10 border border-ink/10'
-              }`}
-          >
-            All ({leads.length})
-          </button>
-          {STATUS_OPTIONS.map((status) => {
-            const count = leads.filter((lead) => lead.status === status).length
-            return (
-              <button
-                key={status}
-                onClick={() => setStatusFilter(status)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${statusFilter === status
-                    ? 'bg-accent-gold text-ink'
-                    : 'bg-ink/5 text-ink/70 hover:bg-ink/10 border border-ink/10'
-                  }`}
-              >
-                {status} ({count})
-              </button>
-            )
-          })}
-        </div>
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value as LeadStatus | 'All')}
+          className="px-4 py-2.5 rounded-lg border border-ink/10 bg-white/50 text-ink focus:outline-none focus:ring-2 focus:ring-accent-gold/50 cursor-pointer"
+        >
+          <option value="All">Todos ({leads.length})</option>
+          {STATUS_OPTIONS.map((status) => (
+            <option key={status} value={status}>
+              {status} ({leads.filter(l => l.status === status).length})
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={exportToCSV}
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-accent-gold hover:bg-accent-gold-dark text-ink font-medium rounded-lg transition-colors"
+        >
+          <Download className="w-4 h-4" />
+          <span className="hidden sm:inline">Exportar CSV</span>
+        </button>
       </div>
+
+      {/* Results Count */}
+      {searchQuery && (
+        <p className="text-sm text-ink/60 mb-4">
+          {filteredLeads.length} de {leads.length} leads
+        </p>
+      )}
+
 
       {/* Table */}
       <div className="overflow-x-auto">
