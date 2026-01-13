@@ -63,9 +63,9 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
                 <div className="glass-panel p-6">
                     <div className="flex items-center gap-3 text-ink/60 mb-2">
                         <DollarSign className="w-4 h-4" />
-                        <span className="text-sm font-semibold uppercase tracking-wider">Inversión</span>
+                        <span className="text-sm font-semibold uppercase tracking-wider">Gasto Mensual Luz</span>
                     </div>
-                    <p className="font-medium text-ink">{customer.investment_range || 'No especificado'}</p>
+                    <p className="font-medium text-ink">{customer.monthly_electric_bill || 'No especificado'}</p>
                 </div>
             </div>
 

@@ -9,7 +9,7 @@ export interface Customer {
     email: string
     phone: string | null
     company_name: string | null
-    investment_range: string | null
+    monthly_electric_bill: string | null
     status: 'Active' | 'Inactive' | 'Pending'
 }
 
@@ -60,7 +60,7 @@ export interface CreateCustomerData {
     email: string
     phone?: string
     company_name?: string
-    investment_range?: string
+    monthly_electric_bill?: string
 }
 
 export interface CreateContractData {
