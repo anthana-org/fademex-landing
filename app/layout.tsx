@@ -11,6 +11,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'FADEMEX | Energía Solar del Futuro',
   description: 'Consultoría y Energía Solar 360° para empresas en México.',
+  icons: {
+    icon: '/logos/FADEMEX ISOTIPOS-01.svg',
+  },
 }
 
 export default function RootLayout({
