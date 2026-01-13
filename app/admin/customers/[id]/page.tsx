@@ -1,6 +1,6 @@
 import { getCustomerWithDetails } from '@/lib/actions/customers'
 import Link from 'next/link'
-import { ArrowLeft, Mail, Phone, Building, Calendar, FileText, Upload } from 'lucide-react'
+import { ArrowLeft, Mail, Phone, Building, Calendar, FileText, Upload, DollarSign } from 'lucide-react'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
 import CreateContractForm from './_components/CreateContractForm'
@@ -38,7 +38,7 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
             </div>
 
             {/* Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="glass-panel p-6">
                     <div className="flex items-center gap-3 text-ink/60 mb-2">
                         <Mail className="w-4 h-4" />
@@ -59,6 +59,13 @@ export default async function CustomerDetailPage({ params }: { params: { id: str
                         <span className="text-sm font-semibold uppercase tracking-wider">Teléfono</span>
                     </div>
                     <p className="font-medium text-ink">{customer.phone || 'No registrado'}</p>
+                </div>
+                <div className="glass-panel p-6">
+                    <div className="flex items-center gap-3 text-ink/60 mb-2">
+                        <DollarSign className="w-4 h-4" />
+                        <span className="text-sm font-semibold uppercase tracking-wider">Inversión</span>
+                    </div>
+                    <p className="font-medium text-ink">{customer.investment_range || 'No especificado'}</p>
                 </div>
             </div>
 

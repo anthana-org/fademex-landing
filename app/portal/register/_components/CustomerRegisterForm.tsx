@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { createCustomerProfile } from '@/lib/actions/customers'
-import { Mail, Lock, User, Building, Phone, AlertCircle, ArrowRight } from 'lucide-react'
+import { Mail, Lock, User, Building, Phone, AlertCircle, ArrowRight, DollarSign } from 'lucide-react'
 import Link from 'next/link'
 
 export default function CustomerRegisterForm() {
@@ -14,13 +14,14 @@ export default function CustomerRegisterForm() {
         email: '',
         phone: '',
         companyName: '',
+        investmentRange: '',
         password: '',
         confirmPassword: ''
     })
     const [error, setError] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
@@ -76,7 +77,8 @@ export default function CustomerRegisterForm() {
                         full_name: formData.fullName,
                         email: formData.email,
                         phone: formData.phone,
-                        company_name: formData.companyName
+                        company_name: formData.companyName,
+                        investment_range: formData.investmentRange
                     })
 
                     router.push('/portal')
@@ -168,6 +170,34 @@ export default function CustomerRegisterForm() {
                         placeholder="+52 55..."
                         className="w-full bg-canvas border border-ink/10 rounded-xl px-4 py-3 text-ink placeholder:text-ink/40 focus:border-accent-gold focus:outline-none transition-colors focus:bg-canvas-alt"
                     />
+                </div>
+            </div>
+
+            {/* Investment Range */}
+            <div>
+                <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide mb-2">
+                    <DollarSign className="w-3 h-3" />
+                    Rango de Inversión (MXN)
+                </label>
+                <div className="relative">
+                    <select
+                        name="investmentRange"
+                        value={formData.investmentRange}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-canvas border border-ink/10 rounded-xl px-4 py-3 text-ink placeholder:text-ink/40 focus:border-accent-gold focus:outline-none transition-colors focus:bg-canvas-alt appearance-none cursor-pointer"
+                    >
+                        <option value="" disabled>Selecciona un rango...</option>
+                        <option value="Menos de $50,000">Menos de $50,000</option>
+                        <option value="$50,000 - $150,000">$50,000 - $150,000</option>
+                        <option value="$150,000 - $500,000">$150,000 - $500,000</option>
+                        <option value="Más de $500,000">Más de $500,000</option>
+                    </select>
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-ink/40">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
                 </div>
             </div>
 
