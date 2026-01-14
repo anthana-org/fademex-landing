@@ -177,7 +177,7 @@ export default function CustomerRegisterForm() {
             <div>
                 <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide mb-2">
                     <DollarSign className="w-3 h-3" />
-                    Gasto Mensual Promedio (Luz)
+                    Gasto Mensual Promedio (Luz) (MXN)
                 </label>
                 <div className="relative">
                     <select
@@ -188,7 +188,6 @@ export default function CustomerRegisterForm() {
                         className="w-full bg-canvas border border-ink/10 rounded-xl px-4 py-3 text-ink placeholder:text-ink/40 focus:border-accent-gold focus:outline-none transition-colors focus:bg-canvas-alt appearance-none cursor-pointer"
                     >
                         <option value="" disabled>Selecciona un rango...</option>
-                        <option value="Menos de $3,000">Menos de $3,000</option>
                         <option value="$3,000 - $10,000">$3,000 - $10,000</option>
                         <option value="$10,000 - $30,000">$10,000 - $30,000</option>
                         <option value="Más de $30,000">Más de $30,000</option>
