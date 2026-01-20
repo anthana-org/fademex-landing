@@ -68,16 +68,16 @@ export function LeadDetailModal({ lead, isOpen, onClose, onUpdate }: LeadDetailM
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-      <div className="bg-[#0a0a0a] border border-white/20 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/20 backdrop-blur-md">
+      <div className="bg-white border border-ink/10 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 className="text-2xl font-bold text-white">Lead Details</h2>
+        <div className="flex items-center justify-between p-6 border-b border-ink/10">
+          <h2 className="text-2xl font-bold text-ink">Lead Details</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="p-2 hover:bg-ink/10 rounded-lg transition-colors"
           >
-            <X className="w-5 h-5 text-gray-400" />
+            <X className="w-5 h-5 text-ink/70" />
           </button>
         </div>
 
@@ -86,72 +86,72 @@ export function LeadDetailModal({ lead, isOpen, onClose, onUpdate }: LeadDetailM
           {/* Basic Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-mono text-ink/70 uppercase tracking-wide mb-2">
                 <User className="w-3 h-3" />
                 Full Name
               </label>
-              <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+              <div className="bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-ink">
                 {lead.full_name}
               </div>
             </div>
 
             <div>
-              <label className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-mono text-ink/70 uppercase tracking-wide mb-2">
                 <Mail className="w-3 h-3" />
                 Email
               </label>
               <a
                 href={`mailto:${lead.email}`}
-                className="block bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-accent-gold hover:bg-white/10 transition-colors"
+                className="block bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-accent-gold hover:bg-ink/10 transition-colors"
               >
                 {lead.email}
               </a>
             </div>
 
             <div>
-              <label className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-mono text-ink/70 uppercase tracking-wide mb-2">
                 <Phone className="w-3 h-3" />
                 Phone
               </label>
               {lead.phone ? (
                 <a
                   href={`tel:${lead.phone}`}
-                  className="block bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-accent-gold hover:bg-white/10 transition-colors"
+                  className="block bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-accent-gold hover:bg-ink/10 transition-colors"
                 >
                   {lead.phone}
                 </a>
               ) : (
-                <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-gray-500">
+                <div className="bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-ink/60">
                   Not provided
                 </div>
               )}
             </div>
 
             <div>
-              <label className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-mono text-ink/70 uppercase tracking-wide mb-2">
                 <Building2 className="w-3 h-3" />
                 Company
               </label>
-              <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
-                {lead.company_name || <span className="text-gray-500">Not provided</span>}
+              <div className="bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-ink">
+                {lead.company_name || <span className="text-ink/60">Not provided</span>}
               </div>
             </div>
 
             <div>
-              <label className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-wide mb-2">
+              <label className="flex items-center gap-2 text-xs font-mono text-ink/70 uppercase tracking-wide mb-2">
                 <Calendar className="w-3 h-3" />
                 Registration Date
               </label>
-              <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white">
+              <div className="bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-ink">
                 {format(new Date(lead.created_at), 'MMM dd, yyyy HH:mm')}
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-mono text-gray-400 uppercase tracking-wide mb-2 block">
+              <label className="text-xs font-mono text-ink/70 uppercase tracking-wide mb-2 block">
                 Lead ID
               </label>
-              <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-gray-400 text-xs font-mono">
+              <div className="bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-ink/70 text-xs font-mono">
                 {lead.id}
               </div>
             </div>
@@ -159,16 +159,16 @@ export function LeadDetailModal({ lead, isOpen, onClose, onUpdate }: LeadDetailM
 
           {/* Status */}
           <div>
-            <label className="text-xs font-mono text-gray-400 uppercase tracking-wide mb-2 block">
+            <label className="text-xs font-mono text-ink/70 uppercase tracking-wide mb-2 block">
               Status
             </label>
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value as LeadStatus)}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10"
+              className="w-full bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-ink focus:border-accent-gold focus:outline-none transition-colors focus:bg-white"
             >
               {STATUS_OPTIONS.map((option) => (
-                <option key={option} value={option} className="bg-[#050505]">
+                <option key={option} value={option} className="bg-white">
                   {option}
                 </option>
               ))}
@@ -176,10 +176,10 @@ export function LeadDetailModal({ lead, isOpen, onClose, onUpdate }: LeadDetailM
           </div>
 
           {/* Contacted Toggle */}
-          <div className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-ink/5 border border-ink/10 rounded-lg">
             <div>
-              <div className="font-medium text-white">Contacted</div>
-              <div className="text-sm text-gray-400">Mark if this lead has been contacted</div>
+              <div className="font-medium text-ink">Contacted</div>
+              <div className="text-sm text-ink/70">Mark if this lead has been contacted</div>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
@@ -188,13 +188,13 @@ export function LeadDetailModal({ lead, isOpen, onClose, onUpdate }: LeadDetailM
                 onChange={(e) => setContacted(e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-white/10 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-accent-gold/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent-gold"></div>
+              <div className="w-11 h-6 bg-ink/10 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-accent-gold/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent-gold"></div>
             </label>
           </div>
 
           {/* Admin Notes */}
           <div>
-            <label className="text-xs font-mono text-gray-400 uppercase tracking-wide mb-2 block">
+            <label className="text-xs font-mono text-ink/70 uppercase tracking-wide mb-2 block">
               Admin Notes
             </label>
             <textarea
@@ -202,13 +202,13 @@ export function LeadDetailModal({ lead, isOpen, onClose, onUpdate }: LeadDetailM
               onChange={(e) => setAdminNotes(e.target.value)}
               rows={6}
               placeholder="Add internal notes about this lead..."
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10 resize-none"
+              className="w-full bg-ink/5 border border-ink/10 rounded-lg px-4 py-3 text-ink focus:border-accent-gold focus:outline-none transition-colors focus:bg-white resize-none"
             />
           </div>
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t border-white/10">
+        <div className="flex items-center justify-between p-6 border-t border-ink/10">
           <button
             onClick={handleDelete}
             disabled={isDeleting}
@@ -221,7 +221,7 @@ export function LeadDetailModal({ lead, isOpen, onClose, onUpdate }: LeadDetailM
           <div className="flex items-center gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 bg-white/5 text-gray-300 border border-white/10 rounded-lg hover:bg-white/10 transition-colors"
+              className="px-4 py-2 bg-ink/5 text-ink/70 border border-ink/10 rounded-lg hover:bg-ink/10 transition-colors"
             >
               Cancel
             </button>

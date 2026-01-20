@@ -1,10 +1,34 @@
 import { createClient } from '@/lib/supabase/server'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
-export async function POST() {
+export async function POST(request: NextRequest) {
   const supabase = await createClient()
 
-  await supabase.auth.signOut()
+  // Determine redirect based on referrer (admin vs portal)
+  const referer = request.headers.get('referer') || ''
+  const isAdminLogout = referer.includes('/admin')
 
-  return NextResponse.redirect(new URL('/login', process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'))
+  // Sign out logic
+  const { error } = await supabase.auth.signOut()
+
+  if (error) {
+    console.error('Sign out error:', error)
+  }
+
+  // Redirect to appropriate login page
+  const redirectPath = isAdminLogout ? '/login' : '/portal/login'
+  const redirectUrl = new URL(redirectPath, request.url)
+
+  return NextResponse.redirect(redirectUrl, { status: 303 })
+}
+
+export async function GET(request: NextRequest) {
+  // Determine redirect based on referrer
+  const referer = request.headers.get('referer') || ''
+  const isAdminLogout = referer.includes('/admin')
+
+  const redirectPath = isAdminLogout ? '/login' : '/portal/login'
+  const redirectUrl = new URL(redirectPath, request.url)
+
+  return NextResponse.redirect(redirectUrl, { status: 303 })
 }

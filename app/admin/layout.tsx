@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import Link from 'next/link'
+import { AdminSidebar } from './_components/AdminSidebar'
 
 export default async function AdminLayout({
   children,
@@ -14,43 +14,46 @@ export default async function AdminLayout({
     redirect('/login')
   }
 
+  // Get pending counts for sidebar badges
+  const [leadsResult, docsResult] = await Promise.all([
+    supabase
+      .from('leads')
+      .select('id', { count: 'exact', head: true })
+      .eq('contacted', false),
+    supabase
+      .from('customer_documents')
+      .select('id', { count: 'exact', head: true })
+      .eq('status', 'Pending')
+  ])
+
+  const pendingLeads = leadsResult.count || 0
+  const pendingDocuments = docsResult.count || 0
+
   return (
-    <div className="min-h-screen bg-[#050505]">
-      {/* Admin Header */}
-      <header className="border-b border-white/10 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-xl font-bold text-white">
-              FADEMEX <span className="text-accent-gold">Admin</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link
-                href="/admin"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Dashboard
-              </Link>
-            </nav>
-          </div>
+    <div className="min-h-screen bg-canvas text-ink relative">
+      {/* Background Effects */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-grid-pattern opacity-40"></div>
+        <div className="absolute top-0 left-0 w-[520px] h-[520px] bg-highlight/20 rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 right-0 w-[480px] h-[480px] bg-accent-gold/30 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3"></div>
+      </div>
 
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-400 hidden sm:block">{user.email}</span>
-            <form action="/api/auth/signout" method="post">
-              <button
-                type="submit"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Sign Out
-              </button>
-            </form>
-          </div>
-        </div>
-      </header>
+      {/* Layout with Sidebar */}
+      <div className="flex min-h-screen">
+        <AdminSidebar
+          userEmail={user.email || ''}
+          pendingLeads={pendingLeads}
+          pendingDocuments={pendingDocuments}
+        />
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8">
-        {children}
-      </main>
+        {/* Main Content */}
+        <main className="flex-1 lg:ml-0 min-h-screen">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-16 lg:pt-8">
+            {children}
+          </div>
+        </main>
+      </div>
     </div>
   )
 }
+

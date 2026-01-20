@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { Mail, Lock, AlertCircle } from 'lucide-react'
 
@@ -45,15 +46,15 @@ export function LoginForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Error Message */}
       {error && (
-        <div className="flex items-start gap-3 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
-          <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-red-400">{error}</p>
+        <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-red-600">{error}</p>
         </div>
       )}
 
       {/* Email Field */}
       <div>
-        <label className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-wide mb-2">
+        <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide mb-2">
           <Mail className="w-3 h-3" />
           Email
         </label>
@@ -63,23 +64,31 @@ export function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="admin@fademex.com"
-          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10"
+          className="w-full bg-canvas border border-ink/10 rounded-xl px-4 py-3 text-ink placeholder:text-ink/40 focus:border-accent-gold focus:outline-none transition-colors focus:bg-canvas-alt"
         />
       </div>
 
       {/* Password Field */}
       <div>
-        <label className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-wide mb-2">
-          <Lock className="w-3 h-3" />
-          Password
-        </label>
+        <div className="flex items-center justify-between mb-2">
+          <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide">
+            <Lock className="w-3 h-3" />
+            Password
+          </label>
+          <Link
+            href="/forgot-password"
+            className="text-xs text-accent-teal hover:text-ink font-medium transition-colors"
+          >
+            Forgot password?
+          </Link>
+        </div>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           placeholder="••••••••"
-          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-accent-gold focus:outline-none transition-colors focus:bg-white/10"
+          className="w-full bg-canvas border border-ink/10 rounded-xl px-4 py-3 text-ink placeholder:text-ink/40 focus:border-accent-gold focus:outline-none transition-colors focus:bg-canvas-alt"
         />
       </div>
 
@@ -87,16 +96,22 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-accent-gold text-black font-medium py-3 rounded-lg hover:bg-accent-gold/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-accent-gold/50"
+        className="w-full bg-accent-gold text-ink font-semibold py-3.5 rounded-xl hover:bg-accent-gold-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-button hover:shadow-button-hover"
       >
         {isLoading ? 'Signing in...' : 'Sign In'}
       </button>
 
       {/* Additional Info */}
       <div className="text-center">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-ink-light mb-2">
           Contact your administrator for access credentials
         </p>
+        <Link
+          href="/portal/login"
+          className="text-sm text-accent-teal hover:text-ink font-medium transition-colors inline-flex items-center gap-1"
+        >
+          Customer Portal Login <span aria-hidden="true">&rarr;</span>
+        </Link>
       </div>
     </form>
   )
