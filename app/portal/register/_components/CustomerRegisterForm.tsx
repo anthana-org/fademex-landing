@@ -7,6 +7,12 @@ import { createCustomerProfile } from '@/lib/actions/customers'
 import { Mail, Lock, User, Building, Phone, AlertCircle, ArrowRight, DollarSign } from 'lucide-react'
 import Link from 'next/link'
 
+// Bootstrap admin emails that should not register as customers
+const ADMIN_RESERVED_EMAILS = [
+    'admin@fademex.com',
+    'juanjo@anthana.com',
+]
+
 export default function CustomerRegisterForm() {
     const router = useRouter()
     const [formData, setFormData] = useState({
@@ -39,6 +45,14 @@ export default function CustomerRegisterForm() {
 
         if (formData.password.length < 6) {
             setError('La contraseña debe tener al menos 6 caracteres')
+            setIsLoading(false)
+            return
+        }
+
+        // Block admin emails from registering as customers
+        const normalizedEmail = formData.email.toLowerCase()
+        if (ADMIN_RESERVED_EMAILS.includes(normalizedEmail)) {
+            setError('Este correo está reservado para uso administrativo. Por favor usa la página de inicio de sesión de administrador en /login')
             setIsLoading(false)
             return
         }
