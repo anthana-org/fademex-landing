@@ -73,15 +73,23 @@ export default function DocumentUpload({ customerId }: { customerId: string }) {
     }
 
     const handleUpload = async () => {
-        if (!file) return
+        if (!file || !customerId) return
 
         setIsUploading(true)
         setError('')
 
         try {
             const supabase = createClient()
+
+            // Get the authenticated user's ID for storage path (required by RLS policy)
+            const { data: { user } } = await supabase.auth.getUser()
+            if (!user) {
+                throw new Error('No autenticado')
+            }
+
             const ext = file.name.split('.').pop()
-            const fileName = `${customerId}/${Date.now()}-${Math.random().toString(36).substring(2, 10)}.${ext}`
+            // Use user.id for storage path (matches RLS policy), but customerId for DB record
+            const fileName = `${user.id}/${Date.now()}-${Math.random().toString(36).substring(2, 10)}.${ext}`
 
             // 1. Upload to Supabase Storage
             const { error: uploadError } = await supabase.storage
