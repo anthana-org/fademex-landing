@@ -89,6 +89,176 @@ export function getUserConfirmationHtml(data: ContactData): string {
   `
 }
 
+// Password reset email data
+export interface PasswordResetData {
+  name?: string
+  resetUrl: string
+}
+
+// Email template for password reset
+export function getPasswordResetHtml(data: PasswordResetData): string {
+  const greeting = data.name ? `¡Hola ${data.name}!` : '¡Hola!'
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Restablecer Contraseña - FADEMEX</title>
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #050505; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td align="center" style="padding: 40px 0;">
+            <table role="presentation" style="width: 600px; border-collapse: collapse; background-color: #111111; border-radius: 16px; overflow: hidden;">
+              <!-- Header -->
+              <tr>
+                <td style="padding: 40px 40px 20px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                  <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: bold;">
+                    <span style="color: #FFD700;">●</span> FADEMEX
+                  </h1>
+                  <p style="margin: 10px 0 0; color: #FFD700; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">
+                    Restablecer Contraseña
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Content -->
+              <tr>
+                <td style="padding: 40px;">
+                  <h2 style="margin: 0 0 20px; color: #ffffff; font-size: 24px;">
+                    ${greeting}
+                  </h2>
+
+                  <p style="margin: 0 0 20px; color: #9ca3af; font-size: 16px; line-height: 1.6;">
+                    Recibimos una solicitud para restablecer la contraseña de tu cuenta. Haz clic en el botón de abajo para crear una nueva contraseña.
+                  </p>
+
+                  <div style="text-align: center; margin: 30px 0;">
+                    <a href="${data.resetUrl}"
+                       style="display: inline-block; background-color: #FFD700; color: #000000; padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                      Restablecer Contraseña
+                    </a>
+                  </div>
+
+                  <div style="background-color: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px; padding: 20px; margin: 20px 0;">
+                    <p style="margin: 0; color: #FFD700; font-size: 14px;">
+                      <strong>Importante:</strong> Este enlace expirará en 1 hora. Si no solicitaste restablecer tu contraseña, puedes ignorar este correo.
+                    </p>
+                  </div>
+
+                  <p style="margin: 30px 0 0; color: #6b7280; font-size: 14px;">
+                    Si tienes problemas con el botón, copia y pega este enlace en tu navegador:
+                  </p>
+                  <p style="margin: 10px 0 0; color: #9ca3af; font-size: 12px; word-break: break-all;">
+                    ${data.resetUrl}
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Footer -->
+              <tr>
+                <td style="padding: 30px 40px; background-color: rgba(0, 0, 0, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                  <p style="margin: 0; color: #6b7280; font-size: 12px; text-align: center;">
+                    © 2025 FADEMEX Labs. Ingeniería Energética de Próxima Generación.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>
+  `
+}
+
+// Admin invite email data
+export interface AdminInviteData {
+  name: string
+  inviteUrl: string
+  invitedBy: string
+}
+
+// Email template for admin invitation
+export function getAdminInviteHtml(data: AdminInviteData): string {
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Invitación de Administrador - FADEMEX</title>
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #050505; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td align="center" style="padding: 40px 0;">
+            <table role="presentation" style="width: 600px; border-collapse: collapse; background-color: #111111; border-radius: 16px; overflow: hidden;">
+              <!-- Header -->
+              <tr>
+                <td style="padding: 40px 40px 20px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                  <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: bold;">
+                    <span style="color: #FFD700;">●</span> FADEMEX
+                  </h1>
+                  <p style="margin: 10px 0 0; color: #FFD700; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">
+                    Invitación de Administrador
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Content -->
+              <tr>
+                <td style="padding: 40px;">
+                  <h2 style="margin: 0 0 20px; color: #ffffff; font-size: 24px;">
+                    ¡Hola ${data.name}!
+                  </h2>
+
+                  <p style="margin: 0 0 20px; color: #9ca3af; font-size: 16px; line-height: 1.6;">
+                    Has sido invitado por <strong style="color: #ffffff;">${data.invitedBy}</strong> a unirte al panel de administración de FADEMEX.
+                  </p>
+
+                  <p style="margin: 0 0 30px; color: #9ca3af; font-size: 16px; line-height: 1.6;">
+                    Como administrador, tendrás acceso completo a gestionar leads, clientes, documentos y la configuración del sistema.
+                  </p>
+
+                  <div style="text-align: center; margin: 30px 0;">
+                    <a href="${data.inviteUrl}"
+                       style="display: inline-block; background-color: #FFD700; color: #000000; padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                      Aceptar Invitación
+                    </a>
+                  </div>
+
+                  <div style="background-color: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px; padding: 20px; margin: 20px 0;">
+                    <p style="margin: 0; color: #FFD700; font-size: 14px;">
+                      <strong>Importante:</strong> Este enlace es personal y de un solo uso. No lo compartas con nadie.
+                    </p>
+                  </div>
+
+                  <p style="margin: 30px 0 0; color: #6b7280; font-size: 14px;">
+                    Si no esperabas esta invitación, puedes ignorar este correo.
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Footer -->
+              <tr>
+                <td style="padding: 30px 40px; background-color: rgba(0, 0, 0, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                  <p style="margin: 0; color: #6b7280; font-size: 12px; text-align: center;">
+                    © 2025 FADEMEX Labs. Ingeniería Energética de Próxima Generación.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>
+  `
+}
+
 // Email template for admin notification
 export function getAdminNotificationHtml(data: ContactData): string {
   return `

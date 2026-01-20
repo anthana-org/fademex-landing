@@ -47,9 +47,12 @@ export async function updateSession(request: NextRequest) {
   // Refreshing the auth token
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Protect /admin routes
+  // Protect /admin routes (except invite page which is public)
   if (request.nextUrl.pathname.startsWith('/admin')) {
-    if (!user) {
+    // Allow access to invite page without auth (they need to set password)
+    const isInvitePage = request.nextUrl.pathname.startsWith('/admin/invite/')
+
+    if (!user && !isInvitePage) {
       // Redirect to login page if not authenticated
       const redirectUrl = request.nextUrl.clone()
       redirectUrl.pathname = '/login'
@@ -57,28 +60,35 @@ export async function updateSession(request: NextRequest) {
       return NextResponse.redirect(redirectUrl)
     }
 
-    // Check if user has admin role
-    const userEmail = user.email
-    const allowedAdmins = [
-      'admin@fademex.com',
-      'juanjo@anthana.com'
-      // Add more admin emails here
-    ]
+    // Check if user has admin role (skip for invite page)
+    if (user && !isInvitePage) {
+      const userEmail = user.email?.toLowerCase()
 
-    if (!allowedAdmins.includes(userEmail || '')) {
-      // If user is logged in but not an admin, redirect to customer portal
-      const redirectUrl = request.nextUrl.clone()
-      redirectUrl.pathname = '/portal'
-      return NextResponse.redirect(redirectUrl)
+      // Query admin_users table to check if user is an active admin
+      const { data: adminRecord } = await supabase
+        .from('admin_users')
+        .select('id, status')
+        .eq('email', userEmail || '')
+        .eq('status', 'active')
+        .single()
+
+      if (!adminRecord) {
+        // If user is logged in but not an admin, redirect to customer portal
+        const redirectUrl = request.nextUrl.clone()
+        redirectUrl.pathname = '/portal'
+        return NextResponse.redirect(redirectUrl)
+      }
     }
   }
 
   // Protect /portal routes
   if (request.nextUrl.pathname.startsWith('/portal')) {
-    // Exclude public portal routes (login, register)
+    // Exclude public portal routes (login, register, forgot-password, reset-password)
     const isPublicPortalRoute =
       request.nextUrl.pathname.startsWith('/portal/login') ||
-      request.nextUrl.pathname.startsWith('/portal/register')
+      request.nextUrl.pathname.startsWith('/portal/register') ||
+      request.nextUrl.pathname.startsWith('/portal/forgot-password') ||
+      request.nextUrl.pathname.startsWith('/portal/reset-password')
 
     if (!user && !isPublicPortalRoute) {
       // Redirect to portal login
