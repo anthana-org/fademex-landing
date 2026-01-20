@@ -251,6 +251,9 @@ export async function getCustomerWithDetails(customerId: string): Promise<{
     documents: CustomerDocument[]
 }> {
     const supabase = await createClient()
+    // Use admin client for storage operations to bypass RLS
+    // (storage RLS only allows users to access their own folder)
+    const adminSupabase = await createAdminClient()
 
     const [customerResult, contractsResult, documentsResult] = await Promise.all([
         supabase.from('customers').select('*').eq('id', customerId).single(),
@@ -259,7 +262,8 @@ export async function getCustomerWithDetails(customerId: string): Promise<{
     ])
 
     const documents = (documentsResult.data || []) as CustomerDocument[]
-    const documentsWithUrls = await addSignedUrlsToDocuments(supabase, documents)
+    // Use admin client for signed URL generation to access customer's storage folder
+    const documentsWithUrls = await addSignedUrlsToDocuments(adminSupabase, documents)
 
     return {
         customer: customerResult.data as Customer | null,
@@ -371,7 +375,9 @@ export async function updateCustomerStatus(id: string, status: Customer['status'
 
 // Get all documents with customer info (admin only)
 export async function getAllDocuments(): Promise<(CustomerDocument & { customers: { id: string; full_name: string; company_name: string | null } | null })[]> {
-    const supabase = await createClient()
+    // Use admin client to bypass RLS for storage operations
+    // (storage RLS only allows users to access their own folder)
+    const supabase = await createAdminClient()
 
     const { data: documents, error } = await supabase
         .from('customer_documents')
@@ -392,7 +398,7 @@ export async function getAllDocuments(): Promise<(CustomerDocument & { customers
 
     const docs = documents || []
 
-    // Generate signed URLs for all documents
+    // Generate signed URLs for all documents (admin client bypasses storage RLS)
     const docsWithUrls = await Promise.all(docs.map(async (doc) => ({
         ...doc,
         file_url: await generateSignedUrl(supabase, doc.file_url)
