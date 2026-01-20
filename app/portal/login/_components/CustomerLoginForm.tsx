@@ -70,10 +70,18 @@ export default function CustomerLoginForm() {
 
             {/* Password Field */}
             <div>
-                <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide mb-2">
-                    <Lock className="w-3 h-3" />
-                    Contraseña
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                    <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide">
+                        <Lock className="w-3 h-3" />
+                        Contraseña
+                    </label>
+                    <Link
+                        href="/portal/forgot-password"
+                        className="text-xs text-accent-teal hover:text-ink font-medium transition-colors"
+                    >
+                        ¿Olvidaste tu contraseña?
+                    </Link>
+                </div>
                 <input
                     type="password"
                     value={password}

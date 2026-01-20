@@ -70,10 +70,18 @@ export function LoginForm() {
 
       {/* Password Field */}
       <div>
-        <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide mb-2">
-          <Lock className="w-3 h-3" />
-          Password
-        </label>
+        <div className="flex items-center justify-between mb-2">
+          <label className="flex items-center gap-2 text-xs font-medium text-ink-light uppercase tracking-wide">
+            <Lock className="w-3 h-3" />
+            Password
+          </label>
+          <Link
+            href="/forgot-password"
+            className="text-xs text-accent-teal hover:text-ink font-medium transition-colors"
+          >
+            Forgot password?
+          </Link>
+        </div>
         <input
           type="password"
           value={password}
