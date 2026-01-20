@@ -1,30 +1,11 @@
-import { createClient } from '@/lib/supabase/server'
+import { getAllDocuments } from '@/lib/actions/customers'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
 import Link from 'next/link'
 import { FileText, Image, FileSpreadsheet, File, ExternalLink, CheckCircle, XCircle, Clock } from 'lucide-react'
 
 export default async function AdminDocumentsPage() {
-    const supabase = await createClient()
-
-    // Get all documents with customer info
-    const { data: documents, error } = await supabase
-        .from('customer_documents')
-        .select(`
-      *,
-      customers:customer_id (
-        id,
-        full_name,
-        company_name
-      )
-    `)
-        .order('created_at', { ascending: false })
-
-    if (error) {
-        console.error('Error fetching documents:', error)
-    }
-
-    const docs = documents || []
+    const docs = await getAllDocuments()
 
     const getFileIcon = (type: string) => {
         switch (type) {
