@@ -57,7 +57,7 @@ export async function updateSession(request: NextRequest) {
   // Protect /admin routes (except login and invite pages which are public)
   if (request.nextUrl.pathname.startsWith('/admin')) {
     // Allow access to login and invite pages without auth
-    const isLoginPage = request.nextUrl.pathname === '/admin/login'
+    const isLoginPage = request.nextUrl.pathname.startsWith('/admin/login')
     const isInvitePage = request.nextUrl.pathname.startsWith('/admin/invite/')
     const isPublicAdminRoute = isLoginPage || isInvitePage
 
@@ -67,6 +67,28 @@ export async function updateSession(request: NextRequest) {
       redirectUrl.pathname = '/admin/login'
       redirectUrl.searchParams.set('redirectedFrom', request.nextUrl.pathname)
       return NextResponse.redirect(redirectUrl)
+    }
+
+    // If user is logged in and on admin login page, check if they're admin and redirect
+    if (user && isLoginPage) {
+      const userEmail = user.email?.toLowerCase()
+      const fallbackAdminEmail = process.env.ADMIN_EMAIL?.toLowerCase()
+      const isFallbackAdmin = fallbackAdminEmail && userEmail === fallbackAdminEmail
+      const isBootstrapAdmin = BOOTSTRAP_ADMIN_EMAILS.includes(userEmail || '')
+
+      const { data: adminRecord } = await supabase
+        .from('admin_users')
+        .select('id, status')
+        .eq('email', userEmail || '')
+        .eq('status', 'active')
+        .single()
+
+      if (adminRecord || isFallbackAdmin || isBootstrapAdmin) {
+        // Admin is already logged in, redirect to admin dashboard
+        const redirectUrl = request.nextUrl.clone()
+        redirectUrl.pathname = '/admin'
+        return NextResponse.redirect(redirectUrl)
+      }
     }
 
     // Check if user has admin role (skip for public admin routes)
