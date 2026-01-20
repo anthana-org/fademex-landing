@@ -64,6 +64,10 @@ export async function updateSession(request: NextRequest) {
     if (user && !isInvitePage) {
       const userEmail = user.email?.toLowerCase()
 
+      // Check for fallback admin email from environment
+      const fallbackAdminEmail = process.env.ADMIN_EMAIL?.toLowerCase()
+      const isFallbackAdmin = fallbackAdminEmail && userEmail === fallbackAdminEmail
+
       // Query admin_users table to check if user is an active admin
       const { data: adminRecord } = await supabase
         .from('admin_users')
@@ -72,7 +76,7 @@ export async function updateSession(request: NextRequest) {
         .eq('status', 'active')
         .single()
 
-      if (!adminRecord) {
+      if (!adminRecord && !isFallbackAdmin) {
         // If user is logged in but not an admin, redirect to customer portal
         const redirectUrl = request.nextUrl.clone()
         redirectUrl.pathname = '/portal'
