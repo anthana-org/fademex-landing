@@ -108,9 +108,9 @@ export default function Home() {
                   </Link>
                 </div>
                 <div className="mt-4 relative z-30">
-                  <Link href="/admin" className="text-sm font-medium text-ink/40 hover:text-ink transition-colors flex items-center gap-1">
+                  <Link href="/portal/login" className="text-sm font-medium text-ink/40 hover:text-ink transition-colors flex items-center gap-1">
                     <Shield className="w-3 h-3" />
-                    Acceso Administrativo
+                    Portal de Clientes
                   </Link>
                 </div>
               </Reveal>
