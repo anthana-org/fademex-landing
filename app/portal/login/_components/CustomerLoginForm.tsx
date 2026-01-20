@@ -6,6 +6,12 @@ import { createClient } from '@/lib/supabase/client'
 import { Mail, Lock, AlertCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
+// Bootstrap admin emails that should use the admin portal instead
+const ADMIN_RESERVED_EMAILS = [
+    'admin@fademex.com',
+    'juanjo@anthana.com',
+]
+
 export default function CustomerLoginForm() {
     const router = useRouter()
     const [email, setEmail] = useState('')
@@ -31,7 +37,13 @@ export default function CustomerLoginForm() {
             }
 
             if (data.user) {
-                router.push('/portal')
+                // Redirect admins to admin portal instead
+                const normalizedEmail = data.user.email?.toLowerCase() || ''
+                if (ADMIN_RESERVED_EMAILS.includes(normalizedEmail)) {
+                    router.push('/admin')
+                } else {
+                    router.push('/portal')
+                }
                 router.refresh()
             }
         } catch (err) {
