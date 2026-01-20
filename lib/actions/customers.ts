@@ -152,6 +152,36 @@ export async function getContractById(id: string): Promise<Contract | null> {
 // Document Operations (Customer view)
 // =====================================================
 
+// Helper to generate signed URL for a document
+async function generateSignedUrl(supabase: any, fileUrl: string): Promise<string> {
+    let filePath = fileUrl
+    if (filePath.startsWith('http')) {
+        // Try to extract path from public URL if possible
+        // Format: .../storage/v1/object/public/bucket-name/path/to/file
+        const publicMarker = '/customer-documents/'
+        const index = filePath.indexOf(publicMarker)
+        if (index !== -1) {
+            filePath = filePath.substring(index + publicMarker.length)
+        } else {
+            return fileUrl // Can't sign it, return original
+        }
+    }
+
+    const { data: signed } = await supabase.storage
+        .from('customer-documents')
+        .createSignedUrl(filePath, 3600) // 1 hour expiry
+
+    return signed?.signedUrl || fileUrl
+}
+
+// Generate signed URLs for an array of documents
+async function addSignedUrlsToDocuments(supabase: any, documents: CustomerDocument[]): Promise<CustomerDocument[]> {
+    return Promise.all(documents.map(async (doc) => ({
+        ...doc,
+        file_url: await generateSignedUrl(supabase, doc.file_url)
+    })))
+}
+
 // Get all documents for current customer
 export async function getMyDocuments(): Promise<CustomerDocument[]> {
     const supabase = await createClient()
@@ -171,40 +201,7 @@ export async function getMyDocuments(): Promise<CustomerDocument[]> {
     }
 
     const data = result.data as CustomerDocument[] || []
-
-    // Generate signed URLs for each document
-    // We handle mixed content: old records might be full public URLs, new ones are paths
-    const start = Date.now()
-    const docsWithUrls = await Promise.all(data.map(async (doc) => {
-        // If it's already a full URL (legacy public URL), we assume it's broken or public.
-        // But for consistency we'll try to extract the path if it looks like a supabase URL
-        // or just use it as is if we can't parse it.
-        // However, standard practice: if it doesn't start with http, it's a path.
-
-        let filePath = doc.file_url
-        if (filePath.startsWith('http')) {
-            // Try to extract path from public URL if possible, or skip signing
-            // Format: .../storage/v1/object/public/bucket-name/path/to/file
-            const publicMarker = '/customer-documents/'
-            const index = filePath.indexOf(publicMarker)
-            if (index !== -1) {
-                filePath = filePath.substring(index + publicMarker.length)
-            } else {
-                return doc // Can't sign it, return original
-            }
-        }
-
-        const { data: signed } = await supabase.storage
-            .from('customer-documents')
-            .createSignedUrl(filePath, 3600) // 1 hour expiry
-
-        return {
-            ...doc,
-            file_url: signed?.signedUrl || doc.file_url
-        }
-    }))
-
-    return docsWithUrls
+    return addSignedUrlsToDocuments(supabase, data)
 }
 
 // Upload document record (after file upload to storage)
@@ -261,10 +258,13 @@ export async function getCustomerWithDetails(customerId: string): Promise<{
         supabase.from('customer_documents').select('*').eq('customer_id', customerId).order('created_at', { ascending: false })
     ])
 
+    const documents = (documentsResult.data || []) as CustomerDocument[]
+    const documentsWithUrls = await addSignedUrlsToDocuments(supabase, documents)
+
     return {
         customer: customerResult.data as Customer | null,
         contracts: (contractsResult.data || []) as Contract[],
-        documents: (documentsResult.data || []) as CustomerDocument[]
+        documents: documentsWithUrls
     }
 }
 
@@ -367,4 +367,36 @@ export async function updateCustomerStatus(id: string, status: Customer['status'
 
     revalidatePath('/admin/customers')
     return { success: true }
+}
+
+// Get all documents with customer info (admin only)
+export async function getAllDocuments(): Promise<(CustomerDocument & { customers: { id: string; full_name: string; company_name: string | null } | null })[]> {
+    const supabase = await createClient()
+
+    const { data: documents, error } = await supabase
+        .from('customer_documents')
+        .select(`
+            *,
+            customers:customer_id (
+                id,
+                full_name,
+                company_name
+            )
+        `)
+        .order('created_at', { ascending: false })
+
+    if (error) {
+        console.error('Error fetching all documents:', error)
+        return []
+    }
+
+    const docs = documents || []
+
+    // Generate signed URLs for all documents
+    const docsWithUrls = await Promise.all(docs.map(async (doc) => ({
+        ...doc,
+        file_url: await generateSignedUrl(supabase, doc.file_url)
+    })))
+
+    return docsWithUrls as any
 }
