@@ -24,7 +24,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/soluciones"
-                  className="hover:text-accent-gold-dark transition-colors"
+                  className="hover:text-accent-gold transition-colors"
                 >
                   Solar Industrial
                 </Link>

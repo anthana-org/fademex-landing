@@ -105,9 +105,9 @@ export function AdminSidebar({ userEmail, pendingLeads = 0, pendingDocuments = 0
                             href={item.href}
                             onClick={() => setMobileOpen(false)}
                             className={`
-                flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all
+                flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all relative
                 ${active
-                                    ? 'bg-accent-gold/10 text-ink font-medium'
+                                    ? 'bg-accent-gold/10 text-ink font-medium before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-1 before:h-6 before:bg-accent-gold before:rounded-full'
                                     : 'text-ink/60 hover:bg-ink/5 hover:text-ink'
                                 }
                 ${collapsed ? 'justify-center' : ''}

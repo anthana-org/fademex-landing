@@ -1,7 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, FileText, Upload, LogOut, User } from 'lucide-react'
+import { LogOut, User } from 'lucide-react'
+import { PortalNav, PortalMobileNav } from './_components/PortalNav'
 
 export default async function PortalLayout({
     children,
@@ -27,12 +28,6 @@ export default async function PortalLayout({
         redirect('/portal/complete-profile')
     }
 
-    const navItems = [
-        { href: '/portal', label: 'Dashboard', icon: LayoutDashboard },
-        { href: '/portal/contracts', label: 'Contratos', icon: FileText },
-        { href: '/portal/documents', label: 'Documentos', icon: Upload },
-    ]
-
     return (
         <div className="min-h-screen bg-canvas text-ink relative">
             {/* Background Effects */}
@@ -49,18 +44,7 @@ export default async function PortalLayout({
                         <Link href="/portal" className="text-xl font-extrabold text-ink">
                             FADEMEX <span className="text-accent-gold">Portal</span>
                         </Link>
-                        <nav className="hidden md:flex items-center gap-6">
-                            {navItems.map((item) => (
-                                <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    className="flex items-center gap-2 text-ink/60 hover:text-ink transition-colors"
-                                >
-                                    <item.icon className="w-4 h-4" />
-                                    {item.label}
-                                </Link>
-                            ))}
-                        </nav>
+                        <PortalNav />
                     </div>
 
                     <div className="flex items-center gap-4">
@@ -74,7 +58,7 @@ export default async function PortalLayout({
                         <form action="/api/auth/signout" method="post">
                             <button
                                 type="submit"
-                                className="flex items-center gap-2 text-sm text-ink/70 hover:text-ink transition-colors"
+                                className="flex items-center gap-2 text-sm text-ink/70 hover:text-red-600 transition-colors"
                             >
                                 <LogOut className="w-4 h-4" />
                                 <span className="hidden sm:inline">Cerrar Sesión</span>
@@ -82,20 +66,7 @@ export default async function PortalLayout({
                         </form>
                     </div>
                 </div>
-
-                {/* Mobile Navigation */}
-                <nav className="md:hidden border-t border-ink/10 px-6 py-2 flex items-center gap-4 overflow-x-auto">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="flex items-center gap-2 text-sm text-ink/60 hover:text-ink transition-colors whitespace-nowrap"
-                        >
-                            <item.icon className="w-4 h-4" />
-                            {item.label}
-                        </Link>
-                    ))}
-                </nav>
+                <PortalMobileNav />
             </header>
 
             {/* Main Content */}
