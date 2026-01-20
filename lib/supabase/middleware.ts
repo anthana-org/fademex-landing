@@ -54,21 +54,23 @@ export async function updateSession(request: NextRequest) {
   // Refreshing the auth token
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Protect /admin routes (except invite page which is public)
+  // Protect /admin routes (except login and invite pages which are public)
   if (request.nextUrl.pathname.startsWith('/admin')) {
-    // Allow access to invite page without auth (they need to set password)
+    // Allow access to login and invite pages without auth
+    const isLoginPage = request.nextUrl.pathname === '/admin/login'
     const isInvitePage = request.nextUrl.pathname.startsWith('/admin/invite/')
+    const isPublicAdminRoute = isLoginPage || isInvitePage
 
-    if (!user && !isInvitePage) {
-      // Redirect to login page if not authenticated
+    if (!user && !isPublicAdminRoute) {
+      // Redirect to admin login page if not authenticated
       const redirectUrl = request.nextUrl.clone()
-      redirectUrl.pathname = '/login'
+      redirectUrl.pathname = '/admin/login'
       redirectUrl.searchParams.set('redirectedFrom', request.nextUrl.pathname)
       return NextResponse.redirect(redirectUrl)
     }
 
-    // Check if user has admin role (skip for invite page)
-    if (user && !isInvitePage) {
+    // Check if user has admin role (skip for public admin routes)
+    if (user && !isPublicAdminRoute) {
       const userEmail = user.email?.toLowerCase()
 
       // Check for fallback admin email from environment
